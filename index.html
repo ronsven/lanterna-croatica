@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanterna Croatica. Fine Adriatic Dining.</title>
+    <meta name="description" content="Lanterna Croatica: contemporary Adriatic cuisine on Rab Island. Under new ownership. Fresh vision, timeless tradition.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/translations.js"></script>
+</head>
+<body>
+    <!-- INTRO OVERLAY: Cinematic name reveal -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-container">
+            <h1 class="intro-heading">
+                <span class="intro-word intro-word-lanterna">LANTERNA</span>
+                <span class="intro-word intro-word-croatica">CROATICA</span>
+            </h1>
+            <div class="intro-progress"></div>
+        </div>
+        <button class="intro-skip" aria-label="Skip intro animation">Skip</button>
+    </div>
+
+    <!-- TOPBAR: Ownership announcement -->
+    <div class="topbar">
+        <div class="topbar-content">
+            Lanterna Croatica. Under New Ownership. A fresh vision for Adriatic dining.
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="navbar">
+        <div class="navbar-container">
+            <div class="nav-logo">
+                LANTERNA <span class="nav-logo-red">CROATICA</span>
+            </div>
+
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <ul id="nav-menu" class="nav-menu" role="navigation">
+                <li><a href="#story" class="nav-link">Story</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#direction" class="nav-link">Direction</a></li>
+                <li><a href="#visit" class="nav-link">Visit</a></li>
+                <li><a href="#" class="nav-cta" data-reserve>Reserve Now</a></li>
+            </ul>
+
+            <div class="nav-language">
+                <button class="lang-btn lang-active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="hr">HR</button>
+                <button class="lang-btn" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="hu">HU</button>
+                <button class="lang-btn" data-lang="it">IT</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="hero">
+        <div class="hero-video-wrapper">
+            <video id="hero-video" class="hero-video" muted loop playsinline>
+                <source src="334716.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+        <div class="hero-rings">
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Adriatic Dining</div>
+            <h1 class="hero-h1">Where the <span class="hero-h1-red">Adriatic</span><br>Meets the <span class="hero-h1-red">Table</span></h1>
+            <p class="hero-tagline">Contemporary Croatian cuisine, generations of tradition, and the spirit of coastal Rab Island.</p>
+            <div class="hero-ctas">
+                <a href="#" class="btn btn-primary" data-reserve>Reserve a Table</a>
+                <a href="#menu" class="btn btn-outline">Explore Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OWNERSHIP SECTION -->
+    <section id="ownership" class="ownership" data-reveal>
+        <div class="section-container">
+            <div class="pill-badge">A New Chapter</div>
+            <h2 class="section-heading">Lanterna Croatica</h2>
+            <p class="section-subtext">
+                Under entirely new ownership, Lanterna Croatica marks a bold turning point for this beloved Rab Island location. We honor the legacy of what came before while charting a fresh course rooted in contemporary vision and deep respect for Croatian culinary tradition.
+            </p>
+
+            <div class="info-callout">
+                <div class="callout-icon">ℹ</div>
+                <div class="callout-content">
+                    <strong>A Note on Online Reviews:</strong> Reviews and ratings on TripAdvisor and similar platforms reflect experiences under previous ownership and management. We warmly encourage you to visit and form your own impression of Lanterna Croatica.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY / STATS -->
+    <section id="story" class="story" data-reveal>
+        <div class="section-container">
+            <div class="story-grid">
+                <div class="story-text">
+                    <h2 class="section-heading">A Location Steeped in Adriatic Soul</h2>
+                    <p>
+                        Lopar has drawn travelers and locals alike for centuries. Perched on Rab Island in the Adriatic, this enchanting old town pulses with the spirit of Croatia's maritime heritage. It is here, where the sea meets stone and tradition embraces innovation, that Lanterna Croatica has come to life.
+                    </p>
+                    <p>
+                        Our kitchen honors three generations of Croatian culinary wisdom. Daily catches from the Adriatic meet time-honored techniques. Every dish is a conversation between the sea and the land, between memory and fresh vision.
+                    </p>
+                </div>
+
+                <div class="story-stats">
+                    <div class="stat-block">
+                        <div class="stat-number">2025</div>
+                        <div class="stat-label">New Chapter</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number" data-target="7">0</div>
+                        <div class="stat-label">Days a Week</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number" data-target="3">0</div>
+                        <div class="stat-label">Generations of Tradition</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu" class="menu" data-reveal>
+        <div class="section-container">
+            <div class="menu-header">
+                <div class="menu-eyebrow">Signature Dishes</div>
+                <h2 class="section-heading">The Menu</h2>
+            </div>
+
+            <div class="menu-grid">
+                <div class="dish-card">
+                    <h3 class="dish-name">Grilled Adriatic Octopus</h3>
+                    <p class="dish-description">Charred tentacle, lemon oil, sea salt capers, frisée.</p>
+                    <div class="dish-underline"></div>
+                </div>
+
+                <div class="dish-card">
+                    <h3 class="dish-name">Wild Sea Bass</h3>
+                    <p class="dish-description">Fennel velouté, herb crust, coastal aromatics, beurre blanc.</p>
+                    <div class="dish-underline"></div>
+                </div>
+
+                <div class="dish-card">
+                    <h3 class="dish-name">Black Squid Ink Risotto</h3>
+                    <p class="dish-description">Adriatic ink, Carnaroli rice, bottarga, aged Parmigiano.</p>
+                    <div class="dish-underline"></div>
+                </div>
+
+                <div class="dish-card">
+                    <h3 class="dish-name">Slow-Roasted Lamb Peka</h3>
+                    <p class="dish-description">Under the bell, rosemary, roasted garlic, charred potatoes.</p>
+                    <div class="dish-underline"></div>
+                </div>
+
+                <div class="dish-card">
+                    <h3 class="dish-name">Tuna Tartare</h3>
+                    <p class="dish-description">Line-caught, avocado, Croatian olive oil, sesame, scallion.</p>
+                    <div class="dish-underline"></div>
+                </div>
+
+                <div class="dish-card">
+                    <h3 class="dish-name">Crni Buzara Prawns</h3>
+                    <p class="dish-description">White wine, garlic, black bread, butter, wild herbs.</p>
+                    <div class="dish-underline"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR DIRECTION -->
+    <section id="direction" class="direction" data-reveal>
+        <div class="section-container direction-container">
+            <div class="direction-eyebrow">Philosophy</div>
+            <h2 class="section-heading direction-heading">Not a Renovation. <span class="direction-gold">A Reinvention.</span></h2>
+            <p class="direction-text">
+                Lanterna Croatica is under entirely new ownership. The dining experience you will encounter is the product of a completely fresh vision—rooted not in incrementalism, but in a deliberate reimagining of what elevated Adriatic cuisine can be. Online platforms carry reviews from a different era, under different hands. We invite you to step inside and discover the new story being written here.
+            </p>
+        </div>
+    </section>
+
+    <!-- ATMOSPHERE / QUOTE -->
+    <section id="atmosphere" class="atmosphere" data-reveal>
+        <div class="atmosphere-glow"></div>
+        <div class="section-container">
+            <blockquote class="featured-quote">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">
+                    The moment you walk in, you feel it. This isn't trying to be anything other than what it is: an honest, beautiful space where the Adriatic's gifts are honored. Every detail speaks to respect for the craft.
+                </p>
+                <footer class="quote-footer">An Opening Guest</footer>
+            </blockquote>
+
+            <div class="features-row">
+                <div class="feature-icon-block">
+                    <div class="feature-icon">🐟</div>
+                    <p>Daily Fresh Catch</p>
+                </div>
+                <div class="feature-icon-block">
+                    <div class="feature-icon">🍽️</div>
+                    <p>Traditional Recipes</p>
+                </div>
+                <div class="feature-icon-block">
+                    <div class="feature-icon">🌱</div>
+                    <p>Vegan Options</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISIT / CONTACT -->
+    <section id="visit" class="visit" data-reveal>
+        <div class="section-container">
+            <div class="visit-grid">
+                <div class="visit-map-card">
+                    <svg viewBox="0 0 300 250" class="map-illustration">
+                        <!-- Stylized coastal map -->
+                        <rect x="20" y="20" width="260" height="210" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.3"/>
+                        <path d="M 30 100 Q 80 80 130 100 T 250 110" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.4"/>
+                        <path d="M 40 150 L 80 160 L 120 155 L 160 165 L 200 150 L 240 160" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
+                        <circle class="map-pin" cx="130" cy="110" r="6" fill="#1a68b0"/>
+                        <text x="130" y="240" text-anchor="middle" font-size="12" fill="#ffffff" opacity="0.6">Rab Island</text>
+                    </svg>
+                    <div class="map-label">Lopar, Rab Island</div>
+                </div>
+
+                <div class="visit-contact">
+                    <h3 class="visit-heading">Visit Us</h3>
+
+                    <div class="contact-block">
+                        <div class="contact-label">Address</div>
+                        <p class="contact-text">Lopar 80, Lopar 51280<br>Rab Island, Croatia</p>
+                    </div>
+
+                    <div class="contact-block">
+                        <div class="contact-label">Phone</div>
+                        <p class="contact-text"><a href="tel:+385988494444">+385 98 849 4444</a></p>
+                    </div>
+
+                    <div class="contact-block">
+                        <div class="contact-label">Hours</div>
+                        <p class="contact-text">Daily<br>11:00 AM to 11:45 PM</p>
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/Lanterna+Lopar/@45.0833,14.7656,15z" target="_blank" class="btn btn-primary btn-map">Open in Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">LANTERNA <span class="footer-logo-red">CROATICA</span></div>
+                <p class="footer-subtitle">Formerly Bistro Lanterna</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#story">Story</a>
+                <a href="#menu">Menu</a>
+                <a href="#visit">Contact</a>
+                <a href="#">Privacy</a>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            Lanterna Croatica. Lopar, Rab Island. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- RESERVATION MODAL -->
+    <div id="reservation-modal" class="reservation-modal">
+        <div class="reservation-overlay" id="reservation-overlay"></div>
+        <div class="reservation-container">
+            <button class="reservation-close" id="reservation-close" aria-label="Close reservation form">×</button>
+
+            <div class="reservation-content">
+                <div class="reservation-header">
+                    <h2 class="reservation-title" data-res-key="res_title">Reserve a Table</h2>
+                    <p class="reservation-subtitle" data-res-key="res_subtitle">Join us for an unforgettable Adriatic dining experience</p>
+                </div>
+
+                <form id="reservation-form" class="reservation-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="res-name" data-res-key="res_name">Full Name</label>
+                            <input type="text" id="res-name" name="name" required placeholder="Your name" data-res-placeholder="res_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="res-email" data-res-key="res_email">Email</label>
+                            <input type="email" id="res-email" name="email" required placeholder="your@email.com" data-res-placeholder="res_email">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="res-phone" data-res-key="res_phone">Phone Number</label>
+                            <input type="tel" id="res-phone" name="phone" required placeholder="+385 98 849 4444" data-res-placeholder="res_phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="res-guests" data-res-key="res_guests">Number of People</label>
+                            <select id="res-guests" name="guests" required data-res-key="res_select_guests">
+                                <option value="">Select number of guests</option>
+                                <option value="1" data-res-key="res_1_person">1 Person</option>
+                                <option value="2" data-res-key="res_2_people">2 People</option>
+                                <option value="3" data-res-key="res_3_people">3 People</option>
+                                <option value="4" data-res-key="res_4_people">4 People</option>
+                                <option value="5" data-res-key="res_5_people">5 People</option>
+                                <option value="6" data-res-key="res_6_people">6 People</option>
+                                <option value="7" data-res-key="res_7_people">7 People</option>
+                                <option value="8" data-res-key="res_8_plus">8+ People</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="res-date" data-res-key="res_date">Date</label>
+                            <input type="date" id="res-date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="res-time" data-res-key="res_time">Time</label>
+                            <select id="res-time" name="time" required data-res-key="res_select_time">
+                                <option value="">Select time</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="12:30">12:30 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="13:30">1:30 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="18:30">6:30 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="19:30">7:30 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                                <option value="20:30">8:30 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                                <option value="21:30">9:30 PM</option>
+                                <option value="22:00">10:00 PM</option>
+                                <option value="23:00">11:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="res-notes" data-res-key="res_notes">Special Requests or Dietary Notes</label>
+                        <textarea id="res-notes" name="notes" placeholder="Any special requests or dietary requirements?" rows="4" data-res-placeholder="res_notes"></textarea>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="res-terms" name="terms" required>
+                        <label for="res-terms" data-res-key="res_terms">I agree to the privacy policy and terms</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary reservation-submit" data-res-key="res_submit">Confirm Reservation</button>
+                </form>
+
+                <div id="reservation-success" class="reservation-success" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <h3 data-res-key="res_success_title">Reservation Confirmed!</h3>
+                    <p data-res-key="res_success_message">Thank you for your reservation. We've sent a confirmation to your email and WhatsApp.</p>
+                    <p class="success-details" id="success-details"></p>
+                    <button class="btn btn-primary" onclick="closeReservationModal()" data-res-key="res_close">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
