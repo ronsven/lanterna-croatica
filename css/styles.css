@@ -406,6 +406,27 @@ a:hover {
     flex-wrap: wrap;
 }
 
+.hero-language {
+    display: none;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.hero-language .lang-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.7rem;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    background: transparent;
+}
+
+.hero-language .lang-btn:hover,
+.hero-language .lang-btn.lang-active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: transparent;
+}
+
 /* ============================================
    BUTTONS
    ============================================ */
@@ -1328,6 +1349,10 @@ section[id="visit"] {
 
     .nav-language {
         display: none;
+    }
+
+    .hero-language {
+        display: flex;
     }
 
     .nav-menu {
