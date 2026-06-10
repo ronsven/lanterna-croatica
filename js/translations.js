@@ -13,7 +13,7 @@ window.translations = {
         hero_eyebrow: "Jadranska Kuhinja",
         hero_h1_1: "Gdje se ",
         hero_h1_adriatic: "Jadran",
-        hero_h1_2: " Susreće s ",
+        hero_h1_2: " Susreće sa ",
         hero_h1_table: "Stolom",
         hero_tagline: "Suvremena hrvatska kuhinja, baština iz generacija, i duh obalnog otoka Raba.",
         hero_reserve: "Rezervirajte stol",
