@@ -184,11 +184,19 @@ function showReservationSuccess(data) {
         day: 'numeric'
     });
 
-    successDetails.innerHTML = `
-        <strong>${data.name}</strong><br>
-        ${formattedDate} at ${data.time}<br>
-        Party of ${data.guests}
-    `;
+    successDetails.textContent = '';
+    const nameEl = document.createElement('strong');
+    nameEl.textContent = data.name;
+    const brEl1 = document.createElement('br');
+    const dateEl = document.createTextNode(`${formattedDate} at ${data.time}`);
+    const brEl2 = document.createElement('br');
+    const guestEl = document.createTextNode(`Party of ${data.guests}`);
+
+    successDetails.appendChild(nameEl);
+    successDetails.appendChild(brEl1);
+    successDetails.appendChild(dateEl);
+    successDetails.appendChild(brEl2);
+    successDetails.appendChild(guestEl);
 }
 
 // ============================================
