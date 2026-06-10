@@ -1326,6 +1326,10 @@ section[id="visit"] {
         display: flex;
     }
 
+    .nav-language {
+        display: none;
+    }
+
     .nav-menu {
         position: fixed;
         top: 0;
@@ -1368,7 +1372,8 @@ section[id="visit"] {
         border-radius: 0;
     }
 
-    .nav-language {
+    .nav-menu.active ~ .nav-language {
+        display: flex;
         position: fixed;
         bottom: 2rem;
         left: 2rem;
@@ -1377,9 +1382,6 @@ section[id="visit"] {
         justify-content: flex-start;
         padding-top: 1rem;
         border-top: 1px solid rgba(28, 28, 46, 0.05);
-    }
-
-    .nav-menu.active ~ .nav-language {
         z-index: 998;
     }
 
