@@ -154,12 +154,16 @@ async function handleReservationSubmit() {
         notes: formData.get('notes')
     };
 
+    console.log('Submitting reservation:', reservationData);
+
     try {
         // Send to Zapier webhook
-        await fetch('https://hooks.zapier.com/hooks/catch/27896563/432xtgq/', {
+        console.log('Fetching to Zapier...');
+        const response = await fetch('https://hooks.zapier.com/hooks/catch/27896563/432xtgq/', {
             method: 'POST',
             body: JSON.stringify(reservationData)
         });
+        console.log('Fetch response:', response);
 
         showReservationSuccess(reservationData);
     } catch (error) {
