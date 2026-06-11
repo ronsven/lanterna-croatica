@@ -155,8 +155,8 @@ async function handleReservationSubmit() {
     };
 
     try {
-        // Send to Zapier webhook (you'll set this up in Zapier)
-        await fetch('https://hooks.zapier.com/hooks/catch/YOUR_ZAPIER_WEBHOOK_ID/', {
+        // Send to Zapier webhook
+        await fetch('https://hooks.zapier.com/hooks/catch/27896563/432xtgq/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(reservationData)
