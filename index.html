@@ -146,46 +146,19 @@
     <section id="menu" class="menu" data-reveal>
         <div class="section-container">
             <div class="menu-header">
-                <div class="menu-eyebrow">Signature Dishes</div>
-                <h2 class="section-heading">The Menu</h2>
+                <div class="menu-eyebrow" data-menu-key="menu_eyebrow">Traditional Menu</div>
+                <h2 class="section-heading" data-menu-key="menu_title">The Menu</h2>
+
+                <div class="menu-language-selector">
+                    <button class="menu-lang-btn menu-lang-active" data-menu-lang="en">English</button>
+                    <button class="menu-lang-btn" data-menu-lang="hr">Hrvatski</button>
+                    <button class="menu-lang-btn" data-menu-lang="de">Deutsch</button>
+                    <button class="menu-lang-btn" data-menu-lang="it">Italiano</button>
+                </div>
             </div>
 
-            <div class="menu-grid">
-                <div class="dish-card">
-                    <h3 class="dish-name">Grilled Adriatic Octopus</h3>
-                    <p class="dish-description">Charred tentacle, lemon oil, sea salt capers, frisée.</p>
-                    <div class="dish-underline"></div>
-                </div>
-
-                <div class="dish-card">
-                    <h3 class="dish-name">Wild Sea Bass</h3>
-                    <p class="dish-description">Fennel velouté, herb crust, coastal aromatics, beurre blanc.</p>
-                    <div class="dish-underline"></div>
-                </div>
-
-                <div class="dish-card">
-                    <h3 class="dish-name">Black Squid Ink Risotto</h3>
-                    <p class="dish-description">Adriatic ink, Carnaroli rice, bottarga, aged Parmigiano.</p>
-                    <div class="dish-underline"></div>
-                </div>
-
-                <div class="dish-card">
-                    <h3 class="dish-name">Slow-Roasted Lamb Peka</h3>
-                    <p class="dish-description">Under the bell, rosemary, roasted garlic, charred potatoes.</p>
-                    <div class="dish-underline"></div>
-                </div>
-
-                <div class="dish-card">
-                    <h3 class="dish-name">Tuna Tartare</h3>
-                    <p class="dish-description">Line-caught, avocado, Croatian olive oil, sesame, scallion.</p>
-                    <div class="dish-underline"></div>
-                </div>
-
-                <div class="dish-card">
-                    <h3 class="dish-name">Crni Buzara Prawns</h3>
-                    <p class="dish-description">White wine, garlic, black bread, butter, wild herbs.</p>
-                    <div class="dish-underline"></div>
-                </div>
+            <div id="menu-content" class="menu-content">
+                <!-- Menu categories will be populated by JavaScript -->
             </div>
         </div>
     </section>

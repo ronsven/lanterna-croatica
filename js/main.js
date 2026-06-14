@@ -369,32 +369,505 @@ function setupStatCounters() {
 }
 
 // ============================================
+// MENU DATA (4 LANGUAGES)
+// ============================================
+const menuData = {
+    en: {
+        eyebrow: 'Traditional Menu',
+        title: 'The Menu',
+        categories: [
+            {
+                name: 'Cold Appetizers',
+                items: [
+                    { name: 'Carpaccio', description: 'Thinly sliced raw fish with olive oil and herbs' },
+                    { name: 'Dalmatian Prosciutto', description: 'Cured ham from the Adriatic coast' },
+                    { name: 'Octopus Salad', description: 'Tender octopus with seasonal vegetables and herbs' },
+                    { name: 'Scallop Crudo', description: 'Fresh scallops with lemon and sea salt' }
+                ]
+            },
+            {
+                name: 'Hot Appetizers',
+                items: [
+                    { name: 'Pasta e Fagioli', description: 'Traditional pasta and bean soup' },
+                    { name: 'Grilled Calamari', description: 'Fresh squid grilled to perfection' },
+                    { name: 'Mussels in White Wine', description: 'Adriatic mussels steamed in white wine and garlic' },
+                    { name: 'Cheese Croquettes', description: 'Golden fried croquettes with local cheese' }
+                ]
+            },
+            {
+                name: 'Fish & Shellfish',
+                items: [
+                    { name: 'Whole Sea Bass', description: 'Mediterranean sea bass, grilled with herbs' },
+                    { name: 'Squid Ink Pasta', description: 'Fresh pasta in rich squid ink sauce' },
+                    { name: 'King Prawns', description: 'Adriatic prawns in garlic and white wine' },
+                    { name: 'Scallops Buzara', description: 'Pan-seared scallops in white wine reduction' },
+                    { name: 'Tuna Steak', description: 'Seared tuna with seasonal vegetables' },
+                    { name: 'Clams Casino', description: 'Baked clams with breadcrumbs and herbs' }
+                ]
+            },
+            {
+                name: 'Meat Dishes',
+                items: [
+                    { name: 'Peka Lamb', description: 'Slow-roasted lamb under the bell with herbs' },
+                    { name: 'Veal Steak', description: 'Tender veal with seasonal accompaniments' },
+                    { name: 'Grilled Steak', description: 'Premium cut grilled to your preference' },
+                    { name: 'Beef Fillets', description: 'Tender beef with light sauce' }
+                ]
+            },
+            {
+                name: 'Soups',
+                items: [
+                    { name: 'Daily Soup', description: 'Our chef\'s creation of the day' },
+                    { name: 'Seafood Bisque', description: 'Creamy soup with fresh shellfish' },
+                    { name: 'Minestrone', description: 'Hearty vegetable soup' }
+                ]
+            },
+            {
+                name: 'Side Dishes',
+                items: [
+                    { name: 'Fried Potatoes', description: 'Crispy golden potatoes' },
+                    { name: 'Boiled Potatoes', description: 'Tender potatoes with butter and herbs' },
+                    { name: 'Seasonal Vegetables', description: 'Fresh vegetables of the season' },
+                    { name: 'Swiss Chard', description: 'Braised with garlic and olive oil' }
+                ]
+            },
+            {
+                name: 'Pizzas',
+                items: [
+                    { name: 'Lanterna', description: 'House specialty with mixed toppings' },
+                    { name: 'Margherita', description: 'Classic tomato, mozzarella, and basil' },
+                    { name: 'Funghi', description: 'Fresh mushrooms and cheese' },
+                    { name: 'Semplice', description: 'Simple tomato and mozzarella' },
+                    { name: 'Piccante', description: 'Spicy pepperoni pizza' },
+                    { name: 'Vegetariana', description: 'Seasonal vegetables' },
+                    { name: 'Al Tonno', description: 'Tuna and onions' },
+                    { name: 'Slavonska', description: 'Croatian-style with local meats' }
+                ]
+            },
+            {
+                name: 'Salads',
+                items: [
+                    { name: 'Seasonal Salad', description: 'Fresh greens with house vinaigrette' },
+                    { name: 'Lanterna Salad', description: 'Mixed greens with seafood and vegetables' }
+                ]
+            },
+            {
+                name: 'Desserts',
+                items: [
+                    { name: 'Tiramisu', description: 'Classic Italian layered dessert' },
+                    { name: 'Chocolate Surprise', description: 'Decadent chocolate creation' },
+                    { name: 'Pancakes', description: 'Fluffy pancakes with seasonal fruit' },
+                    { name: 'Ice Cream Selection', description: 'House-made ice cream flavors' }
+                ]
+            },
+            {
+                name: 'Beverages',
+                items: [
+                    { name: 'Fresh Juices', description: 'Orange, lemon, and seasonal fruits' },
+                    { name: 'Soft Drinks', description: 'International and local brands' },
+                    { name: 'Coffee & Tea', description: 'Italian espresso and specialty teas' }
+                ]
+            }
+        ]
+    },
+    hr: {
+        eyebrow: 'Tradicionalni Jelovnik',
+        title: 'Jelovnik',
+        categories: [
+            {
+                name: 'Hladne Predjele',
+                items: [
+                    { name: 'Karpačo', description: 'Tanko rezane sirove ribe s maslinovim uljem' },
+                    { name: 'Dalmatinski Pršut', description: 'Kulen sa jadranske obale' },
+                    { name: 'Hobotnica Salata', description: 'Meka hobotnica s jeldom i biljem' },
+                    { name: 'Kapesante Crudo', description: 'Svježe kapesante s limunom i morskom solju' }
+                ]
+            },
+            {
+                name: 'Tople Predjele',
+                items: [
+                    { name: 'Pasta e Fagioli', description: 'Tradicionalna pasta i pratika juha' },
+                    { name: 'Pržena Lignja', description: 'Svježa lignja na roštilju' },
+                    { name: 'Školjke u Bijelom Vinu', description: 'Jadranske školjke kuhane u bijelom vinu' },
+                    { name: 'Sirni Kroketi', description: 'Povrće ispunjeno lokalnim sirom' }
+                ]
+            },
+            {
+                name: 'Ribe, Rakovi i Školjke',
+                items: [
+                    { name: 'Brancin na Roštilju', description: 'Mediteranski brancin na roštilju s biljem' },
+                    { name: 'Lignjina Pasta', description: 'Svježa pasta u umaku od lignjine tinte' },
+                    { name: 'Károli Rakovi', description: 'Jadranski károli u vinu i česnjaku' },
+                    { name: 'Kapesante Buzara', description: 'Pečene kapesante u umaku od bijelog vina' },
+                    { name: 'Tuna Odrezak', description: 'Pečena tuna sa sezonskim povrćem' },
+                    { name: 'Mahunje Casino', description: 'Pečene mahunje s krušcima i biljem' }
+                ]
+            },
+            {
+                name: 'Jela od Mesa',
+                items: [
+                    { name: 'Peka Jagnjećetina', description: 'Pečena jagnjećetina ispod peke s biljem' },
+                    { name: 'Tele Odrezak', description: 'Meko tele sa sezonskim pratilcama' },
+                    { name: 'Pečeni Odrezak', description: 'Odličan odrezak na roštilju' },
+                    { name: 'Govjeći Fileti', description: 'Meki govedina s laganim umakom' }
+                ]
+            },
+            {
+                name: 'Juhe',
+                items: [
+                    { name: 'Dnevna Juha', description: 'Stvaranje od kuhareve kreativnosti' },
+                    { name: 'Marekova Juha', description: 'Kremasta juha sa svježim rakovima' },
+                    { name: 'Minestrone', description: 'Zdrava juha od povrća' }
+                ]
+            },
+            {
+                name: 'Prilozi',
+                items: [
+                    { name: 'Prženi Krumpir', description: 'Hrskavi zlatni krumpir' },
+                    { name: 'Kuvan Krumpir', description: 'Meki krumpir s maslom i biljem' },
+                    { name: 'Sezonsko Povrće', description: 'Svježe povrće sezone' },
+                    { name: 'Blitva', description: 'Kuhana s česnjekom i maslinovim uljem' }
+                ]
+            },
+            {
+                name: 'Pizze',
+                items: [
+                    { name: 'Lanterna', description: 'Specijalitak kuće s miješanim sastojcima' },
+                    { name: 'Margherita', description: 'Klasična rajčica, mozzarella i bosiljak' },
+                    { name: 'Funghi', description: 'Svježi gljive i sir' },
+                    { name: 'Semplice', description: 'Jednostavna rajčica i mozzarella' },
+                    { name: 'Piccante', description: 'Ljuta peperoni pizza' },
+                    { name: 'Vegetariana', description: 'Sezonsko povrće' },
+                    { name: 'Al Tonno', description: 'Tuna i luk' },
+                    { name: 'Slavonska', description: 'Hrvatsko-stilska s lokalnim mesima' }
+                ]
+            },
+            {
+                name: 'Salate',
+                items: [
+                    { name: 'Sezonska Salata', description: 'Svježi zeleni листови s domaćim dressingom' },
+                    { name: 'Lanterna Salata', description: 'Miješani zeleni листови s rakovima i povrćem' }
+                ]
+            },
+            {
+                name: 'Slastice',
+                items: [
+                    { name: 'Tiramisu', description: 'Klasični talijanski slojeviti desert' },
+                    { name: 'Čokolada Iznenađenje', description: 'Prepunjena čokolada' },
+                    { name: 'Palacinke', description: 'Rahle palacinke s voćem sezone' },
+                    { name: 'Izbor Sladoleda', description: 'Domaće sladoleda raznih okusa' }
+                ]
+            },
+            {
+                name: 'Pića',
+                items: [
+                    { name: 'Svježi Sokovi', description: 'Naranja, limun i voće sezone' },
+                    { name: 'Bezalkoholna Pića', description: 'Međunarodni i lokalni brendovi' },
+                    { name: 'Kava i Čaj', description: 'Talijanska espresso i specijalizirani čajevi' }
+                ]
+            }
+        ]
+    },
+    de: {
+        eyebrow: 'Traditionelle Speisekarte',
+        title: 'Die Speisekarte',
+        categories: [
+            {
+                name: 'Kalte Vorspeisen',
+                items: [
+                    { name: 'Carpaccio', description: 'Dünn geschnittener roher Fisch mit Olivenöl' },
+                    { name: 'Dalmatiner Schinken', description: 'Gepökelter Schinken von der Adriaküste' },
+                    { name: 'Oktopus-Salat', description: 'Zartes Oktopus mit Saisongemüse und Kräutern' },
+                    { name: 'Jakobsmuschel Crudo', description: 'Frische Jakobsmuscheln mit Zitrone und Meersalz' }
+                ]
+            },
+            {
+                name: 'Warme Vorspeisen',
+                items: [
+                    { name: 'Pasta e Fagioli', description: 'Traditionelle Pasta- und Bohneneintopf' },
+                    { name: 'Gegrillter Tintenfisch', description: 'Frischer Tintenfisch gegrillt' },
+                    { name: 'Muscheln in Weißwein', description: 'Adriatische Muscheln in Weißwein und Knoblauch' },
+                    { name: 'Käse-Kroketten', description: 'Goldene frittierte Kroquetten mit lokalem Käse' }
+                ]
+            },
+            {
+                name: 'Fisch & Meeresfrüchte',
+                items: [
+                    { name: 'Ganzer Wolfsbarsch', description: 'Mittelmeer-Wolfsbarsch gegrillt mit Kräutern' },
+                    { name: 'Tintenfisch-Nudeln', description: 'Frische Nudeln in reichhaltiger Tintenfischsoße' },
+                    { name: 'Königsgarnelen', description: 'Adriatische Garnelen in Knoblauch und Weißwein' },
+                    { name: 'Jakobsmuscheln Buzara', description: 'Angebratene Jakobsmuscheln in Weißweinreduktion' },
+                    { name: 'Thunfisch-Steak', description: 'Gegrillter Thunfisch mit Saisongemüse' },
+                    { name: 'Austern Casino', description: 'Gebackene Austern mit Bröseln und Kräutern' }
+                ]
+            },
+            {
+                name: 'Fleischgerichte',
+                items: [
+                    { name: 'Peka-Lamm', description: 'Langschmorbraten unter der Glocke mit Kräutern' },
+                    { name: 'Kalbssteak', description: 'Zartes Kalbfleisch mit saisonalen Beilagen' },
+                    { name: 'Gegrilltes Steak', description: 'Hochwertiger Schnitt nach Geschmack gegrillt' },
+                    { name: 'Rinder-Filets', description: 'Zartes Rindfleisch mit leichter Soße' }
+                ]
+            },
+            {
+                name: 'Suppen',
+                items: [
+                    { name: 'Tagessuppe', description: 'Die kreative Schöpfung des Küchenchefs' },
+                    { name: 'Meeresfrüchte-Bisque', description: 'Cremige Suppe mit frischen Meeresfrüchten' },
+                    { name: 'Minestrone', description: 'Herzhafte Gemüsesuppe' }
+                ]
+            },
+            {
+                name: 'Beilagen',
+                items: [
+                    { name: 'Gebratene Kartoffeln', description: 'Knusprig goldfarbene Kartoffeln' },
+                    { name: 'Gekochte Kartoffeln', description: 'Zarte Kartoffeln mit Butter und Kräutern' },
+                    { name: 'Saisonales Gemüse', description: 'Frisches Gemüse der Saison' },
+                    { name: 'Mangold', description: 'Gedünstet mit Knoblauch und Olivenöl' }
+                ]
+            },
+            {
+                name: 'Pizzen',
+                items: [
+                    { name: 'Lanterna', description: 'Hausspecialität mit gemischten Belägen' },
+                    { name: 'Margherita', description: 'Klassisch mit Tomate, Mozzarella und Basilikum' },
+                    { name: 'Funghi', description: 'Frische Pilze und Käse' },
+                    { name: 'Semplice', description: 'Einfach Tomate und Mozzarella' },
+                    { name: 'Piccante', description: 'Scharfe Peperoni-Pizza' },
+                    { name: 'Vegetariana', description: 'Saisonales Gemüse' },
+                    { name: 'Al Tonno', description: 'Thunfisch und Zwiebeln' },
+                    { name: 'Slavonska', description: 'Kroatisch mit lokalen Fleischsorten' }
+                ]
+            },
+            {
+                name: 'Salate',
+                items: [
+                    { name: 'Saisonaler Salat', description: 'Frisches Blattgemüse mit Hausvinaigrette' },
+                    { name: 'Lanterna Salat', description: 'Gemischtes Blattgemüse mit Meeresfrüchten und Gemüse' }
+                ]
+            },
+            {
+                name: 'Desserts',
+                items: [
+                    { name: 'Tiramisu', description: 'Klassischer italienischer Schichtkuchen' },
+                    { name: 'Schokoladen-Überraschung', description: 'Prächtiges Schokoladengebilde' },
+                    { name: 'Pfannkuchen', description: 'Fluffige Pfannkuchen mit saisonalem Obst' },
+                    { name: 'Eiscreme-Auswahl', description: 'Hausgemachte Eiscreme in verschiedenen Sorten' }
+                ]
+            },
+            {
+                name: 'Getränke',
+                items: [
+                    { name: 'Frische Säfte', description: 'Orange, Zitrone und saisonales Obst' },
+                    { name: 'Alkoholfreie Getränke', description: 'Internationale und lokale Marken' },
+                    { name: 'Kaffee & Tee', description: 'Italienischer Espresso und Spezialtees' }
+                ]
+            }
+        ]
+    },
+    it: {
+        eyebrow: 'Menu Tradizionale',
+        title: 'Il Menu',
+        categories: [
+            {
+                name: 'Antipasti Freddi',
+                items: [
+                    { name: 'Carpaccio', description: 'Pesce crudo affettato sottilmente con olio d\'oliva' },
+                    { name: 'Prosciutto Dalmata', description: 'Prosciutto stagionato della costa adriatica' },
+                    { name: 'Insalata di Polpo', description: 'Polpo tenero con verdure di stagione ed erbe' },
+                    { name: 'Capasanta Crudo', description: 'Capesante fresche con limone e sale marino' }
+                ]
+            },
+            {
+                name: 'Antipasti Caldi',
+                items: [
+                    { name: 'Pasta e Fagioli', description: 'Tradizionale pasta e zuppa di fagioli' },
+                    { name: 'Calamari Grigliati', description: 'Calamari freschi alla griglia' },
+                    { name: 'Cozze al Vino Bianco', description: 'Cozze adriatiche cotte in vino bianco e aglio' },
+                    { name: 'Crocchette di Formaggio', description: 'Crocchette fritte dorate con formaggio locale' }
+                ]
+            },
+            {
+                name: 'Pesce e Frutti di Mare',
+                items: [
+                    { name: 'Branzino Intero', description: 'Branzino mediterraneo alla griglia con erbe' },
+                    { name: 'Pasta al Nero di Seppia', description: 'Pasta fresca in ricco sugo di seppia' },
+                    { name: 'Scampi Adriatici', description: 'Scampi adriatici in aglio e vino bianco' },
+                    { name: 'Capesante Buzara', description: 'Capesante rosolate in riduzione di vino bianco' },
+                    { name: 'Bistecca di Tonno', description: 'Tonno seared con verdure di stagione' },
+                    { name: 'Vongole Casino', description: 'Vongole al forno con pangrattato ed erbe' }
+                ]
+            },
+            {
+                name: 'Piatti di Carne',
+                items: [
+                    { name: 'Agnello alla Peka', description: 'Agnello arrosto sotto la campana con erbe' },
+                    { name: 'Bistecca di Vitello', description: 'Vitello tenero con accompagnamenti stagionali' },
+                    { name: 'Bistecca alla Griglia', description: 'Taglio pregiato grigliato a vostro gusto' },
+                    { name: 'Filetti di Manzo', description: 'Manzo tenero con sugo leggero' }
+                ]
+            },
+            {
+                name: 'Zuppe',
+                items: [
+                    { name: 'Zuppa del Giorno', description: 'La creazione dello chef del giorno' },
+                    { name: 'Bisque di Frutti di Mare', description: 'Zuppa cremosa con frutti di mare freschi' },
+                    { name: 'Minestrone', description: 'Sostanziosa zuppa di verdure' }
+                ]
+            },
+            {
+                name: 'Contorni',
+                items: [
+                    { name: 'Patate Fritte', description: 'Patate croccanti e dorate' },
+                    { name: 'Patate Bollite', description: 'Patate tenere con burro ed erbe' },
+                    { name: 'Verdure Stagionali', description: 'Verdure fresche della stagione' },
+                    { name: 'Bietole', description: 'Brasate con aglio e olio d\'oliva' }
+                ]
+            },
+            {
+                name: 'Pizze',
+                items: [
+                    { name: 'Lanterna', description: 'Specialità della casa con condimenti misti' },
+                    { name: 'Margherita', description: 'Classica pomodoro, mozzarella e basilico' },
+                    { name: 'Funghi', description: 'Funghi freschi e formaggio' },
+                    { name: 'Semplice', description: 'Semplice pomodoro e mozzarella' },
+                    { name: 'Piccante', description: 'Pizza al peperoni piccante' },
+                    { name: 'Vegetariana', description: 'Verdure stagionali' },
+                    { name: 'Al Tonno', description: 'Tonno e cipolla' },
+                    { name: 'Slavonska', description: 'Stile croato con carni locali' }
+                ]
+            },
+            {
+                name: 'Insalate',
+                items: [
+                    { name: 'Insalata Stagionale', description: 'Verdure fresche con vinaigrette casalinga' },
+                    { name: 'Insalata Lanterna', description: 'Verdure miste con frutti di mare e verdure' }
+                ]
+            },
+            {
+                name: 'Dolci',
+                items: [
+                    { name: 'Tiramisu', description: 'Classico dolce italiano stratificato' },
+                    { name: 'Sorpresa al Cioccolato', description: 'Creazione al cioccolato decadente' },
+                    { name: 'Crepes', description: 'Crepes soffici con frutta stagionale' },
+                    { name: 'Selezione di Gelato', description: 'Gelato fatto in casa in vari gusti' }
+                ]
+            },
+            {
+                name: 'Bevande',
+                items: [
+                    { name: 'Succhi Freschi', description: 'Arancia, limone e frutta di stagione' },
+                    { name: 'Bibite Analcoliche', description: 'Marchi internazionali e locali' },
+                    { name: 'Caffè e Tè', description: 'Espresso italiano e tè specializzati' }
+                ]
+            }
+        ]
+    }
+};
+
+// ============================================
+// MENU RENDERING
+// ============================================
+function renderMenu(lang) {
+    const menuContent = document.getElementById('menu-content');
+    const menuData_ = menuData[lang];
+
+    if (!menuData_ || !menuContent) return;
+
+    menuContent.innerHTML = '';
+
+    menuData_.categories.forEach((category) => {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'menu-category';
+
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.className = 'menu-category-title';
+        categoryTitle.textContent = category.name;
+
+        const itemsDiv = document.createElement('div');
+        itemsDiv.className = 'menu-items';
+
+        category.items.forEach((item) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'menu-item';
+
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'menu-item-info';
+
+            const nameEl = document.createElement('div');
+            nameEl.className = 'menu-item-name';
+            nameEl.textContent = item.name;
+
+            const descEl = document.createElement('div');
+            descEl.className = 'menu-item-description';
+            descEl.textContent = item.description;
+
+            infoDiv.appendChild(nameEl);
+            infoDiv.appendChild(descEl);
+            itemDiv.appendChild(infoDiv);
+
+            itemsDiv.appendChild(itemDiv);
+        });
+
+        categoryDiv.appendChild(categoryTitle);
+        categoryDiv.appendChild(itemsDiv);
+        menuContent.appendChild(categoryDiv);
+    });
+}
+
+// ============================================
+// MENU LANGUAGE SWITCHER
+// ============================================
+function setupMenuLanguageSwitcher() {
+    const menuLangBtns = document.querySelectorAll('.menu-lang-btn');
+    const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+
+    renderMenu(currentLang);
+    updateActiveMenuLangBtn(currentLang);
+
+    menuLangBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-menu-lang');
+            renderMenu(lang);
+            updateActiveMenuLangBtn(lang);
+        });
+    });
+}
+
+function updateActiveMenuLangBtn(lang) {
+    const menuLangBtns = document.querySelectorAll('.menu-lang-btn');
+    menuLangBtns.forEach((b) => b.classList.remove('menu-lang-active'));
+    document.querySelector(`[data-menu-lang="${lang}"]`)?.classList.add('menu-lang-active');
+}
+
+// ============================================
 // MENU CARD STAGGER
 // ============================================
 function setupMenuCardStagger() {
     const menuSection = document.getElementById('menu');
-    const cards = document.querySelectorAll('.dish-card');
+    const items = document.querySelectorAll('.menu-item');
 
-    if (!menuSection || cards.length === 0) return;
+    if (!menuSection || items.length === 0) return;
 
     if (prefersReducedMotion) {
-        cards.forEach((card) => {
-            card.style.opacity = '1';
-            card.style.transform = 'none';
+        items.forEach((item) => {
+            item.style.opacity = '1';
+            item.style.transform = 'none';
         });
         return;
     }
 
-    gsap.from(cards, {
+    gsap.from(items, {
         scrollTrigger: {
             trigger: menuSection,
             start: 'top 75%',
             once: true
         },
         opacity: 0,
-        y: 30,
-        stagger: 0.1,
-        duration: 0.8,
+        y: 20,
+        stagger: 0.05,
+        duration: 0.6,
         ease: 'power2.out'
     });
 }
@@ -580,29 +1053,11 @@ function applyLanguage(lang) {
         if (label) label.textContent = t.stat_3;
     }
 
-    const menuEyebrow = document.querySelector('.menu-eyebrow');
+    const menuEyebrow = document.querySelector('[data-menu-key="menu_eyebrow"]');
     if (menuEyebrow) menuEyebrow.textContent = t.menu_eyebrow;
 
-    const menuH2 = document.querySelector('#menu .section-heading');
+    const menuH2 = document.querySelector('[data-menu-key="menu_title"]');
     if (menuH2) menuH2.textContent = t.menu_h2;
-
-    const dishCards = document.querySelectorAll('.dish-card');
-    const dishes = [
-        { name: t.dish_1, desc: t.dish_1_desc },
-        { name: t.dish_2, desc: t.dish_2_desc },
-        { name: t.dish_3, desc: t.dish_3_desc },
-        { name: t.dish_4, desc: t.dish_4_desc },
-        { name: t.dish_5, desc: t.dish_5_desc },
-        { name: t.dish_6, desc: t.dish_6_desc },
-    ];
-    dishCards.forEach((card, idx) => {
-        if (dishes[idx]) {
-            const nameEl = card.querySelector('.dish-name');
-            if (nameEl) nameEl.textContent = dishes[idx].name;
-            const descEl = card.querySelector('.dish-description');
-            if (descEl) descEl.textContent = dishes[idx].desc;
-        }
-    });
 
     const directionEyebrow = document.querySelector('.direction-eyebrow');
     if (directionEyebrow) directionEyebrow.textContent = t.direction_eyebrow;
@@ -662,6 +1117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupRingAnimation();
     setupScrollReveals();
     setupStatCounters();
+    setupMenuLanguageSwitcher();
     setupMenuCardStagger();
     setupNavbarScroll();
     setupMobileMenu();
