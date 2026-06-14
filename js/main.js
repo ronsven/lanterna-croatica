@@ -823,12 +823,21 @@ function setupMenuLanguageSwitcher() {
     const menuLangBtns = document.querySelectorAll('.menu-lang-btn');
     const currentLang = localStorage.getItem('selectedLanguage') || 'en';
 
+    // Ensure menu-content exists before rendering
+    const menuContent = document.getElementById('menu-content');
+    if (!menuContent) {
+        console.warn('menu-content element not found');
+        return;
+    }
+
+    // Initial render
     renderMenu(currentLang);
     updateActiveMenuLangBtn(currentLang);
 
     menuLangBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
             const lang = btn.getAttribute('data-menu-lang');
+            localStorage.setItem('selectedLanguage', lang);
             renderMenu(lang);
             updateActiveMenuLangBtn(lang);
         });
@@ -857,6 +866,12 @@ function setupMenuCardStagger() {
         });
         return;
     }
+
+    // Ensure items are visible initially
+    items.forEach((item) => {
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)';
+    });
 
     gsap.from(items, {
         scrollTrigger: {
