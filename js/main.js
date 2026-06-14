@@ -475,7 +475,7 @@ const menuData = {
         title: 'Jelovnik',
         categories: [
             {
-                name: 'Hladne Predjele',
+                name: 'Hladna Predjela',
                 items: [
                     { name: 'Karpačo', description: 'Tanko rezane sirove ribe s maslinovim uljem' },
                     { name: 'Dalmatinski Pršut', description: 'Kulen sa jadranske obale' },
@@ -484,7 +484,7 @@ const menuData = {
                 ]
             },
             {
-                name: 'Tople Predjele',
+                name: 'Topla Predjela',
                 items: [
                     { name: 'Pasta e Fagioli', description: 'Tradicionalna pasta i pratika juha' },
                     { name: 'Pržena Lignja', description: 'Svježa lignja na roštilju' },
