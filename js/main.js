@@ -369,7 +369,7 @@ function setupStatCounters() {
 }
 
 // ============================================
-// MENU DATA (4 LANGUAGES)
+// MENU DATA (4 LANGUAGES) — ACTUAL RESTAURANT MENU
 // ============================================
 const menuData = {
     en: {
@@ -379,76 +379,78 @@ const menuData = {
             {
                 name: 'Cold Appetizers',
                 items: [
-                    { name: 'Carpaccio', description: 'Thinly sliced raw fish with olive oil and herbs' },
+                    { name: 'Carpaccio', description: 'Fish or beef, thinly sliced' },
                     { name: 'Dalmatian Prosciutto', description: 'Cured ham from the Adriatic coast' },
-                    { name: 'Octopus Salad', description: 'Tender octopus with seasonal vegetables and herbs' },
-                    { name: 'Scallop Crudo', description: 'Fresh scallops with lemon and sea salt' }
+                    { name: 'Sheep Cheese', description: 'Fresh local sheep cheese' },
+                    { name: 'Octopus Salad', description: 'Tender octopus with vegetables and herbs' }
                 ]
             },
             {
                 name: 'Hot Appetizers',
                 items: [
-                    { name: 'Pasta e Fagioli', description: 'Traditional pasta and bean soup' },
-                    { name: 'Grilled Calamari', description: 'Fresh squid grilled to perfection' },
-                    { name: 'Mussels in White Wine', description: 'Adriatic mussels steamed in white wine and garlic' },
-                    { name: 'Cheese Croquettes', description: 'Golden fried croquettes with local cheese' }
+                    { name: 'Pasta Bolognese', description: 'Traditional pasta with Bolognese sauce' },
+                    { name: 'Seafood Pasta', description: 'Pasta with fresh seafood' },
+                    { name: 'Pasta Carbonara', description: 'Classic carbonara preparation' }
                 ]
             },
             {
-                name: 'Fish & Shellfish',
+                name: 'Fish, Crabs, Shellfish',
                 items: [
-                    { name: 'Whole Sea Bass', description: 'Mediterranean sea bass, grilled with herbs' },
-                    { name: 'Squid Ink Pasta', description: 'Fresh pasta in rich squid ink sauce' },
-                    { name: 'King Prawns', description: 'Adriatic prawns in garlic and white wine' },
-                    { name: 'Scallops Buzara', description: 'Pan-seared scallops in white wine reduction' },
-                    { name: 'Tuna Steak', description: 'Seared tuna with seasonal vegetables' },
-                    { name: 'Clams Casino', description: 'Baked clams with breadcrumbs and herbs' }
+                    { name: 'Squid - Fried', description: 'Crispy fried squid' },
+                    { name: 'Squid - Grilled', description: 'Fresh squid grilled to perfection' },
+                    { name: 'Sea Bass in a Crust', description: 'Sea bass baked in a bread crust' },
+                    { name: 'Clams on the Buzara', description: 'Clams in white wine sauce - 1 kg' },
+                    { name: 'Small Fish Mix', description: 'Selection of fresh small fish' },
+                    { name: 'Scallops (Grilled)', description: 'Fresh scallops grilled' },
+                    { name: 'Grilled Shrimp', description: 'Adriatic shrimp grilled - 1kg' },
+                    { name: 'Tuna Steak', description: 'Premium tuna steak' }
                 ]
             },
             {
                 name: 'Meat Dishes',
                 items: [
-                    { name: 'Peka Lamb', description: 'Slow-roasted lamb under the bell with herbs' },
-                    { name: 'Veal Steak', description: 'Tender veal with seasonal accompaniments' },
-                    { name: 'Grilled Steak', description: 'Premium cut grilled to your preference' },
-                    { name: 'Beef Fillets', description: 'Tender beef with light sauce' }
+                    { name: 'Steak', description: 'Pork or veal steak' },
+                    { name: 'Fillet', description: 'Pork, beef, or chicken fillet' },
+                    { name: 'Veal from the Bread Oven', description: 'Sliced veal shank, baked traditionally' },
+                    { name: 'Suckling from the Bread Oven', description: 'Young pig baked in traditional oven' }
                 ]
             },
             {
                 name: 'Soups',
                 items: [
-                    { name: 'Daily Soup', description: 'Our chef\'s creation of the day' },
-                    { name: 'Seafood Bisque', description: 'Creamy soup with fresh shellfish' },
-                    { name: 'Minestrone', description: 'Hearty vegetable soup' }
+                    { name: 'Daily Soup', description: 'Chef\'s daily creation' },
+                    { name: 'Daily Ready Meals', description: 'Selection of prepared dishes that changes daily' }
                 ]
             },
             {
                 name: 'Side Dishes',
                 items: [
                     { name: 'Fried Potatoes', description: 'Crispy golden potatoes' },
-                    { name: 'Boiled Potatoes', description: 'Tender potatoes with butter and herbs' },
-                    { name: 'Seasonal Vegetables', description: 'Fresh vegetables of the season' },
-                    { name: 'Swiss Chard', description: 'Braised with garlic and olive oil' }
+                    { name: 'Boiled Salted Potatoes', description: 'Tender potatoes with salt' },
+                    { name: 'Vegetables (Grilled)', description: 'Fresh grilled vegetables' },
+                    { name: 'Swiss Chard with Potatoes', description: 'Braised greens and potatoes' },
+                    { name: 'Baked Potatoes', description: 'Potatoes baked in the oven' },
+                    { name: 'Cheese Croquettes', description: 'Golden fried cheese croquettes' }
                 ]
             },
             {
                 name: 'Pizzas',
                 items: [
-                    { name: 'Lanterna', description: 'House specialty with mixed toppings' },
-                    { name: 'Margherita', description: 'Classic tomato, mozzarella, and basil' },
-                    { name: 'Funghi', description: 'Fresh mushrooms and cheese' },
-                    { name: 'Semplice', description: 'Simple tomato and mozzarella' },
-                    { name: 'Piccante', description: 'Spicy pepperoni pizza' },
-                    { name: 'Vegetariana', description: 'Seasonal vegetables' },
-                    { name: 'Al Tonno', description: 'Tuna and onions' },
-                    { name: 'Slavonska', description: 'Croatian-style with local meats' }
+                    { name: 'Lanterna', description: 'Tomato, cheese, ham, prosciutto, mushrooms, cream, paprika' },
+                    { name: 'Margherita', description: 'Tomato and cheese' },
+                    { name: 'Funghi', description: 'Tomato, cheese, and mushrooms' },
+                    { name: 'Semplice', description: 'Tomato, cheese, and ham' },
+                    { name: 'Piccante', description: 'Tomato, cheese, ham, and chili peppers' },
+                    { name: 'Vegetariana', description: 'Tomato, cheese, vegetables, corn, and mushrooms' },
+                    { name: 'Al Tonno', description: 'Tomato, cheese, tuna, and onion' },
+                    { name: 'Slavonska', description: 'Tomato, cheese, ham, salami, kulen, bacon, chili peppers' }
                 ]
             },
             {
                 name: 'Salads',
                 items: [
-                    { name: 'Seasonal Salad', description: 'Fresh greens with house vinaigrette' },
-                    { name: 'Lanterna Salad', description: 'Mixed greens with seafood and vegetables' }
+                    { name: 'Seasonal Salad', description: 'Fresh seasonal greens' },
+                    { name: 'Salad Lanterna', description: 'Mixed greens with seafood and vegetables' }
                 ]
             },
             {
@@ -456,16 +458,9 @@ const menuData = {
                 items: [
                     { name: 'Tiramisu', description: 'Classic Italian layered dessert' },
                     { name: 'Chocolate Surprise', description: 'Decadent chocolate creation' },
-                    { name: 'Pancakes', description: 'Fluffy pancakes with seasonal fruit' },
-                    { name: 'Ice Cream Selection', description: 'House-made ice cream flavors' }
-                ]
-            },
-            {
-                name: 'Beverages',
-                items: [
-                    { name: 'Fresh Juices', description: 'Orange, lemon, and seasonal fruits' },
-                    { name: 'Soft Drinks', description: 'International and local brands' },
-                    { name: 'Coffee & Tea', description: 'Italian espresso and specialty teas' }
+                    { name: 'Pancakes', description: 'Pancakes with chocolate or jam' },
+                    { name: 'Pancakes with Ice Cream', description: 'Pancakes topped with ice cream' },
+                    { name: 'Ice Cream', description: 'House-made ice cream selection' }
                 ]
             }
         ]
@@ -477,93 +472,88 @@ const menuData = {
             {
                 name: 'Hladna Predjela',
                 items: [
-                    { name: 'Karpačo', description: 'Tanko rezane sirove ribe s maslinovim uljem' },
+                    { name: 'Carpaccio', description: 'Riba ili govedina, tanko rezano' },
                     { name: 'Dalmatinski Pršut', description: 'Kulen sa jadranske obale' },
-                    { name: 'Hobotnica Salata', description: 'Meka hobotnica s jeldom i biljem' },
-                    { name: 'Kapesante Crudo', description: 'Svježe kapesante s limunom i morskom solju' }
+                    { name: 'Ovčji Sir', description: 'Svježi domaći ovčji sir' },
+                    { name: 'Salata od Hobotnice', description: 'Meka hobotnica sa povrćem i biljem' }
                 ]
             },
             {
                 name: 'Topla Predjela',
                 items: [
-                    { name: 'Pasta e Fagioli', description: 'Tradicionalna pasta i pratika juha' },
-                    { name: 'Pržena Lignja', description: 'Svježa lignja na roštilju' },
-                    { name: 'Školjke u Bijelom Vinu', description: 'Jadranske školjke kuhane u bijelom vinu' },
-                    { name: 'Sirni Kroketi', description: 'Povrće ispunjeno lokalnim sirom' }
+                    { name: 'Pasta Bolognese', description: 'Tradicionalna pasta s Bolognese umakom' },
+                    { name: 'Tjestenina s Plodovima Mora', description: 'Pasta sa svježim plodovima mora' },
+                    { name: 'Pasta Carbonara', description: 'Klasična Carbonara priprema' }
                 ]
             },
             {
-                name: 'Ribe, Rakovi i Školjke',
+                name: 'Ribe, Rakovi, Školjke',
                 items: [
-                    { name: 'Brancin na Roštilju', description: 'Mediteranski brancin na roštilju s biljem' },
-                    { name: 'Lignjina Pasta', description: 'Svježa pasta u umaku od lignjine tinte' },
-                    { name: 'Károli Rakovi', description: 'Jadranski károli u vinu i česnjaku' },
-                    { name: 'Kapesante Buzara', description: 'Pečene kapesante u umaku od bijelog vina' },
-                    { name: 'Tuna Odrezak', description: 'Pečena tuna sa sezonskim povrćem' },
-                    { name: 'Mahunje Casino', description: 'Pečene mahunje s krušcima i biljem' }
+                    { name: 'Lignje - Pržene', description: 'Hrskave pržene lignje' },
+                    { name: 'Lignje - Na Žaru', description: 'Svježe lignje na žaru' },
+                    { name: 'Brancin u Škartocu', description: 'Brancin pečen u krušnoj kori' },
+                    { name: 'Školjke na Buzaru', description: 'Školjke u umaku od bijelog vina - 1 kg' },
+                    { name: 'Sitna Riba - Mix', description: 'Odabir svježe male ribe' },
+                    { name: 'Jakobove Kapice (Žar)', description: 'Svježe kapice na žaru' },
+                    { name: 'Škampi na Žaru', description: 'Jadranski škampi na žaru - 1kg' },
+                    { name: 'Tuna Steak', description: 'Odličan tuna steak' }
                 ]
             },
             {
                 name: 'Jela od Mesa',
                 items: [
-                    { name: 'Peka Jagnjećetina', description: 'Pečena jagnjećetina ispod peke s biljem' },
-                    { name: 'Tele Odrezak', description: 'Meko tele sa sezonskim pratilcama' },
-                    { name: 'Pečeni Odrezak', description: 'Odličan odrezak na roštilju' },
-                    { name: 'Govjeći Fileti', description: 'Meki govedina s laganim umakom' }
+                    { name: 'Odrezak', description: 'Svinjski ili teleći odrezak' },
+                    { name: 'Filé', description: 'Svinjski, goveđi ili piletini filé' },
+                    { name: 'Teletina iz Krušne Peći', description: 'Rezana teleća koljenica, pečena tradicionalno' },
+                    { name: 'Odojak iz Krušne Peći', description: 'Mladi svinjski u tradicionalnoj pećnici' }
                 ]
             },
             {
                 name: 'Juhe',
                 items: [
-                    { name: 'Dnevna Juha', description: 'Stvaranje od kuhareve kreativnosti' },
-                    { name: 'Marekova Juha', description: 'Kremasta juha sa svježim rakovima' },
-                    { name: 'Minestrone', description: 'Zdrava juha od povrća' }
+                    { name: 'Dnevna Juha', description: 'Kuhareva dnevna kreacija' },
+                    { name: 'Dnevna Ponuda Gotovih Jela', description: 'Odabir pripremljenih jela koja se mijenja dnevno' }
                 ]
             },
             {
                 name: 'Prilozi',
                 items: [
                     { name: 'Prženi Krumpir', description: 'Hrskavi zlatni krumpir' },
-                    { name: 'Kuvan Krumpir', description: 'Meki krumpir s maslom i biljem' },
-                    { name: 'Sezonsko Povrće', description: 'Svježe povrće sezone' },
-                    { name: 'Blitva', description: 'Kuhana s česnjekom i maslinovim uljem' }
+                    { name: 'Kuhani Slani Krumpir', description: 'Meki krumpir sa solju' },
+                    { name: 'Povrće (Žar)', description: 'Svježe povrće na žaru' },
+                    { name: 'Blitva s Krumpirom', description: 'Kuhana blitva i krumpir' },
+                    { name: 'Pekarski Krumpir', description: 'Krumpir pečen u pećnici' },
+                    { name: 'Kroketi od Sira', description: 'Zlatni prženi sirni kroketi' }
                 ]
             },
             {
                 name: 'Pizze',
                 items: [
-                    { name: 'Lanterna', description: 'Specijalitak kuće s miješanim sastojcima' },
-                    { name: 'Margherita', description: 'Klasična rajčica, mozzarella i bosiljak' },
-                    { name: 'Funghi', description: 'Svježi gljive i sir' },
-                    { name: 'Semplice', description: 'Jednostavna rajčica i mozzarella' },
-                    { name: 'Piccante', description: 'Ljuta peperoni pizza' },
-                    { name: 'Vegetariana', description: 'Sezonsko povrće' },
-                    { name: 'Al Tonno', description: 'Tuna i luk' },
-                    { name: 'Slavonska', description: 'Hrvatsko-stilska s lokalnim mesima' }
+                    { name: 'Lanterna', description: 'Rajčica, sir, šunka, pršut, gljive, vrhnje, paprika' },
+                    { name: 'Margherita', description: 'Rajčica i sir' },
+                    { name: 'Funghi', description: 'Rajčica, sir i gljive' },
+                    { name: 'Semplice', description: 'Rajčica, sir i šunka' },
+                    { name: 'Piccante', description: 'Rajčica, sir, šunka i feferoni' },
+                    { name: 'Vegetariana', description: 'Rajčica, sir, povrće, kukuruz i gljive' },
+                    { name: 'Al Tonno', description: 'Rajčica, sir, tuna i luk' },
+                    { name: 'Slavonska', description: 'Rajčica, sir, šunka, salama, kulen, špek, feferoni' }
                 ]
             },
             {
                 name: 'Salate',
                 items: [
-                    { name: 'Sezonska Salata', description: 'Svježi zeleni листови s domaćim dressingom' },
-                    { name: 'Lanterna Salata', description: 'Miješani zeleni листови s rakovima i povrćem' }
+                    { name: 'Sezonska Salata', description: 'Svježi sezonski listovi' },
+                    { name: 'Salata Lanterna', description: 'Miješani listovi s plodovima mora i povrćem' }
                 ]
             },
             {
                 name: 'Slastice',
                 items: [
                     { name: 'Tiramisu', description: 'Klasični talijanski slojeviti desert' },
-                    { name: 'Čokolada Iznenađenje', description: 'Prepunjena čokolada' },
-                    { name: 'Palacinke', description: 'Rahle palacinke s voćem sezone' },
-                    { name: 'Izbor Sladoleda', description: 'Domaće sladoleda raznih okusa' }
-                ]
-            },
-            {
-                name: 'Pića',
-                items: [
-                    { name: 'Svježi Sokovi', description: 'Naranja, limun i voće sezone' },
-                    { name: 'Bezalkoholna Pića', description: 'Međunarodni i lokalni brendovi' },
-                    { name: 'Kava i Čaj', description: 'Talijanska espresso i specijalizirani čajevi' }
+                    { name: 'Čokoladno Iznenađenje', description: 'Prepunjena čokolada' },
+                    { name: 'Palačinke', description: 'Palačinke s čokoladom ili marmeladom' },
+                    { name: 'Palačinke sa Sladoledom', description: 'Palačinke s sladoledom' },
+                    { name: 'Sladoled', description: 'Domaće sladoleda raznih okusa' }
                 ]
             }
         ]
@@ -575,93 +565,88 @@ const menuData = {
             {
                 name: 'Kalte Vorspeisen',
                 items: [
-                    { name: 'Carpaccio', description: 'Dünn geschnittener roher Fisch mit Olivenöl' },
+                    { name: 'Carpaccio', description: 'Fisch oder Rind, dünn geschnitten' },
                     { name: 'Dalmatiner Schinken', description: 'Gepökelter Schinken von der Adriaküste' },
-                    { name: 'Oktopus-Salat', description: 'Zartes Oktopus mit Saisongemüse und Kräutern' },
-                    { name: 'Jakobsmuschel Crudo', description: 'Frische Jakobsmuscheln mit Zitrone und Meersalz' }
+                    { name: 'Schafskäse', description: 'Frischer lokaler Schafskäse' },
+                    { name: 'Oktopussalat', description: 'Zartes Oktopus mit Gemüse und Kräutern' }
                 ]
             },
             {
                 name: 'Warme Vorspeisen',
                 items: [
-                    { name: 'Pasta e Fagioli', description: 'Traditionelle Pasta- und Bohneneintopf' },
-                    { name: 'Gegrillter Tintenfisch', description: 'Frischer Tintenfisch gegrillt' },
-                    { name: 'Muscheln in Weißwein', description: 'Adriatische Muscheln in Weißwein und Knoblauch' },
-                    { name: 'Käse-Kroketten', description: 'Goldene frittierte Kroquetten mit lokalem Käse' }
+                    { name: 'Pasta Bolognese', description: 'Traditionelle Pasta mit Bolognese-Sauce' },
+                    { name: 'Pasta mit Meeresfrüchten', description: 'Pasta mit frischen Meeresfrüchten' },
+                    { name: 'Pasta Carbonara', description: 'Klassische Carbonara-Zubereitung' }
                 ]
             },
             {
-                name: 'Fisch & Meeresfrüchte',
+                name: 'Fische, Krebse, Weichtiere',
                 items: [
-                    { name: 'Ganzer Wolfsbarsch', description: 'Mittelmeer-Wolfsbarsch gegrillt mit Kräutern' },
-                    { name: 'Tintenfisch-Nudeln', description: 'Frische Nudeln in reichhaltiger Tintenfischsoße' },
-                    { name: 'Königsgarnelen', description: 'Adriatische Garnelen in Knoblauch und Weißwein' },
-                    { name: 'Jakobsmuscheln Buzara', description: 'Angebratene Jakobsmuscheln in Weißweinreduktion' },
-                    { name: 'Thunfisch-Steak', description: 'Gegrillter Thunfisch mit Saisongemüse' },
-                    { name: 'Austern Casino', description: 'Gebackene Austern mit Bröseln und Kräutern' }
+                    { name: 'Frittierte Calamari', description: 'Knusprig frittierte Calamari' },
+                    { name: 'Gegrillte Calamari', description: 'Frische Calamari gegrillt' },
+                    { name: 'Panierter Wolfsbarsch', description: 'Wolfsbarsch in Krustenpanierung gebacken' },
+                    { name: 'Venusmuscheln auf die Buzara', description: 'Muscheln in Weißweinsauce - 1 kg' },
+                    { name: 'Gemischte kleine Fische', description: 'Auswahl frischer kleiner Fische' },
+                    { name: 'Gegrillte Jakobsmuscheln', description: 'Frische Jakobsmuscheln gegrillt' },
+                    { name: 'Gegrillte Garnelen', description: 'Adriatische Garnelen gegrillt - 1kg' },
+                    { name: 'Thunfischsteak', description: 'Hochwertiges Thunfischsteak' }
                 ]
             },
             {
                 name: 'Fleischgerichte',
                 items: [
-                    { name: 'Peka-Lamm', description: 'Langschmorbraten unter der Glocke mit Kräutern' },
-                    { name: 'Kalbssteak', description: 'Zartes Kalbfleisch mit saisonalen Beilagen' },
-                    { name: 'Gegrilltes Steak', description: 'Hochwertiger Schnitt nach Geschmack gegrillt' },
-                    { name: 'Rinder-Filets', description: 'Zartes Rindfleisch mit leichter Soße' }
+                    { name: 'Steak', description: 'Schweine- oder Kalbfleischsteak' },
+                    { name: 'Filet', description: 'Schweine-, Rind- oder Hühnerfilet' },
+                    { name: 'Kalbsbraten aus dem Brotbackofen', description: 'Geschnittene Kalbshaxe, traditionell gebacken' },
+                    { name: 'Spanferkel aus dem Brotbackofen', description: 'Junges Schwein im traditionellen Ofen' }
                 ]
             },
             {
                 name: 'Suppen',
                 items: [
-                    { name: 'Tagessuppe', description: 'Die kreative Schöpfung des Küchenchefs' },
-                    { name: 'Meeresfrüchte-Bisque', description: 'Cremige Suppe mit frischen Meeresfrüchten' },
-                    { name: 'Minestrone', description: 'Herzhafte Gemüsesuppe' }
+                    { name: 'Tagessuppe', description: 'Tägliche Kreation des Küchenchefs' },
+                    { name: 'Tägliche Auswahl von Fertiggerichten', description: 'Auswahl zubereiteter Gerichte, täglich wechselnd' }
                 ]
             },
             {
                 name: 'Beilagen',
                 items: [
-                    { name: 'Gebratene Kartoffeln', description: 'Knusprig goldfarbene Kartoffeln' },
-                    { name: 'Gekochte Kartoffeln', description: 'Zarte Kartoffeln mit Butter und Kräutern' },
-                    { name: 'Saisonales Gemüse', description: 'Frisches Gemüse der Saison' },
-                    { name: 'Mangold', description: 'Gedünstet mit Knoblauch und Olivenöl' }
+                    { name: 'Bratkartoffeln', description: 'Knusprig goldfarbene Kartoffeln' },
+                    { name: 'Gesalzene Kartoffeln', description: 'Zarte Kartoffeln mit Salz' },
+                    { name: 'Gegrilltes Gemüse', description: 'Frisches gegrilltes Gemüse' },
+                    { name: 'Mangold mit Kartoffeln', description: 'Gedünsteter Mangold und Kartoffeln' },
+                    { name: 'Ofenkartoffeln', description: 'Im Ofen gebackene Kartoffeln' },
+                    { name: 'Käsekroketten', description: 'Goldene frittierte Käsekroketten' }
                 ]
             },
             {
                 name: 'Pizzen',
                 items: [
-                    { name: 'Lanterna', description: 'Hausspecialität mit gemischten Belägen' },
-                    { name: 'Margherita', description: 'Klassisch mit Tomate, Mozzarella und Basilikum' },
-                    { name: 'Funghi', description: 'Frische Pilze und Käse' },
-                    { name: 'Semplice', description: 'Einfach Tomate und Mozzarella' },
-                    { name: 'Piccante', description: 'Scharfe Peperoni-Pizza' },
-                    { name: 'Vegetariana', description: 'Saisonales Gemüse' },
-                    { name: 'Al Tonno', description: 'Thunfisch und Zwiebeln' },
-                    { name: 'Slavonska', description: 'Kroatisch mit lokalen Fleischsorten' }
+                    { name: 'Lanterna', description: 'Tomate, Käse, Schinken, Prosciutto, Pilze, Sahne, Paprika' },
+                    { name: 'Margherita', description: 'Tomate und Käse' },
+                    { name: 'Funghi', description: 'Tomate, Käse und Pilze' },
+                    { name: 'Semplice', description: 'Tomate, Käse und Schinken' },
+                    { name: 'Piccante', description: 'Tomate, Käse, Schinken und Chilischoten' },
+                    { name: 'Vegetariana', description: 'Tomate, Käse, Gemüse, Mais und Pilze' },
+                    { name: 'Al Tonno', description: 'Tomate, Käse, Thunfisch und Zwiebel' },
+                    { name: 'Slavonska', description: 'Tomate, Käse, Schinken, Salami, Kulen, Speck, Chilischoten' }
                 ]
             },
             {
                 name: 'Salate',
                 items: [
-                    { name: 'Saisonaler Salat', description: 'Frisches Blattgemüse mit Hausvinaigrette' },
-                    { name: 'Lanterna Salat', description: 'Gemischtes Blattgemüse mit Meeresfrüchten und Gemüse' }
+                    { name: 'Salat der Saison', description: 'Frische saisonale Blätter' },
+                    { name: 'Salat Lanterna', description: 'Gemischte Blätter mit Meeresfrüchten und Gemüse' }
                 ]
             },
             {
                 name: 'Desserts',
                 items: [
                     { name: 'Tiramisu', description: 'Klassischer italienischer Schichtkuchen' },
-                    { name: 'Schokoladen-Überraschung', description: 'Prächtiges Schokoladengebilde' },
-                    { name: 'Pfannkuchen', description: 'Fluffige Pfannkuchen mit saisonalem Obst' },
-                    { name: 'Eiscreme-Auswahl', description: 'Hausgemachte Eiscreme in verschiedenen Sorten' }
-                ]
-            },
-            {
-                name: 'Getränke',
-                items: [
-                    { name: 'Frische Säfte', description: 'Orange, Zitrone und saisonales Obst' },
-                    { name: 'Alkoholfreie Getränke', description: 'Internationale und lokale Marken' },
-                    { name: 'Kaffee & Tee', description: 'Italienischer Espresso und Spezialtees' }
+                    { name: 'Schokoladenüberraschung', description: 'Prächtiges Schokoladengebilde' },
+                    { name: 'Pfannkuchen', description: 'Pfannkuchen mit Schokolade oder Marmelade' },
+                    { name: 'Pfannkuchen mit Eiscreme', description: 'Pfannkuchen mit Eiscreme' },
+                    { name: 'Eiscreme', description: 'Hausgemachte Eiscreme in verschiedenen Sorten' }
                 ]
             }
         ]
@@ -673,93 +658,88 @@ const menuData = {
             {
                 name: 'Antipasti Freddi',
                 items: [
-                    { name: 'Carpaccio', description: 'Pesce crudo affettato sottilmente con olio d\'oliva' },
-                    { name: 'Prosciutto Dalmata', description: 'Prosciutto stagionato della costa adriatica' },
-                    { name: 'Insalata di Polpo', description: 'Polpo tenero con verdure di stagione ed erbe' },
-                    { name: 'Capasanta Crudo', description: 'Capesante fresche con limone e sale marino' }
+                    { name: 'Carpaccio', description: 'Pesce o manzo, affettato sottilmente' },
+                    { name: 'Prosciutto Dalmata', description: 'Prosciutto stagionato dalla costa adriatica' },
+                    { name: 'Formaggio di Pecora', description: 'Fresco formaggio di pecora locale' },
+                    { name: 'Insalata di Polpo', description: 'Polpo tenero con verdure e erbe' }
                 ]
             },
             {
                 name: 'Antipasti Caldi',
                 items: [
-                    { name: 'Pasta e Fagioli', description: 'Tradizionale pasta e zuppa di fagioli' },
-                    { name: 'Calamari Grigliati', description: 'Calamari freschi alla griglia' },
-                    { name: 'Cozze al Vino Bianco', description: 'Cozze adriatiche cotte in vino bianco e aglio' },
-                    { name: 'Crocchette di Formaggio', description: 'Crocchette fritte dorate con formaggio locale' }
+                    { name: 'Pasta alla Bolognese', description: 'Pasta tradizionale con salsa Bolognese' },
+                    { name: 'Pasta ai Frutti di Mare', description: 'Pasta con frutti di mare freschi' },
+                    { name: 'Pasta alla Carbonara', description: 'Preparazione classica alla carbonara' }
                 ]
             },
             {
-                name: 'Pesce e Frutti di Mare',
+                name: 'Pesci, Granchi, Molluschi',
                 items: [
-                    { name: 'Branzino Intero', description: 'Branzino mediterraneo alla griglia con erbe' },
-                    { name: 'Pasta al Nero di Seppia', description: 'Pasta fresca in ricco sugo di seppia' },
-                    { name: 'Scampi Adriatici', description: 'Scampi adriatici in aglio e vino bianco' },
-                    { name: 'Capesante Buzara', description: 'Capesante rosolate in riduzione di vino bianco' },
-                    { name: 'Bistecca di Tonno', description: 'Tonno seared con verdure di stagione' },
-                    { name: 'Vongole Casino', description: 'Vongole al forno con pangrattato ed erbe' }
+                    { name: 'Calamari Fritti', description: 'Calamari croccanti fritti' },
+                    { name: 'Calamari alla Griglia', description: 'Calamari freschi alla griglia' },
+                    { name: 'Branzino Impanato', description: 'Branzino in panatura cotta al forno' },
+                    { name: 'Vongole alla Buzara', description: 'Vongole in salsa di vino bianco - 1 kg' },
+                    { name: 'Mix di Piccoli Pesci', description: 'Selezione di pesci piccoli freschi' },
+                    { name: 'Capesante alla Griglia', description: 'Capesante fresche alla griglia' },
+                    { name: 'Gamberetti alla Griglia', description: 'Gamberetti adriatici alla griglia - 1kg' },
+                    { name: 'Trancio di Tonno', description: 'Eccellente trancio di tonno' }
                 ]
             },
             {
                 name: 'Piatti di Carne',
                 items: [
-                    { name: 'Agnello alla Peka', description: 'Agnello arrosto sotto la campana con erbe' },
-                    { name: 'Bistecca di Vitello', description: 'Vitello tenero con accompagnamenti stagionali' },
-                    { name: 'Bistecca alla Griglia', description: 'Taglio pregiato grigliato a vostro gusto' },
-                    { name: 'Filetti di Manzo', description: 'Manzo tenero con sugo leggero' }
+                    { name: 'Bistecca', description: 'Bistecca di maiale o vitello' },
+                    { name: 'Filetto', description: 'Filetto di maiale, manzo o pollo' },
+                    { name: 'Arrosto di Vitello dal Forno', description: 'Stinco di vitello affettato, cotto tradizionalmente' },
+                    { name: 'Maialino da Latte dal Forno', description: 'Giovane maiale nel forno tradizionale' }
                 ]
             },
             {
                 name: 'Zuppe',
                 items: [
-                    { name: 'Zuppa del Giorno', description: 'La creazione dello chef del giorno' },
-                    { name: 'Bisque di Frutti di Mare', description: 'Zuppa cremosa con frutti di mare freschi' },
-                    { name: 'Minestrone', description: 'Sostanziosa zuppa di verdure' }
+                    { name: 'Zuppa del Giorno', description: 'Creazione quotidiana dello chef' },
+                    { name: 'Selezione di Piatti Pronti del Giorno', description: 'Selezione di piatti preparati, cambia quotidianamente' }
                 ]
             },
             {
                 name: 'Contorni',
                 items: [
                     { name: 'Patate Fritte', description: 'Patate croccanti e dorate' },
-                    { name: 'Patate Bollite', description: 'Patate tenere con burro ed erbe' },
-                    { name: 'Verdure Stagionali', description: 'Verdure fresche della stagione' },
-                    { name: 'Bietole', description: 'Brasate con aglio e olio d\'oliva' }
+                    { name: 'Patate Salate', description: 'Patate tenere con sale' },
+                    { name: 'Verdure Grigliate', description: 'Verdure fresche grigliate' },
+                    { name: 'Bietole con Patate', description: 'Bietole bramate e patate' },
+                    { name: 'Patate al Forno', description: 'Patate cotte nel forno' },
+                    { name: 'Crocchette di Formaggio', description: 'Dorate crocchette di formaggio fritte' }
                 ]
             },
             {
                 name: 'Pizze',
                 items: [
-                    { name: 'Lanterna', description: 'Specialità della casa con condimenti misti' },
-                    { name: 'Margherita', description: 'Classica pomodoro, mozzarella e basilico' },
-                    { name: 'Funghi', description: 'Funghi freschi e formaggio' },
-                    { name: 'Semplice', description: 'Semplice pomodoro e mozzarella' },
-                    { name: 'Piccante', description: 'Pizza al peperoni piccante' },
-                    { name: 'Vegetariana', description: 'Verdure stagionali' },
-                    { name: 'Al Tonno', description: 'Tonno e cipolla' },
-                    { name: 'Slavonska', description: 'Stile croato con carni locali' }
+                    { name: 'Lanterna', description: 'Pomodoro, formaggio, prosciutto cotto, crudo, funghi, panna, peperoni' },
+                    { name: 'Margherita', description: 'Pomodoro e formaggio' },
+                    { name: 'Ai Funghi', description: 'Pomodoro, formaggio e funghi' },
+                    { name: 'Semplice', description: 'Pomodoro, formaggio e prosciutto' },
+                    { name: 'Piccante', description: 'Pomodoro, formaggio, prosciutto e peperoncino' },
+                    { name: 'Vegetariana', description: 'Pomodoro, formaggio, verdure, mais e funghi' },
+                    { name: 'Al Tonno', description: 'Pomodoro, formaggio, tonno e cipolla' },
+                    { name: 'Slava', description: 'Pomodoro, formaggio, prosciutto, salame, kulen, pancetta, peperoncino' }
                 ]
             },
             {
                 name: 'Insalate',
                 items: [
-                    { name: 'Insalata Stagionale', description: 'Verdure fresche con vinaigrette casalinga' },
-                    { name: 'Insalata Lanterna', description: 'Verdure miste con frutti di mare e verdure' }
+                    { name: 'Insalata Stagionale', description: 'Foglie fresche di stagione' },
+                    { name: 'Insalata Lanterna', description: 'Foglie miste con frutti di mare e verdure' }
                 ]
             },
             {
                 name: 'Dolci',
                 items: [
-                    { name: 'Tiramisu', description: 'Classico dolce italiano stratificato' },
-                    { name: 'Sorpresa al Cioccolato', description: 'Creazione al cioccolato decadente' },
-                    { name: 'Crepes', description: 'Crepes soffici con frutta stagionale' },
-                    { name: 'Selezione di Gelato', description: 'Gelato fatto in casa in vari gusti' }
-                ]
-            },
-            {
-                name: 'Bevande',
-                items: [
-                    { name: 'Succhi Freschi', description: 'Arancia, limone e frutta di stagione' },
-                    { name: 'Bibite Analcoliche', description: 'Marchi internazionali e locali' },
-                    { name: 'Caffè e Tè', description: 'Espresso italiano e tè specializzati' }
+                    { name: 'Tiramisu', description: 'Classico dolce italiano a strati' },
+                    { name: 'Sorpresa al Cioccolato', description: 'Creazione di cioccolato decadente' },
+                    { name: 'Crepes', description: 'Crepes con cioccolato o marmellata' },
+                    { name: 'Crepes con Gelato', description: 'Crepes con gelato' },
+                    { name: 'Gelato', description: 'Gelato fatto in casa in vari gusti' }
                 ]
             }
         ]
