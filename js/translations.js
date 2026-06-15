@@ -32,7 +32,7 @@ window.translations = {
         story_p2: "Naša kuhinja čuva tri generacije hrvatskog kulinarskog znanja. Svježi ulovi iz Jadrana susreću se s dokazanim receptima. Svako jelo je razgovor između mora i zemlje, između sjećanja i nove vizije.",
         stat_1: "Novo poglavlje",
         stat_2: "Dana u tjednu",
-        stat_3: "Generacija tradicije",
+        stat_3: "Generacije tradicije",
 
         // Menu
         menu_eyebrow: "Tradicionalni Jelovnik",
