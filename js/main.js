@@ -18,18 +18,25 @@ function closeReservationModal() {
     const modal = document.getElementById('reservation-modal');
     modal.classList.remove('active');
     document.body.style.overflow = '';
-    const form = document.getElementById('reservation-form');
-    form.style.display = 'block';
+
+    // Reset to step 1
+    document.getElementById('reservation-step-1').classList.add('active');
+    document.getElementById('reservation-step-2').style.display = 'none';
     document.getElementById('reservation-success').style.display = 'none';
+
+    const form = document.getElementById('reservation-form');
     form.reset();
 }
 
 function setupReservationModal() {
+    console.log('setupReservationModal called');
     const modal = document.getElementById('reservation-modal');
     const overlay = document.getElementById('reservation-overlay');
     const closeBtn = document.getElementById('reservation-close');
     const form = document.getElementById('reservation-form');
     const reserveButtons = document.querySelectorAll('[data-reserve]');
+
+    console.log('Reservation modal elements:', { modal, overlay, closeBtn, form, reserveButtonCount: reserveButtons.length });
 
     // Open modal on button click
     reserveButtons.forEach(btn => {
@@ -58,13 +65,277 @@ function setupReservationModal() {
         await handleReservationSubmit();
     });
 
-    // Set minimum date to today
-    const dateInput = document.getElementById('res-date');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.setAttribute('min', today);
+    // Setup calendar picker
+    setupCalendarPicker();
 
-    // Initialize custom dropdowns
+    // Setup number picker (with small delay to ensure DOM is ready)
+    setTimeout(() => {
+        setupNumberPicker();
+    }, 100);
+
+    // Setup step transitions
+    setupStepNavigation();
+
+    // Initialize custom dropdowns for time picker
     initializeCustomDropdowns();
+}
+
+function setupCalendarPicker() {
+    console.log('setupCalendarPicker called');
+    const btn = document.getElementById('date-picker-btn');
+    const popup = document.getElementById('date-picker-popup');
+    const dateInput = document.getElementById('res-date');
+
+    console.log('Calendar picker elements:', { btn, popup, dateInput });
+
+    if (!btn || !popup || !dateInput) {
+        console.error('Calendar picker elements not found!');
+        return;
+    }
+
+    const today = new Date();
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
+    const minDate = new Date();
+    minDate.setDate(minDate.getDate());
+
+    const renderCalendar = () => {
+        const daysContainer = document.getElementById('date-picker-days');
+        const monthDisplay = document.getElementById('date-picker-month');
+        daysContainer.innerHTML = '';
+
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'];
+        monthDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const daysInPrevMonth = new Date(currentYear, currentMonth, 0).getDate();
+
+        // Previous month days
+        for (let i = firstDay - 1; i >= 0; i--) {
+            const day = document.createElement('button');
+            day.type = 'button';
+            day.className = 'date-day other-month';
+            day.textContent = daysInPrevMonth - i;
+            day.disabled = true;
+            daysContainer.appendChild(day);
+        }
+
+        // Current month days
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayBtn = document.createElement('button');
+            dayBtn.type = 'button';
+            dayBtn.className = 'date-day';
+            dayBtn.textContent = day;
+
+            const currentDate = new Date(currentYear, currentMonth, day);
+            const isToday = currentDate.toISOString().split('T')[0] === today.toISOString().split('T')[0];
+            const isSelected = dateInput.value === currentDate.toISOString().split('T')[0];
+            const isDisabled = currentDate < minDate;
+
+            if (isDisabled) {
+                dayBtn.classList.add('disabled');
+                dayBtn.disabled = true;
+            } else {
+                dayBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    dateInput.value = currentDate.toISOString().split('T')[0];
+                    renderCalendar();
+                    updateDateButton();
+                    popup.style.display = 'none';
+                });
+            }
+
+            if (isSelected) {
+                dayBtn.classList.add('selected');
+            }
+
+            daysContainer.appendChild(dayBtn);
+        }
+
+        // Next month days
+        const totalCells = daysContainer.children.length;
+        const remainingCells = 42 - totalCells;
+        for (let day = 1; day <= remainingCells; day++) {
+            const dayBtn = document.createElement('button');
+            dayBtn.type = 'button';
+            dayBtn.className = 'date-day other-month';
+            dayBtn.textContent = day;
+            dayBtn.disabled = true;
+            daysContainer.appendChild(dayBtn);
+        }
+    };
+
+    const updateDateButton = () => {
+        if (dateInput.value) {
+            const dateObj = new Date(dateInput.value + 'T00:00:00');
+            const formatted = dateObj.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            });
+            btn.textContent = formatted;
+            btn.style.color = 'var(--text)';
+        }
+    };
+
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+        if (popup.style.display === 'block') {
+            renderCalendar();
+        }
+    });
+
+    document.getElementById('date-prev-month').addEventListener('click', (e) => {
+        e.preventDefault();
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar();
+    });
+
+    document.getElementById('date-next-month').addEventListener('click', (e) => {
+        e.preventDefault();
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar();
+    });
+
+    // Close popup on outside click
+    document.addEventListener('click', (e) => {
+        if (!btn.contains(e.target) && !popup.contains(e.target)) {
+            popup.style.display = 'none';
+        }
+    });
+
+    updateDateButton();
+}
+
+function setupNumberPicker() {
+    const minusBtn = document.getElementById('guests-minus');
+    const plusBtn = document.getElementById('guests-plus');
+    const display = document.getElementById('guests-display');
+    const input = document.getElementById('res-guests');
+
+    console.log('setupNumberPicker: Looking for elements...');
+    console.log('minusBtn:', minusBtn);
+    console.log('plusBtn:', plusBtn);
+    console.log('display:', display);
+    console.log('input:', input);
+
+    if (!minusBtn || !plusBtn || !display || !input) {
+        console.error('Number picker elements not found!');
+        return;
+    }
+
+    console.log('Number picker elements found, attaching listeners...');
+
+    const minGuests = 1;
+    const maxGuests = 8;
+
+    const updateDisplay = () => {
+        const current = parseInt(input.value, 10) || 2;
+        display.textContent = current;
+    };
+
+    const decreaseGuests = () => {
+        const current = parseInt(input.value, 10) || 2;
+        if (current > minGuests) {
+            input.value = current - 1;
+            updateDisplay();
+        }
+    };
+
+    const increaseGuests = () => {
+        const current = parseInt(input.value, 10) || 2;
+        if (current < maxGuests) {
+            input.value = current + 1;
+            updateDisplay();
+        }
+    };
+
+    minusBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        decreaseGuests();
+    });
+
+    plusBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        increaseGuests();
+    });
+
+    // Also support keyboard/touch
+    minusBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        decreaseGuests();
+    });
+
+    plusBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        increaseGuests();
+    });
+
+    updateDisplay();
+}
+
+function setupStepNavigation() {
+    console.log('setupStepNavigation called');
+    const searchBtn = document.getElementById('res-search-btn');
+    const backBtn = document.getElementById('res-back-btn');
+    const step1 = document.getElementById('reservation-step-1');
+    const step2 = document.getElementById('reservation-step-2');
+    const summary = document.getElementById('res-summary');
+
+    console.log('Step navigation elements:', { searchBtn, backBtn, step1, step2, summary });
+
+    if (!searchBtn || !backBtn) {
+        console.error('Step navigation buttons not found!');
+        return;
+    }
+
+    searchBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const date = document.getElementById('res-date').value;
+        const time = document.getElementById('res-time').value;
+        const guests = document.getElementById('res-guests').value;
+
+        // Validate
+        if (!date || !time) {
+            alert('Please select date and time');
+            return;
+        }
+
+        // Format date for display
+        const dateObj = new Date(date + 'T00:00:00');
+        const formattedDate = dateObj.toLocaleDateString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric'
+        });
+
+        // Update summary
+        summary.textContent = `${formattedDate} • ${guests} Guests • ${time}`;
+
+        // Switch to step 2
+        step1.classList.remove('active');
+        step2.style.display = 'block';
+    });
+
+    backBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        step1.classList.add('active');
+        step2.style.display = 'none';
+    });
 }
 
 function initializeCustomDropdowns() {
@@ -173,11 +444,11 @@ async function handleReservationSubmit() {
 }
 
 function showReservationSuccess(data) {
-    const form = document.getElementById('reservation-form');
+    const step2 = document.getElementById('reservation-step-2');
     const successDiv = document.getElementById('reservation-success');
     const successDetails = document.getElementById('success-details');
 
-    form.style.display = 'none';
+    step2.style.display = 'none';
     successDiv.style.display = 'block';
 
     const formattedDate = new Date(data.date).toLocaleDateString('en-US', {
@@ -374,372 +645,952 @@ function setupStatCounters() {
 const menuData = {
     en: {
         eyebrow: 'Traditional Menu',
-        title: 'The Menu',
+        title: 'Menu',
         categories: [
             {
-                name: 'Cold Appetizers',
+                name: 'Cold appetizers',
                 items: [
-                    { name: 'Carpaccio', description: 'Fish or beef, thinly sliced' },
-                    { name: 'Dalmatian Prosciutto', description: 'Cured ham from the Adriatic coast' },
-                    { name: 'Sheep Cheese', description: 'Fresh local sheep cheese' },
-                    { name: 'Octopus Salad', description: 'Tender octopus with vegetables and herbs' }
+                    { name: 'Carpaccio (fish, beef)', description: '' },
+                    { name: 'Dalmatian prosciutto', description: '' },
+                    { name: 'Sheep cheese', description: '' },
+                    { name: 'Octopus salad', description: '' }
                 ]
             },
             {
-                name: 'Hot Appetizers',
+                name: 'Hot appetizers',
                 items: [
-                    { name: 'Pasta Bolognese', description: 'Traditional pasta with Bolognese sauce' },
-                    { name: 'Seafood Pasta', description: 'Pasta with fresh seafood' },
-                    { name: 'Pasta Carbonara', description: 'Classic carbonara preparation' }
+                    { name: 'Pasta Bolognese', description: '' },
+                    { name: 'Seafood Pasta', description: '' },
+                    { name: 'Pasta Carbonara', description: '' }
                 ]
             },
             {
-                name: 'Fish, Crabs, Shellfish',
+                name: 'Meat dishes',
                 items: [
-                    { name: 'Squid - Fried', description: 'Crispy fried squid' },
-                    { name: 'Squid - Grilled', description: 'Fresh squid grilled to perfection' },
-                    { name: 'Sea Bass in a Crust', description: 'Sea bass baked in a bread crust' },
-                    { name: 'Clams on the Buzara', description: 'Clams in white wine sauce - 1 kg' },
-                    { name: 'Small Fish Mix', description: 'Selection of fresh small fish' },
-                    { name: 'Scallops (Grilled)', description: 'Fresh scallops grilled' },
-                    { name: 'Grilled Shrimp', description: 'Adriatic shrimp grilled - 1kg' },
-                    { name: 'Tuna Steak', description: 'Premium tuna steak' }
+                    { name: 'Steak (pork, veal)', description: '' },
+                    { name: 'Fillet (pork, beef, chicken)', description: '' },
+                    { name: 'Veal from the bread oven (sliced veal shank)', description: '' },
+                    { name: 'Suckling from the bread oven', description: '' }
                 ]
             },
             {
-                name: 'Meat Dishes',
+                name: 'Fish, crabs, shellfish',
                 items: [
-                    { name: 'Steak', description: 'Pork or veal steak' },
-                    { name: 'Fillet', description: 'Pork, beef, or chicken fillet' },
-                    { name: 'Veal from the Bread Oven', description: 'Sliced veal shank, baked traditionally' },
-                    { name: 'Suckling from the Bread Oven', description: 'Young pig baked in traditional oven' }
+                    { name: 'Squid - fried', description: '' },
+                    { name: 'Squid - grilled', description: '' },
+                    { name: 'Sea bass in a crust (from the bread oven)', description: '' },
+                    { name: 'Clams on the bazar - 1 kg', description: '' },
+                    { name: 'Small fish - mix', description: '' },
+                    { name: 'Scallops (grilled)', description: '' },
+                    { name: 'Grilled shrimp - 1kg', description: '' },
+                    { name: 'Tuna steak', description: '' }
                 ]
             },
             {
                 name: 'Soups',
                 items: [
-                    { name: 'Daily Soup', description: 'Chef\'s daily creation' },
-                    { name: 'Daily Ready Meals', description: 'Selection of prepared dishes that changes daily' }
+                    { name: 'Daily soup', description: '' },
+                    { name: 'Daily offer of ready meals', description: '' }
                 ]
             },
             {
-                name: 'Side Dishes',
+                name: 'Side dishes',
                 items: [
-                    { name: 'Fried Potatoes', description: 'Crispy golden potatoes' },
-                    { name: 'Boiled Salted Potatoes', description: 'Tender potatoes with salt' },
-                    { name: 'Vegetables (Grilled)', description: 'Fresh grilled vegetables' },
-                    { name: 'Swiss Chard with Potatoes', description: 'Braised greens and potatoes' },
-                    { name: 'Baked Potatoes', description: 'Potatoes baked in the oven' },
-                    { name: 'Cheese Croquettes', description: 'Golden fried cheese croquettes' }
+                    { name: 'Fried potatoes', description: '' },
+                    { name: 'Boiled salted potatoes', description: '' },
+                    { name: 'Vegetables (grilled)', description: '' },
+                    { name: 'Swiss chard with potatoes', description: '' },
+                    { name: 'Baked potatoes', description: '' },
+                    { name: 'Cheese croquettes', description: '' }
                 ]
             },
             {
                 name: 'Pizzas',
                 items: [
-                    { name: 'Lanterna', description: 'Tomato, cheese, ham, prosciutto, mushrooms, cream, paprika' },
-                    { name: 'Margherita', description: 'Tomato and cheese' },
-                    { name: 'Funghi', description: 'Tomato, cheese, and mushrooms' },
-                    { name: 'Semplice', description: 'Tomato, cheese, and ham' },
-                    { name: 'Piccante', description: 'Tomato, cheese, ham, and chili peppers' },
-                    { name: 'Vegetariana', description: 'Tomato, cheese, vegetables, corn, and mushrooms' },
-                    { name: 'Al Tonno', description: 'Tomato, cheese, tuna, and onion' },
-                    { name: 'Slavonska', description: 'Tomato, cheese, ham, salami, kulen, bacon, chili peppers' }
+                    { name: 'Lanterna (tomato, cheese, ham, prosciutto, mushrooms, cream, paprika)', description: '' },
+                    { name: 'Margherita (tomato, cheese)', description: '' },
+                    { name: 'Funghi (tomato, cheese, mushrooms)', description: '' },
+                    { name: 'Semplice - simple (tomato, cheese, ham)', description: '' },
+                    { name: 'Piccante (tomato, cheese, ham, chilli peppers)', description: '' },
+                    { name: 'Vegetariana (tomato, cheese, vegetables, corn, mushrooms)', description: '' },
+                    { name: 'Al tonno - with tuna (tomato, cheese, tuna, onion)', description: '' },
+                    { name: 'Slavonska (Slavonian) (tomato, cheese, ham, salami, kulen, bacon, chilli peppers)', description: '' }
                 ]
             },
             {
                 name: 'Salads',
                 items: [
-                    { name: 'Seasonal Salad', description: 'Fresh seasonal greens' },
-                    { name: 'Salad Lanterna', description: 'Mixed greens with seafood and vegetables' }
+                    { name: 'Season salad', description: '' },
+                    { name: 'Salad "Lanterna"', description: '' }
                 ]
             },
             {
-                name: 'Desserts',
+                name: 'Deserts',
                 items: [
-                    { name: 'Tiramisu', description: 'Classic Italian layered dessert' },
-                    { name: 'Chocolate Surprise', description: 'Decadent chocolate creation' },
-                    { name: 'Pancakes', description: 'Pancakes with chocolate or jam' },
-                    { name: 'Pancakes with Ice Cream', description: 'Pancakes topped with ice cream' },
-                    { name: 'Ice Cream', description: 'House-made ice cream selection' }
+                    { name: 'Tiramisu', description: '' },
+                    { name: 'Chocolate Surprise', description: '' },
+                    { name: 'Pancakes with Chocolate/Jam', description: '' },
+                    { name: 'Pancakes with Ice Cream', description: '' },
+                    { name: 'Ice Cream (portion)', description: '' }
                 ]
             }
         ]
     },
     hr: {
-        eyebrow: 'Tradicionalni Jelovnik',
-        title: 'Jelovnik',
+        eyebrow: 'Jelovnik',
+        title: 'Menu',
         categories: [
             {
-                name: 'Hladna Predjela',
+                name: 'Hladna predjela',
                 items: [
-                    { name: 'Carpaccio', description: 'Riba ili govedina, tanko rezano' },
-                    { name: 'Dalmatinski Pršut', description: 'Kulen sa jadranske obale' },
-                    { name: 'Ovčji Sir', description: 'Svježi domaći ovčji sir' },
-                    { name: 'Salata od Hobotnice', description: 'Meka hobotnica sa povrćem i biljem' }
+                    { name: 'Carpaccio (riba, govedina)', description: '' },
+                    { name: 'Dalmatinski pršut', description: '' },
+                    { name: 'Ovčji sir', description: '' },
+                    { name: 'Salata od hobotnice', description: '' }
                 ]
             },
             {
-                name: 'Topla Predjela',
+                name: 'Topla predjela',
                 items: [
-                    { name: 'Pasta Bolognese', description: 'Tradicionalna pasta s Bolognese umakom' },
-                    { name: 'Tjestenina s Plodovima Mora', description: 'Pasta sa svježim plodovima mora' },
-                    { name: 'Pasta Carbonara', description: 'Klasična Carbonara priprema' }
+                    { name: 'Pašta Bolognese', description: '' },
+                    { name: 'Tjestenina s plodovima mora', description: '' },
+                    { name: 'Pašta Carbonara', description: '' }
                 ]
             },
             {
-                name: 'Ribe, Rakovi, Školjke',
+                name: 'Jela od mesa',
                 items: [
-                    { name: 'Lignje - Pržene', description: 'Hrskave pržene lignje' },
-                    { name: 'Lignje - Na Žaru', description: 'Svježe lignje na žaru' },
-                    { name: 'Brancin u Škartocu', description: 'Brancin pečen u krušnoj kori' },
-                    { name: 'Školjke na Buzaru', description: 'Školjke u umaku od bijelog vina - 1 kg' },
-                    { name: 'Sitna Riba - Mix', description: 'Odabir svježe male ribe' },
-                    { name: 'Jakobove Kapice (Žar)', description: 'Svježe kapice na žaru' },
-                    { name: 'Škampi na Žaru', description: 'Jadranski škampi na žaru - 1kg' },
-                    { name: 'Tuna Steak', description: 'Odličan tuna steak' }
+                    { name: 'Odrezak (svinjski, teleći)', description: '' },
+                    { name: 'File (svinjski, juneći, pileći)', description: '' },
+                    { name: 'Teletina iz krušne peći (rezana teleća koljenica)', description: '' },
+                    { name: 'Odojak iz krušne peći', description: '' }
                 ]
             },
             {
-                name: 'Jela od Mesa',
+                name: 'Ribe, rakovi, školjke',
                 items: [
-                    { name: 'Odrezak', description: 'Svinjski ili teleći odrezak' },
-                    { name: 'Filé', description: 'Svinjski, goveđi ili piletini filé' },
-                    { name: 'Teletina iz Krušne Peći', description: 'Rezana teleća koljenica, pečena tradicionalno' },
-                    { name: 'Odojak iz Krušne Peći', description: 'Mladi svinjski u tradicionalnoj pećnici' }
+                    { name: 'Lignje - pržene', description: '' },
+                    { name: 'Lignje - na žaru', description: '' },
+                    { name: 'Brancin u škartocu (iz krušne peći)', description: '' },
+                    { name: 'Školjke na buzaru - 1 kg', description: '' },
+                    { name: 'Sitna riba - mix', description: '' },
+                    { name: 'Jakobove kapice (žar)', description: '' },
+                    { name: 'Škampi na žaru - 1kg', description: '' },
+                    { name: 'Tuna steak', description: '' }
                 ]
             },
             {
                 name: 'Juhe',
                 items: [
-                    { name: 'Dnevna Juha', description: 'Kuhareva dnevna kreacija' },
-                    { name: 'Dnevna Ponuda Gotovih Jela', description: 'Odabir pripremljenih jela koja se mijenja dnevno' }
+                    { name: 'Dnevna juha', description: '' },
+                    { name: 'Dnevna ponuda gotovih jela', description: '' }
                 ]
             },
             {
                 name: 'Prilozi',
                 items: [
-                    { name: 'Prženi Krumpir', description: 'Hrskavi zlatni krumpir' },
-                    { name: 'Kuhani Slani Krumpir', description: 'Meki krumpir sa solju' },
-                    { name: 'Povrće (Žar)', description: 'Svježe povrće na žaru' },
-                    { name: 'Blitva s Krumpirom', description: 'Kuhana blitva i krumpir' },
-                    { name: 'Pekarski Krumpir', description: 'Krumpir pečen u pećnici' },
-                    { name: 'Kroketi od Sira', description: 'Zlatni prženi sirni kroketi' }
+                    { name: 'Prženi krumpir', description: '' },
+                    { name: 'Kuhani slani krumpir', description: '' },
+                    { name: 'Povrće (žar)', description: '' },
+                    { name: 'Blitva s krumpirom', description: '' },
+                    { name: 'Pekarski krumpir', description: '' },
+                    { name: 'Kroketi od sira', description: '' }
                 ]
             },
             {
                 name: 'Pizze',
                 items: [
-                    { name: 'Lanterna', description: 'Rajčica, sir, šunka, pršut, gljive, vrhnje, paprika' },
-                    { name: 'Margherita', description: 'Rajčica i sir' },
-                    { name: 'Funghi', description: 'Rajčica, sir i gljive' },
-                    { name: 'Semplice', description: 'Rajčica, sir i šunka' },
-                    { name: 'Piccante', description: 'Rajčica, sir, šunka i feferoni' },
-                    { name: 'Vegetariana', description: 'Rajčica, sir, povrće, kukuruz i gljive' },
-                    { name: 'Al Tonno', description: 'Rajčica, sir, tuna i luk' },
-                    { name: 'Slavonska', description: 'Rajčica, sir, šunka, salama, kulen, špek, feferoni' }
+                    { name: 'Lanterna (rajčica, sir, šunka, pršut, gljive, vrhnje, paprika)', description: '' },
+                    { name: 'Margherita (rajčica, sir)', description: '' },
+                    { name: 'Funghi (rajčica, sir, gljive)', description: '' },
+                    { name: 'Semplice - jednostavna (rajčica, sir, šunka)', description: '' },
+                    { name: 'Piccante (rajčica, sir, šunka, feferoni)', description: '' },
+                    { name: 'Vegetariana (rajčica, sir, povrće, kukuruz, gljive)', description: '' },
+                    { name: 'Al tonno - sa tunom (rajčica, sir, tuna, luk)', description: '' },
+                    { name: 'Slavonska (rajčica, sir, šunka, salama, kulen, špek, feferoni)', description: '' }
                 ]
             },
             {
                 name: 'Salate',
                 items: [
-                    { name: 'Sezonska Salata', description: 'Svježi sezonski listovi' },
-                    { name: 'Salata Lanterna', description: 'Miješani listovi s plodovima mora i povrćem' }
+                    { name: 'Sezonska salata', description: '' },
+                    { name: 'Salata Lanterna', description: '' }
                 ]
             },
             {
                 name: 'Slastice',
                 items: [
-                    { name: 'Tiramisu', description: 'Klasični talijanski slojeviti desert' },
-                    { name: 'Čokoladno Iznenađenje', description: 'Prepunjena čokolada' },
-                    { name: 'Palačinke', description: 'Palačinke s čokoladom ili marmeladom' },
-                    { name: 'Palačinke sa Sladoledom', description: 'Palačinke s sladoledom' },
-                    { name: 'Sladoled', description: 'Domaće sladoleda raznih okusa' }
+                    { name: 'Tiramisu', description: '' },
+                    { name: 'Čokoladno iznenađenje', description: '' },
+                    { name: 'Palačinke s čokoladom / marmeladom', description: '' },
+                    { name: 'Palačinke sa sladoledom', description: '' },
+                    { name: 'Sladoled (porcija)', description: '' }
                 ]
             }
         ]
     },
     de: {
-        eyebrow: 'Traditionelle Speisekarte',
-        title: 'Die Speisekarte',
+        eyebrow: 'Speisekarte',
+        title: 'Menu',
         categories: [
             {
                 name: 'Kalte Vorspeisen',
                 items: [
-                    { name: 'Carpaccio', description: 'Fisch oder Rind, dünn geschnitten' },
-                    { name: 'Dalmatiner Schinken', description: 'Gepökelter Schinken von der Adriaküste' },
-                    { name: 'Schafskäse', description: 'Frischer lokaler Schafskäse' },
-                    { name: 'Oktopussalat', description: 'Zartes Oktopus mit Gemüse und Kräutern' }
+                    { name: 'Carpaccio (Fisch, Rind)', description: '' },
+                    { name: 'Dalmatiner-Schinken', description: '' },
+                    { name: 'Schafskäse', description: '' },
+                    { name: 'Oktopussalat', description: '' }
                 ]
             },
             {
                 name: 'Warme Vorspeisen',
                 items: [
-                    { name: 'Pasta Bolognese', description: 'Traditionelle Pasta mit Bolognese-Sauce' },
-                    { name: 'Pasta mit Meeresfrüchten', description: 'Pasta mit frischen Meeresfrüchten' },
-                    { name: 'Pasta Carbonara', description: 'Klassische Carbonara-Zubereitung' }
-                ]
-            },
-            {
-                name: 'Fische, Krebse, Weichtiere',
-                items: [
-                    { name: 'Frittierte Calamari', description: 'Knusprig frittierte Calamari' },
-                    { name: 'Gegrillte Calamari', description: 'Frische Calamari gegrillt' },
-                    { name: 'Panierter Wolfsbarsch', description: 'Wolfsbarsch in Krustenpanierung gebacken' },
-                    { name: 'Venusmuscheln auf die Buzara', description: 'Muscheln in Weißweinsauce - 1 kg' },
-                    { name: 'Gemischte kleine Fische', description: 'Auswahl frischer kleiner Fische' },
-                    { name: 'Gegrillte Jakobsmuscheln', description: 'Frische Jakobsmuscheln gegrillt' },
-                    { name: 'Gegrillte Garnelen', description: 'Adriatische Garnelen gegrillt - 1kg' },
-                    { name: 'Thunfischsteak', description: 'Hochwertiges Thunfischsteak' }
+                    { name: 'Pasta Bolognese', description: '' },
+                    { name: 'Pasta mit Meeresfrüchten', description: '' },
+                    { name: 'Pasta Carbonara', description: '' }
                 ]
             },
             {
                 name: 'Fleischgerichte',
                 items: [
-                    { name: 'Steak', description: 'Schweine- oder Kalbfleischsteak' },
-                    { name: 'Filet', description: 'Schweine-, Rind- oder Hühnerfilet' },
-                    { name: 'Kalbsbraten aus dem Brotbackofen', description: 'Geschnittene Kalbshaxe, traditionell gebacken' },
-                    { name: 'Spanferkel aus dem Brotbackofen', description: 'Junges Schwein im traditionellen Ofen' }
+                    { name: 'Steak (Schwein, Kalb)', description: '' },
+                    { name: 'Filet (Schwein, Rind, Huhn)', description: '' },
+                    { name: 'Kalbsbraten (Kalbshaxe in Scheiben)', description: '' },
+                    { name: 'Spanferkel', description: '' }
+                ]
+            },
+            {
+                name: 'Fische, Krebse, Weichtiere',
+                items: [
+                    { name: 'Frittierte Calamari', description: '' },
+                    { name: 'Gegrillte Calamari', description: '' },
+                    { name: 'Panierter Wolfsbarsch (gebacken)', description: '' },
+                    { name: 'Venusmuscheln (1 kg)', description: '' },
+                    { name: 'Gemischte kleine Fische', description: '' },
+                    { name: 'Gegrillte Jakobsmuscheln', description: '' },
+                    { name: 'Gegrillte Garnelen (1 kg)', description: '' },
+                    { name: 'Thunfischsteak', description: '' }
                 ]
             },
             {
                 name: 'Suppen',
                 items: [
-                    { name: 'Tagessuppe', description: 'Tägliche Kreation des Küchenchefs' },
-                    { name: 'Tägliche Auswahl von Fertiggerichten', description: 'Auswahl zubereiteter Gerichte, täglich wechselnd' }
+                    { name: 'Tägliche Suppe', description: '' },
+                    { name: 'Auswahl an Fertiggerichten, die täglich wechselt', description: '' }
                 ]
             },
             {
                 name: 'Beilagen',
                 items: [
-                    { name: 'Bratkartoffeln', description: 'Knusprig goldfarbene Kartoffeln' },
-                    { name: 'Gesalzene Kartoffeln', description: 'Zarte Kartoffeln mit Salz' },
-                    { name: 'Gegrilltes Gemüse', description: 'Frisches gegrilltes Gemüse' },
-                    { name: 'Mangold mit Kartoffeln', description: 'Gedünsteter Mangold und Kartoffeln' },
-                    { name: 'Ofenkartoffeln', description: 'Im Ofen gebackene Kartoffeln' },
-                    { name: 'Käsekroketten', description: 'Goldene frittierte Käsekroketten' }
+                    { name: 'Bratkartoffeln', description: '' },
+                    { name: 'Gesalzene Kartoffeln', description: '' },
+                    { name: 'Gegrilltes Gemüse', description: '' },
+                    { name: 'Mangold mit Kartoffeln', description: '' },
+                    { name: 'Ofenkartoffeln', description: '' },
+                    { name: 'Käsekroketten', description: '' }
                 ]
             },
             {
                 name: 'Pizzen',
                 items: [
-                    { name: 'Lanterna', description: 'Tomate, Käse, Schinken, Prosciutto, Pilze, Sahne, Paprika' },
-                    { name: 'Margherita', description: 'Tomate und Käse' },
-                    { name: 'Funghi', description: 'Tomate, Käse und Pilze' },
-                    { name: 'Semplice', description: 'Tomate, Käse und Schinken' },
-                    { name: 'Piccante', description: 'Tomate, Käse, Schinken und Chilischoten' },
-                    { name: 'Vegetariana', description: 'Tomate, Käse, Gemüse, Mais und Pilze' },
-                    { name: 'Al Tonno', description: 'Tomate, Käse, Thunfisch und Zwiebel' },
-                    { name: 'Slavonska', description: 'Tomate, Käse, Schinken, Salami, Kulen, Speck, Chilischoten' }
+                    { name: 'Lanterna (Tomate, Käse, Schinken, Prosciutto, Pilze, Sahne, Paprika)', description: '' },
+                    { name: 'Margherita (Tomate, Käse)', description: '' },
+                    { name: 'Pilze (Tomaten, Käse, Pilze)', description: '' },
+                    { name: 'Einfach – einfach (Tomate, Käse, Schinken)', description: '' },
+                    { name: 'Piccante (Tomate, Käse, Schinken, Chilischoten)', description: '' },
+                    { name: 'Vegetariana (Tomaten, Käse, Gemüse, Mais, Pilze)', description: '' },
+                    { name: 'Al tonno – mit Thunfisch (Tomate, Käse, Thunfisch, Zwiebel)', description: '' },
+                    { name: 'Slavonska (Slawonisch) (Tomaten, Käse, Schinken, Salami, Kulen, Speck, Chilischoten)', description: '' }
                 ]
             },
             {
                 name: 'Salate',
                 items: [
-                    { name: 'Salat der Saison', description: 'Frische saisonale Blätter' },
-                    { name: 'Salat Lanterna', description: 'Gemischte Blätter mit Meeresfrüchten und Gemüse' }
+                    { name: 'Salat würzen', description: '' },
+                    { name: 'Salat „Laterne"', description: '' }
                 ]
             },
             {
                 name: 'Desserts',
                 items: [
-                    { name: 'Tiramisu', description: 'Klassischer italienischer Schichtkuchen' },
-                    { name: 'Schokoladenüberraschung', description: 'Prächtiges Schokoladengebilde' },
-                    { name: 'Pfannkuchen', description: 'Pfannkuchen mit Schokolade oder Marmelade' },
-                    { name: 'Pfannkuchen mit Eiscreme', description: 'Pfannkuchen mit Eiscreme' },
-                    { name: 'Eiscreme', description: 'Hausgemachte Eiscreme in verschiedenen Sorten' }
+                    { name: 'Tiramisu', description: '' },
+                    { name: 'Schokoladenüberraschung', description: '' },
+                    { name: 'Pfannkuchen mit Schokolade/Marmelade', description: '' },
+                    { name: 'Pfannkuchen mit Eiscreme', description: '' },
+                    { name: 'Eiscreme (Portion)', description: '' }
                 ]
             }
         ]
     },
     it: {
-        eyebrow: 'Menu Tradizionale',
-        title: 'Il Menu',
+        eyebrow: 'Traditional Menu',
+        title: 'Menu',
         categories: [
             {
-                name: 'Antipasti Freddi',
+                name: 'Cold appetizers',
                 items: [
-                    { name: 'Carpaccio', description: 'Pesce o manzo, affettato sottilmente' },
-                    { name: 'Prosciutto Dalmata', description: 'Prosciutto stagionato dalla costa adriatica' },
-                    { name: 'Formaggio di Pecora', description: 'Fresco formaggio di pecora locale' },
-                    { name: 'Insalata di Polpo', description: 'Polpo tenero con verdure e erbe' }
+                    { name: 'Carpaccio (fish, beef)', description: '' },
+                    { name: 'Dalmatian prosciutto', description: '' },
+                    { name: 'Sheep cheese', description: '' },
+                    { name: 'Octopus salad', description: '' }
                 ]
             },
             {
-                name: 'Antipasti Caldi',
+                name: 'Hot appetizers',
                 items: [
-                    { name: 'Pasta alla Bolognese', description: 'Pasta tradizionale con salsa Bolognese' },
-                    { name: 'Pasta ai Frutti di Mare', description: 'Pasta con frutti di mare freschi' },
-                    { name: 'Pasta alla Carbonara', description: 'Preparazione classica alla carbonara' }
+                    { name: 'Pasta Bolognese', description: '' },
+                    { name: 'Seafood Pasta', description: '' },
+                    { name: 'Pasta Carbonara', description: '' }
                 ]
             },
             {
-                name: 'Pesci, Granchi, Molluschi',
+                name: 'Meat dishes',
                 items: [
-                    { name: 'Calamari Fritti', description: 'Calamari croccanti fritti' },
-                    { name: 'Calamari alla Griglia', description: 'Calamari freschi alla griglia' },
-                    { name: 'Branzino Impanato', description: 'Branzino in panatura cotta al forno' },
-                    { name: 'Vongole alla Buzara', description: 'Vongole in salsa di vino bianco - 1 kg' },
-                    { name: 'Mix di Piccoli Pesci', description: 'Selezione di pesci piccoli freschi' },
-                    { name: 'Capesante alla Griglia', description: 'Capesante fresche alla griglia' },
-                    { name: 'Gamberetti alla Griglia', description: 'Gamberetti adriatici alla griglia - 1kg' },
-                    { name: 'Trancio di Tonno', description: 'Eccellente trancio di tonno' }
+                    { name: 'Steak (pork, veal)', description: '' },
+                    { name: 'Fillet (pork, beef, chicken)', description: '' },
+                    { name: 'Veal from the bread oven (sliced veal shank)', description: '' },
+                    { name: 'Suckling from the bread oven', description: '' }
                 ]
             },
             {
-                name: 'Piatti di Carne',
+                name: 'Fish, crabs, shellfish',
                 items: [
-                    { name: 'Bistecca', description: 'Bistecca di maiale o vitello' },
-                    { name: 'Filetto', description: 'Filetto di maiale, manzo o pollo' },
-                    { name: 'Arrosto di Vitello dal Forno', description: 'Stinco di vitello affettato, cotto tradizionalmente' },
-                    { name: 'Maialino da Latte dal Forno', description: 'Giovane maiale nel forno tradizionale' }
+                    { name: 'Squid - fried', description: '' },
+                    { name: 'Squid - grilled', description: '' },
+                    { name: 'Sea bass in a crust (from the bread oven)', description: '' },
+                    { name: 'Clams on the bazar - 1 kg', description: '' },
+                    { name: 'Small fish - mix', description: '' },
+                    { name: 'Scallops (grilled)', description: '' },
+                    { name: 'Grilled shrimp - 1kg', description: '' },
+                    { name: 'Tuna steak', description: '' }
+                ]
+            },
+            {
+                name: 'Soups',
+                items: [
+                    { name: 'Daily soup', description: '' },
+                    { name: 'Daily offer of ready meals', description: '' }
+                ]
+            },
+            {
+                name: 'Side dishes',
+                items: [
+                    { name: 'Fried potatoes', description: '' },
+                    { name: 'Boiled salted potatoes', description: '' },
+                    { name: 'Vegetables (grilled)', description: '' },
+                    { name: 'Swiss chard with potatoes', description: '' },
+                    { name: 'Baked potatoes', description: '' },
+                    { name: 'Cheese croquettes', description: '' }
+                ]
+            },
+            {
+                name: 'Pizzas',
+                items: [
+                    { name: 'Lanterna (tomato, cheese, ham, prosciutto, mushrooms, cream, paprika)', description: '' },
+                    { name: 'Margherita (tomato, cheese)', description: '' },
+                    { name: 'Funghi (tomato, cheese, mushrooms)', description: '' },
+                    { name: 'Semplice - simple (tomato, cheese, ham)', description: '' },
+                    { name: 'Piccante (tomato, cheese, ham, chilli peppers)', description: '' },
+                    { name: 'Vegetariana (tomato, cheese, vegetables, corn, mushrooms)', description: '' },
+                    { name: 'Al tonno - with tuna (tomato, cheese, tuna, onion)', description: '' },
+                    { name: 'Slavonska (Slavonian) (tomato, cheese, ham, salami, kulen, bacon, chilli peppers)', description: '' }
+                ]
+            },
+            {
+                name: 'Salads',
+                items: [
+                    { name: 'Season salad', description: '' },
+                    { name: 'Salad "Lanterna"', description: '' }
+                ]
+            },
+            {
+                name: 'Deserts',
+                items: [
+                    { name: 'Tiramisu', description: '' },
+                    { name: 'Chocolate Surprise', description: '' },
+                    { name: 'Pancakes with Chocolate/Jam', description: '' },
+                    { name: 'Pancakes with Ice Cream', description: '' },
+                    { name: 'Ice Cream (portion)', description: '' }
+                ]
+            }
+        ]
+    },
+    hu: {
+        eyebrow: 'Traditional Menu',
+        title: 'Menu',
+        categories: [
+            {
+                name: 'Cold appetizers',
+                items: [
+                    { name: 'Carpaccio (fish, beef)', description: '' },
+                    { name: 'Dalmatian prosciutto', description: '' },
+                    { name: 'Sheep cheese', description: '' },
+                    { name: 'Octopus salad', description: '' }
+                ]
+            },
+            {
+                name: 'Hot appetizers',
+                items: [
+                    { name: 'Pasta Bolognese', description: '' },
+                    { name: 'Seafood Pasta', description: '' },
+                    { name: 'Pasta Carbonara', description: '' }
+                ]
+            },
+            {
+                name: 'Meat dishes',
+                items: [
+                    { name: 'Steak (pork, veal)', description: '' },
+                    { name: 'Fillet (pork, beef, chicken)', description: '' },
+                    { name: 'Veal from the bread oven (sliced veal shank)', description: '' },
+                    { name: 'Suckling from the bread oven', description: '' }
+                ]
+            },
+            {
+                name: 'Fish, crabs, shellfish',
+                items: [
+                    { name: 'Squid - fried', description: '' },
+                    { name: 'Squid - grilled', description: '' },
+                    { name: 'Sea bass in a crust (from the bread oven)', description: '' },
+                    { name: 'Clams on the bazar - 1 kg', description: '' },
+                    { name: 'Small fish - mix', description: '' },
+                    { name: 'Scallops (grilled)', description: '' },
+                    { name: 'Grilled shrimp - 1kg', description: '' },
+                    { name: 'Tuna steak', description: '' }
+                ]
+            },
+            {
+                name: 'Soups',
+                items: [
+                    { name: 'Daily soup', description: '' },
+                    { name: 'Daily offer of ready meals', description: '' }
+                ]
+            },
+            {
+                name: 'Side dishes',
+                items: [
+                    { name: 'Fried potatoes', description: '' },
+                    { name: 'Boiled salted potatoes', description: '' },
+                    { name: 'Vegetables (grilled)', description: '' },
+                    { name: 'Swiss chard with potatoes', description: '' },
+                    { name: 'Baked potatoes', description: '' },
+                    { name: 'Cheese croquettes', description: '' }
+                ]
+            },
+            {
+                name: 'Pizzas',
+                items: [
+                    { name: 'Lanterna (tomato, cheese, ham, prosciutto, mushrooms, cream, paprika)', description: '' },
+                    { name: 'Margherita (tomato, cheese)', description: '' },
+                    { name: 'Funghi (tomato, cheese, mushrooms)', description: '' },
+                    { name: 'Semplice - simple (tomato, cheese, ham)', description: '' },
+                    { name: 'Piccante (tomato, cheese, ham, chilli peppers)', description: '' },
+                    { name: 'Vegetariana (tomato, cheese, vegetables, corn, mushrooms)', description: '' },
+                    { name: 'Al tonno - with tuna (tomato, cheese, tuna, onion)', description: '' },
+                    { name: 'Slavonska (Slavonian) (tomato, cheese, ham, salami, kulen, bacon, chilli peppers)', description: '' }
+                ]
+            },
+            {
+                name: 'Salads',
+                items: [
+                    { name: 'Season salad', description: '' },
+                    { name: 'Salad "Lanterna"', description: '' }
+                ]
+            },
+            {
+                name: 'Deserts',
+                items: [
+                    { name: 'Tiramisu', description: '' },
+                    { name: 'Chocolate Surprise', description: '' },
+                    { name: 'Pancakes with Chocolate/Jam', description: '' },
+                    { name: 'Pancakes with Ice Cream', description: '' },
+                    { name: 'Ice Cream (portion)', description: '' }
+                ]
+            }
+        ]
+    },
+    it: {
+        eyebrow: 'Menu',
+        title: 'Menu',
+        categories: [
+            {
+                name: 'Antipasti freddi',
+                items: [
+                    { name: 'Carpaccio (pesce, manzo)', description: '' },
+                    { name: 'Prosciutto dalmata', description: '' },
+                    { name: 'Formaggio di pecora', description: '' },
+                    { name: 'Insalata di polpo', description: '' }
+                ]
+            },
+            {
+                name: 'Antipasti caldi',
+                items: [
+                    { name: 'Pasta alla bolognese', description: '' },
+                    { name: 'Pasta ai frutti di mare', description: '' },
+                    { name: 'Pasta alla carbonara', description: '' }
+                ]
+            },
+            {
+                name: 'Piatti di carne',
+                items: [
+                    { name: 'Bistecca (di maiale, vitello)', description: '' },
+                    { name: 'Filetto (di maiale, manzo, pollo)', description: '' },
+                    { name: 'Arrosto di vitello (stinco di vitello a fette)', description: '' },
+                    { name: 'Maialino da latte', description: '' }
+                ]
+            },
+            {
+                name: 'Pesci, granchi, molluschi',
+                items: [
+                    { name: 'Calamari fritti', description: '' },
+                    { name: 'Calamari alla griglia', description: '' },
+                    { name: 'Branzino impanato (cotto al forno)', description: '' },
+                    { name: 'Vongole (1 kg)', description: '' },
+                    { name: 'Mix di piccoli pesci', description: '' },
+                    { name: 'Capesante alla griglia', description: '' },
+                    { name: 'Gamberi alla griglia (1 kg)', description: '' },
+                    { name: 'Trancio di tonno', description: '' }
                 ]
             },
             {
                 name: 'Zuppe',
                 items: [
-                    { name: 'Zuppa del Giorno', description: 'Creazione quotidiana dello chef' },
-                    { name: 'Selezione di Piatti Pronti del Giorno', description: 'Selezione di piatti preparati, cambia quotidianamente' }
+                    { name: 'Zuppa quotidiana', description: '' },
+                    { name: 'Selezione di piatti pronti che cambia ogni giorno', description: '' }
                 ]
             },
             {
-                name: 'Contorni',
+                name: 'Supplementi',
                 items: [
-                    { name: 'Patate Fritte', description: 'Patate croccanti e dorate' },
-                    { name: 'Patate Salate', description: 'Patate tenere con sale' },
-                    { name: 'Verdure Grigliate', description: 'Verdure fresche grigliate' },
-                    { name: 'Bietole con Patate', description: 'Bietole bramate e patate' },
-                    { name: 'Patate al Forno', description: 'Patate cotte nel forno' },
-                    { name: 'Crocchette di Formaggio', description: 'Dorate crocchette di formaggio fritte' }
+                    { name: 'Patate fritte', description: '' },
+                    { name: 'Patate salate', description: '' },
+                    { name: 'Verdure grigliate', description: '' },
+                    { name: 'Bietole con patate', description: '' },
+                    { name: 'Patate al forno', description: '' },
+                    { name: 'Crocchette di formaggio', description: '' },
+                    { name: 'Salsa di pomodoro', description: '' },
+                    { name: 'Maionese', description: '' },
+                    { name: 'Salsa remoulade', description: '' },
+                    { name: 'Ajvar', description: '' },
+                    { name: 'Senape', description: '' },
+                    { name: 'Panna da cucina', description: '' },
+                    { name: 'Parmigiano Reggiano', description: '' },
+                    { name: 'Pepperoni, olive, mais, funghi', description: '' }
                 ]
             },
             {
                 name: 'Pizze',
                 items: [
-                    { name: 'Lanterna', description: 'Pomodoro, formaggio, prosciutto cotto, crudo, funghi, panna, peperoni' },
-                    { name: 'Margherita', description: 'Pomodoro e formaggio' },
-                    { name: 'Ai Funghi', description: 'Pomodoro, formaggio e funghi' },
-                    { name: 'Semplice', description: 'Pomodoro, formaggio e prosciutto' },
-                    { name: 'Piccante', description: 'Pomodoro, formaggio, prosciutto e peperoncino' },
-                    { name: 'Vegetariana', description: 'Pomodoro, formaggio, verdure, mais e funghi' },
-                    { name: 'Al Tonno', description: 'Pomodoro, formaggio, tonno e cipolla' },
-                    { name: 'Slava', description: 'Pomodoro, formaggio, prosciutto, salame, kulen, pancetta, peperoncino' }
+                    { name: 'Lanterna (Pomodoro, formaggio, prosciutto cotto, prosciutto crudo, funghi, panna, peperoni)', description: '' },
+                    { name: 'Margherita (Pomodoro, formaggio)', description: '' },
+                    { name: 'Ai funghi (Pomodoro, formaggio, funghi)', description: '' },
+                    { name: 'Semplice (Pomodoro, formaggio, prosciutto cotto)', description: '' },
+                    { name: 'Piccante (Pomodoro, formaggio, prosciutto cotto, peperoncino)', description: '' },
+                    { name: 'Vegetariana (Pomodoro, formaggio, verdure, mais, funghi)', description: '' },
+                    { name: 'Al tonno (Pomodoro, formaggio, tonno, cipolla)', description: '' },
+                    { name: 'Slava (Pomodoro, formaggio, prosciutto cotto, salame, kulen, pancetta, peperoncino)', description: '' }
                 ]
             },
             {
                 name: 'Insalate',
                 items: [
-                    { name: 'Insalata Stagionale', description: 'Foglie fresche di stagione' },
-                    { name: 'Insalata Lanterna', description: 'Foglie miste con frutti di mare e verdure' }
+                    { name: 'Condire un\'insalata', description: '' },
+                    { name: 'Insalata "Lanterna"', description: '' }
                 ]
             },
             {
                 name: 'Dolci',
                 items: [
-                    { name: 'Tiramisu', description: 'Classico dolce italiano a strati' },
-                    { name: 'Sorpresa al Cioccolato', description: 'Creazione di cioccolato decadente' },
-                    { name: 'Crepes', description: 'Crepes con cioccolato o marmellata' },
-                    { name: 'Crepes con Gelato', description: 'Crepes con gelato' },
-                    { name: 'Gelato', description: 'Gelato fatto in casa in vari gusti' }
+                    { name: 'Tiramisù', description: '' },
+                    { name: 'Sorpresa al cioccolato', description: '' },
+                    { name: 'Pancake con cioccolato/marmellata', description: '' },
+                    { name: 'Pancake con gelato', description: '' },
+                    { name: 'Gelato (porzione)', description: '' }
+                ]
+            }
+        ]
+    }
+};
+
+const drinksData = {
+    en: {
+        eyebrow: 'Beverages',
+        title: 'Drinks',
+        categories: [
+            {
+                name: 'Non-alcoholic drinks',
+                items: [
+                    { name: 'Juice - 0.20 l (strawberry, blackcurrant, apricot, pear)', description: '' },
+                    { name: 'Cedevita - 0.20 l', description: '' },
+                    { name: 'Iced tea - 0.20 l', description: '' },
+                    { name: 'Coca Cola; Fanta; Sprite, Schweppes - 0.25 l bottle', description: '' },
+                    { name: 'Toco juice', description: '' },
+                    { name: 'Hidra - 0.5 l bottle', description: '' },
+                    { name: 'Mineral water - bottle', description: '' },
+                    { name: 'Mineral water - 1 l bottle', description: '' },
+                    { name: 'Still water - bottle', description: '' }
+                ]
+            },
+            {
+                name: 'Beers',
+                items: [
+                    { name: 'Karlovačko', description: '' },
+                    { name: 'Budwieser', description: '' },
+                    { name: 'Heineken', description: '' }
+                ]
+            },
+            {
+                name: 'Wine',
+                items: [
+                    { name: 'Table wine - 0.10 l', description: '' },
+                    { name: 'Table wine 0.20 l', description: '' },
+                    { name: 'Table wine - 0.25 l', description: '' },
+                    { name: 'Table wine - 0.50 l', description: '' },
+                    { name: 'Table wine - 1 l', description: '' },
+                    { name: 'White wine (table) - 1 l', description: '' }
+                ]
+            },
+            {
+                name: 'Liqueurs - 0.03 l',
+                items: [
+                    { name: 'Pelinkovac', description: '' },
+                    { name: 'Amaro', description: '' },
+                    { name: 'Jägermeister', description: '' },
+                    { name: 'Baileys', description: '' },
+                    { name: 'Teranino', description: '' },
+                    { name: 'Aperol sprite', description: '' }
+                ]
+            },
+            {
+                name: 'Spirits - 0.03 l',
+                items: [
+                    { name: 'Stock', description: '' },
+                    { name: 'Vodka', description: '' },
+                    { name: 'Jack Daniels', description: '' },
+                    { name: 'Baccardi rum', description: '' },
+                    { name: 'Gin (imported)', description: '' },
+                    { name: 'Rakhia - 0,03 l', description: '' },
+                    { name: 'Lozovača', description: '' },
+                    { name: 'Travarica', description: '' },
+                    { name: 'Šljivovica', description: '' },
+                    { name: 'Medica', description: '' }
+                ]
+            },
+            {
+                name: 'Hot drinks',
+                items: [
+                    { name: 'Espresso', description: '' },
+                    { name: 'Macchiato', description: '' },
+                    { name: 'Capuccino', description: '' },
+                    { name: 'White coffee', description: '' },
+                    { name: 'Coffee with cream', description: '' },
+                    { name: 'Milk', description: '' },
+                    { name: 'Tea', description: '' }
+                ]
+            }
+        ]
+    },
+    hr: {
+        eyebrow: 'Pića',
+        title: 'Beverages',
+        categories: [
+            {
+                name: 'Bezalkoholna pića',
+                items: [
+                    { name: 'Sok - 0,20 l (jagoda, crni ribiz, marelica, kruška)', description: '' },
+                    { name: 'Cedevita - 0,20 l', description: '' },
+                    { name: 'Ledeni čaj - 0,20 l', description: '' },
+                    { name: 'Coca Cola; Fanta; Sprite, Schweppes - boca 0,25 l', description: '' },
+                    { name: 'Toco', description: '' },
+                    { name: 'Hidra - boca 0,5 l', description: '' },
+                    { name: 'Mineralna voda - boca', description: '' },
+                    { name: 'Mineralna voda - boca 1 l', description: '' },
+                    { name: 'Negazirana voda - boca', description: '' }
+                ]
+            },
+            {
+                name: 'Pivo',
+                items: [
+                    { name: 'Karlovačko', description: '' },
+                    { name: 'Budwieser', description: '' },
+                    { name: 'Heineken', description: '' }
+                ]
+            },
+            {
+                name: 'Vino',
+                items: [
+                    { name: 'Stolno vino - 0,10 l', description: '' },
+                    { name: 'Stolno vino 0,20 l', description: '' },
+                    { name: 'Stolno vino - 0,25 l', description: '' },
+                    { name: 'Stolno vino - 0,50 l', description: '' },
+                    { name: 'Stolno vino - 1 l', description: '' },
+                    { name: 'Bijelo vino (stolno) - 1 l', description: '' }
+                ]
+            },
+            {
+                name: 'Likeri - 0,03 l',
+                items: [
+                    { name: 'Pelinkovac', description: '' },
+                    { name: 'Amaro', description: '' },
+                    { name: 'Jägermeister', description: '' },
+                    { name: 'Baileys', description: '' },
+                    { name: 'Teranino', description: '' },
+                    { name: 'Aperol sprite', description: '' }
+                ]
+            },
+            {
+                name: 'Žestoka pića - 0,03 l',
+                items: [
+                    { name: 'Stock', description: '' },
+                    { name: 'Vodka', description: '' },
+                    { name: 'Jack Daniels', description: '' },
+                    { name: 'Baccardi rum', description: '' },
+                    { name: 'Gin (uvozni)', description: '' },
+                    { name: 'Lozovača', description: '' },
+                    { name: 'Travarica', description: '' },
+                    { name: 'Šljivovica', description: '' },
+                    { name: 'Medica', description: '' }
+                ]
+            },
+            {
+                name: 'Topli napitci',
+                items: [
+                    { name: 'Espresso', description: '' },
+                    { name: 'Macchiato', description: '' },
+                    { name: 'Capuccino', description: '' },
+                    { name: 'Bijela kava', description: '' },
+                    { name: 'Kava sa šlagom', description: '' },
+                    { name: 'Mlijeko', description: '' },
+                    { name: 'Čaj', description: '' }
+                ]
+            }
+        ]
+    },
+    de: {
+        eyebrow: 'Getränke',
+        title: 'Beverages',
+        categories: [
+            {
+                name: 'Alkoholfreie Getränke',
+                items: [
+                    { name: 'Saft – 0,20 l (Erdbeere, Schwarze Johannisbeere, Aprikose, Birne)', description: '' },
+                    { name: 'Cedevita – 0,20 l', description: '' },
+                    { name: 'Eistee – 0,20 l', description: '' },
+                    { name: 'Coca-Cola, Fanta, Sprite, Schweppes – 0,25-l-Flasche', description: '' },
+                    { name: 'Toco-Saft', description: '' },
+                    { name: 'Hidra – 0,5-l-Flasche', description: '' },
+                    { name: 'Mineralwasser – Flasche', description: '' },
+                    { name: 'Mineralwasser – 1-l-Flasche', description: '' },
+                    { name: 'Stilles Wasser – Flasche', description: '' }
+                ]
+            },
+            {
+                name: 'Biere',
+                items: [
+                    { name: 'Karlovačko', description: '' },
+                    { name: 'Budwieser', description: '' },
+                    { name: 'Heineken', description: '' }
+                ]
+            },
+            {
+                name: 'Wein',
+                items: [
+                    { name: 'Tafelwein – 0,10 l', description: '' },
+                    { name: 'Tafelwein – 0,20 l', description: '' },
+                    { name: 'Tafelwein – 0,25 l', description: '' },
+                    { name: 'Tafelwein – 0,50 l', description: '' },
+                    { name: 'Tafelwein – 1 l', description: '' },
+                    { name: 'Weißwein (Tafelwein) – 1 l', description: '' }
+                ]
+            },
+            {
+                name: 'Liköre - 0,03 l',
+                items: [
+                    { name: 'Pelinkovac', description: '' },
+                    { name: 'Amaro', description: '' },
+                    { name: 'Jägermeister', description: '' },
+                    { name: 'Baileys', description: '' },
+                    { name: 'Teranino', description: '' },
+                    { name: 'Aperol sprite', description: '' }
+                ]
+            },
+            {
+                name: 'Spirituosen - 0,03 l',
+                items: [
+                    { name: 'Stock', description: '' },
+                    { name: 'Wodka', description: '' },
+                    { name: 'Jack Daniels', description: '' },
+                    { name: 'Baccardi Rum', description: '' },
+                    { name: 'Gin (importiert)', description: '' },
+                    { name: 'Lozovača', description: '' },
+                    { name: 'Travarica', description: '' },
+                    { name: 'Šljivovica', description: '' },
+                    { name: 'Medica', description: '' }
+                ]
+            },
+            {
+                name: 'Heiße Getränke',
+                items: [
+                    { name: 'Espresso', description: '' },
+                    { name: 'Macchiato', description: '' },
+                    { name: 'Capuccino', description: '' },
+                    { name: 'Weiß kaffee', description: '' },
+                    { name: 'Kaffee mit Schlag', description: '' },
+                    { name: 'Milch', description: '' },
+                    { name: 'Tee', description: '' }
+                ]
+            }
+        ]
+    },
+    hu: {
+        eyebrow: 'Beverages',
+        title: 'Drinks',
+        categories: [
+            {
+                name: 'Non-alcoholic drinks',
+                items: [
+                    { name: 'Juice - 0.20 l (strawberry, blackcurrant, apricot, pear)', description: '' },
+                    { name: 'Cedevita - 0.20 l', description: '' },
+                    { name: 'Iced tea - 0.20 l', description: '' },
+                    { name: 'Coca Cola; Fanta; Sprite, Schweppes - 0.25 l bottle', description: '' },
+                    { name: 'Toco juice', description: '' },
+                    { name: 'Hidra - 0.5 l bottle', description: '' },
+                    { name: 'Mineral water - bottle', description: '' },
+                    { name: 'Mineral water - 1 l bottle', description: '' },
+                    { name: 'Still water - bottle', description: '' }
+                ]
+            },
+            {
+                name: 'Beers',
+                items: [
+                    { name: 'Karlovačko', description: '' },
+                    { name: 'Budwieser', description: '' },
+                    { name: 'Heineken', description: '' }
+                ]
+            },
+            {
+                name: 'Wine',
+                items: [
+                    { name: 'Table wine - 0.10 l', description: '' },
+                    { name: 'Table wine 0.20 l', description: '' },
+                    { name: 'Table wine - 0.25 l', description: '' },
+                    { name: 'Table wine - 0.50 l', description: '' },
+                    { name: 'Table wine - 1 l', description: '' },
+                    { name: 'White wine (table) - 1 l', description: '' }
+                ]
+            },
+            {
+                name: 'Liqueurs - 0.03 l',
+                items: [
+                    { name: 'Pelinkovac', description: '' },
+                    { name: 'Amaro', description: '' },
+                    { name: 'Jägermeister', description: '' },
+                    { name: 'Baileys', description: '' },
+                    { name: 'Teranino', description: '' },
+                    { name: 'Aperol sprite', description: '' }
+                ]
+            },
+            {
+                name: 'Spirits - 0.03 l',
+                items: [
+                    { name: 'Stock', description: '' },
+                    { name: 'Vodka', description: '' },
+                    { name: 'Jack Daniels', description: '' },
+                    { name: 'Baccardi rum', description: '' },
+                    { name: 'Gin (imported)', description: '' },
+                    { name: 'Rakhia - 0,03 l', description: '' },
+                    { name: 'Lozovača', description: '' },
+                    { name: 'Travarica', description: '' },
+                    { name: 'Šljivovica', description: '' },
+                    { name: 'Medica', description: '' }
+                ]
+            },
+            {
+                name: 'Hot drinks',
+                items: [
+                    { name: 'Espresso', description: '' },
+                    { name: 'Macchiato', description: '' },
+                    { name: 'Capuccino', description: '' },
+                    { name: 'White coffee', description: '' },
+                    { name: 'Coffee with cream', description: '' },
+                    { name: 'Milk', description: '' },
+                    { name: 'Tea', description: '' }
+                ]
+            }
+        ]
+    },
+    it: {
+        eyebrow: 'Bevande',
+        title: 'Beverages',
+        categories: [
+            {
+                name: 'Bevande analcoliche',
+                items: [
+                    { name: 'Succo di frutta – 0,20 l (Fragola, Ribes nero, Albicocca, Pera)', description: '' },
+                    { name: 'Cedevita – 0,20 l', description: '' },
+                    { name: 'Tè freddo – 0,20 l', description: '' },
+                    { name: 'Coca-Cola, Fanta, Sprite, Schweppes – bottiglia da 0,25 l', description: '' },
+                    { name: 'Succo Toco', description: '' },
+                    { name: 'Hidra – bottiglia da 0,5 l', description: '' },
+                    { name: 'Acqua minerale – bottiglia', description: '' },
+                    { name: 'Acqua minerale – bottiglia da 1 l', description: '' },
+                    { name: 'Acqua naturale – bottiglia', description: '' }
+                ]
+            },
+            {
+                name: 'Birre',
+                items: [
+                    { name: 'Karlovačko', description: '' },
+                    { name: 'Budwieser', description: '' },
+                    { name: 'Heineken', description: '' }
+                ]
+            },
+            {
+                name: 'Vino',
+                items: [
+                    { name: 'Vino da tavola – 0,10 l', description: '' },
+                    { name: 'Vino da tavola – 0,20 l', description: '' },
+                    { name: 'Vino da tavola – 0,25 l', description: '' },
+                    { name: 'Vino da tavola – 0,50 l', description: '' },
+                    { name: 'Vino da tavola – 1 l', description: '' },
+                    { name: 'Vino bianco (vino da tavola) – 1 l', description: '' }
+                ]
+            },
+            {
+                name: 'Liquori - 0,03 l',
+                items: [
+                    { name: 'Pelinkovac', description: '' },
+                    { name: 'Amaro', description: '' },
+                    { name: 'Jägermeister', description: '' },
+                    { name: 'Baileys', description: '' },
+                    { name: 'Teranino', description: '' },
+                    { name: 'Aperol sprite', description: '' }
+                ]
+            },
+            {
+                name: 'Alcolici - 0,03 l',
+                items: [
+                    { name: 'Stock', description: '' },
+                    { name: 'Wodka', description: '' },
+                    { name: 'Jack Daniels', description: '' },
+                    { name: 'Baccardi Rum', description: '' },
+                    { name: 'Gin (importato)', description: '' },
+                    { name: 'Rakhia - 0,03 l', description: '' },
+                    { name: 'Lozovača', description: '' },
+                    { name: 'Travarica', description: '' },
+                    { name: 'Šljivovica', description: '' },
+                    { name: 'Medica', description: '' }
+                ]
+            },
+            {
+                name: 'Bevande calde',
+                items: [
+                    { name: 'Espresso', description: '' },
+                    { name: 'Macchiato', description: '' },
+                    { name: 'Capuccino', description: '' },
+                    { name: 'Caffè bianco', description: '' },
+                    { name: 'Caffè con panna montata', description: '' },
+                    { name: 'Latte', description: '' },
+                    { name: 'Tè', description: '' }
                 ]
             }
         ]
@@ -749,9 +1600,13 @@ const menuData = {
 // ============================================
 // MENU RENDERING
 // ============================================
-function renderMenu(lang) {
+let currentMenuType = 'food';
+let currentLang = localStorage.getItem('selectedLanguage') || 'en';
+
+function renderMenu(lang, menuType = 'food') {
     const menuContent = document.getElementById('menu-content');
-    const menuData_ = menuData[lang];
+    const sourceData = menuType === 'drinks' ? drinksData : menuData;
+    const menuData_ = sourceData[lang];
 
     if (!menuData_ || !menuContent) return;
 
@@ -797,12 +1652,28 @@ function renderMenu(lang) {
 }
 
 // ============================================
-// MENU LANGUAGE SWITCHER
+// MENU INITIALIZATION
 // ============================================
-function setupMenuLanguageSwitcher() {
-    const menuLangBtns = document.querySelectorAll('.menu-lang-btn');
-    const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+function updateMenuToggleButtonText(lang) {
+    const foodBtn = document.querySelector('[data-menu-type="food"]');
+    const drinksBtn = document.querySelector('[data-menu-type="drinks"]');
 
+    if (lang === 'hr') {
+        if (foodBtn) foodBtn.textContent = 'Jela';
+        if (drinksBtn) drinksBtn.textContent = 'Pića';
+    } else if (lang === 'de') {
+        if (foodBtn) foodBtn.textContent = 'Speisen';
+        if (drinksBtn) drinksBtn.textContent = 'Getränke';
+    } else if (lang === 'it') {
+        if (foodBtn) foodBtn.textContent = 'Piatti';
+        if (drinksBtn) drinksBtn.textContent = 'Bevande';
+    } else {
+        if (foodBtn) foodBtn.textContent = 'Food';
+        if (drinksBtn) drinksBtn.textContent = 'Beverages';
+    }
+}
+
+function setupMenuLanguageSwitcher() {
     // Ensure menu-content exists before rendering
     const menuContent = document.getElementById('menu-content');
     if (!menuContent) {
@@ -810,24 +1681,25 @@ function setupMenuLanguageSwitcher() {
         return;
     }
 
-    // Initial render
-    renderMenu(currentLang);
-    updateActiveMenuLangBtn(currentLang);
+    // Initial render with current language
+    renderMenu(currentLang, currentMenuType);
+    updateMenuToggleButtonText(currentLang);
 
-    menuLangBtns.forEach((btn) => {
+    // Setup toggle buttons for food/drinks
+    const toggleBtns = document.querySelectorAll('.menu-toggle-btn');
+    toggleBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-menu-lang');
-            localStorage.setItem('selectedLanguage', lang);
-            renderMenu(lang);
-            updateActiveMenuLangBtn(lang);
+            const menuType = btn.getAttribute('data-menu-type');
+            currentMenuType = menuType;
+
+            // Update active state
+            toggleBtns.forEach(b => b.classList.remove('menu-toggle-active'));
+            btn.classList.add('menu-toggle-active');
+
+            // Render the selected menu type with current language
+            renderMenu(currentLang, menuType);
         });
     });
-}
-
-function updateActiveMenuLangBtn(lang) {
-    const menuLangBtns = document.querySelectorAll('.menu-lang-btn');
-    menuLangBtns.forEach((b) => b.classList.remove('menu-lang-active'));
-    document.querySelector(`[data-menu-lang="${lang}"]`)?.classList.add('menu-lang-active');
 }
 
 // ============================================
@@ -960,7 +1832,10 @@ function setupLanguageSwitcher() {
         btn.addEventListener('click', () => {
             const lang = btn.getAttribute('data-lang');
             console.log('Language button clicked:', lang);
+            currentLang = lang;
             applyLanguage(lang);
+            renderMenu(lang, currentMenuType);
+            updateMenuToggleButtonText(lang);
             localStorage.setItem('selectedLanguage', lang);
             updateActiveLangBtn(lang);
         });
@@ -999,6 +1874,9 @@ function applyLanguage(lang) {
     if (directionLink) directionLink.textContent = t.nav_direction;
     const visitLink = document.querySelector('[href="#visit"]');
     if (visitLink) visitLink.textContent = t.nav_visit;
+
+    const navReserveBtn = document.querySelector('.nav-cta');
+    if (navReserveBtn) navReserveBtn.textContent = t.nav_reserve;
 
     const eyebrow = document.querySelector('.hero-eyebrow');
     if (eyebrow) eyebrow.textContent = t.hero_eyebrow;
@@ -1074,8 +1952,8 @@ function applyLanguage(lang) {
     if (features[1]) features[1].textContent = t.feature_recipes;
     if (features[2]) features[2].textContent = t.feature_vegan;
 
-    const visitH2 = document.querySelector('#visit .section-heading');
-    if (visitH2) visitH2.textContent = t.visit_h2;
+    const visitH2 = document.querySelector('.visit-heading');
+    if (visitH2) visitH2.textContent = t.nav_visit;
 
     const contactLabels = document.querySelectorAll('.contact-label');
     const contactTexts = document.querySelectorAll('.contact-text');
@@ -1095,7 +1973,6 @@ function applyLanguage(lang) {
     if (footerLinks[0]) footerLinks[0].textContent = t.footer_link_story;
     if (footerLinks[1]) footerLinks[1].textContent = t.footer_link_menu;
     if (footerLinks[2]) footerLinks[2].textContent = t.footer_link_contact;
-    if (footerLinks[3]) footerLinks[3].textContent = t.footer_link_privacy;
 
     const copyright = document.querySelector('.footer-copyright');
     if (copyright) copyright.textContent = t.footer_copyright;

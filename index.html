@@ -146,15 +146,13 @@
     <section id="menu" class="menu" data-reveal>
         <div class="section-container">
             <div class="menu-header">
-                <div class="menu-eyebrow" data-menu-key="menu_eyebrow">Traditional Menu</div>
-                <h2 class="section-heading" data-menu-key="menu_title">The Menu</h2>
+                <div class="menu-eyebrow">Traditional Menu</div>
+                <h2 class="section-heading">Menu</h2>
+            </div>
 
-                <div class="menu-language-selector">
-                    <button class="menu-lang-btn menu-lang-active" data-menu-lang="en">English</button>
-                    <button class="menu-lang-btn" data-menu-lang="hr">Hrvatski</button>
-                    <button class="menu-lang-btn" data-menu-lang="de">Deutsch</button>
-                    <button class="menu-lang-btn" data-menu-lang="it">Italiano</button>
-                </div>
+            <div class="menu-toggle">
+                <button class="menu-toggle-btn menu-toggle-active" data-menu-type="food">Food</button>
+                <button class="menu-toggle-btn" data-menu-type="drinks">Beverages</button>
             </div>
 
             <div id="menu-content" class="menu-content">
@@ -234,7 +232,7 @@
                         <p class="contact-text">Daily<br>11:00 AM to 11:45 PM</p>
                     </div>
 
-                    <a href="https://www.google.com/maps/place/Lanterna/@44.8346655,14.7218507,17z" target="_blank" class="btn btn-primary btn-map">Open in Maps</a>
+                    <a href="https://www.google.com/maps/search/Lanterna,+Lopar,+Croatia/@44.8346499,14.7262459,17z" target="_blank" class="btn btn-primary btn-map">Open in Maps</a>
                 </div>
             </div>
         </div>
@@ -252,7 +250,6 @@
                 <a href="#story">Story</a>
                 <a href="#menu">Menu</a>
                 <a href="#visit">Contact</a>
-                <a href="#">Privacy</a>
             </div>
         </div>
 
@@ -268,51 +265,50 @@
             <button class="reservation-close" id="reservation-close" aria-label="Close reservation form">×</button>
 
             <div class="reservation-content">
-                <div class="reservation-header">
-                    <h2 class="reservation-title" data-res-key="res_title">Reserve a Table</h2>
-                    <p class="reservation-subtitle" data-res-key="res_subtitle">Join us for an unforgettable Adriatic dining experience</p>
-                </div>
-
-                <form id="reservation-form" class="reservation-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="res-name" data-res-key="res_name">Full Name</label>
-                            <input type="text" id="res-name" name="name" required placeholder="Your name" data-res-placeholder="res_name">
-                        </div>
-                        <div class="form-group">
-                            <label for="res-email" data-res-key="res_email">Email</label>
-                            <input type="email" id="res-email" name="email" required placeholder="your@email.com" data-res-placeholder="res_email">
-                        </div>
+                <!-- STEP 1: PICKER -->
+                <div id="reservation-step-1" class="reservation-step active">
+                    <div class="reservation-header">
+                        <h2 class="reservation-title" data-res-key="res_title">Reserve a Table</h2>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="res-phone" data-res-key="res_phone">Phone Number</label>
-                            <input type="tel" id="res-phone" name="phone" required placeholder="+385 98 849 4444" data-res-placeholder="res_phone">
+                    <div class="reservation-picker">
+                        <div class="picker-item">
+                            <label data-res-key="res_date">Date</label>
+                            <div class="date-picker-wrapper">
+                                <button type="button" class="date-picker-button" id="date-picker-btn">Select Date</button>
+                                <div class="date-picker-popup" id="date-picker-popup" style="display: none;">
+                                    <div class="date-picker-header">
+                                        <button type="button" class="date-nav-btn" id="date-prev-month">‹</button>
+                                        <div class="date-picker-month" id="date-picker-month">January 2026</div>
+                                        <button type="button" class="date-nav-btn" id="date-next-month">›</button>
+                                    </div>
+                                    <div class="date-picker-weekdays">
+                                        <div>Sun</div>
+                                        <div>Mon</div>
+                                        <div>Tue</div>
+                                        <div>Wed</div>
+                                        <div>Thu</div>
+                                        <div>Fri</div>
+                                        <div>Sat</div>
+                                    </div>
+                                    <div class="date-picker-days" id="date-picker-days"></div>
+                                </div>
+                                <input type="hidden" id="res-date" name="date" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="res-guests" data-res-key="res_guests">Number of People</label>
-                            <select id="res-guests" name="guests" data-res-key="res_select_guests">
-                                <option value="">Select number of guests</option>
-                                <option value="1" data-res-key="res_1_person">1 Person</option>
-                                <option value="2" data-res-key="res_2_people">2 People</option>
-                                <option value="3" data-res-key="res_3_people">3 People</option>
-                                <option value="4" data-res-key="res_4_people">4 People</option>
-                                <option value="5" data-res-key="res_5_people">5 People</option>
-                                <option value="6" data-res-key="res_6_people">6 People</option>
-                                <option value="7" data-res-key="res_7_people">7 People</option>
-                                <option value="8" data-res-key="res_8_plus">8+ People</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="res-date" data-res-key="res_date">Date</label>
-                            <input type="date" id="res-date" name="date" required>
+                        <div class="picker-item">
+                            <label data-res-key="res_guests">Guests</label>
+                            <div class="number-picker">
+                                <button type="button" class="number-btn" id="guests-minus">−</button>
+                                <span class="number-display" id="guests-display">2</span>
+                                <button type="button" class="number-btn" id="guests-plus">+</button>
+                            </div>
+                            <input type="hidden" id="res-guests" name="guests" value="2">
                         </div>
-                        <div class="form-group">
-                            <label for="res-time" data-res-key="res_time">Time</label>
+
+                        <div class="picker-item">
+                            <label data-res-key="res_time">Time</label>
                             <select id="res-time" name="time" data-res-key="res_select_time">
                                 <option value="">Select time</option>
                                 <option value="11:00">11:00 AM</option>
@@ -336,20 +332,52 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="res-notes" data-res-key="res_notes">Special Requests or Dietary Notes</label>
-                        <textarea id="res-notes" name="notes" placeholder="Any special requests or dietary requirements?" rows="4" data-res-placeholder="res_notes"></textarea>
+                    <button type="button" class="btn btn-primary" id="res-search-btn" style="width: 100%; margin-top: 1.5rem;">Search</button>
+                </div>
+
+                <!-- STEP 2: DETAILS -->
+                <div id="reservation-step-2" class="reservation-step" style="display: none;">
+                    <div class="reservation-header">
+                        <button type="button" class="res-back-btn" id="res-back-btn">←</button>
+                        <div>
+                            <h2 class="reservation-title" data-res-key="res_title">Your Details</h2>
+                            <p class="reservation-summary" id="res-summary"></p>
+                        </div>
                     </div>
 
-                    <div class="form-group checkbox">
-                        <input type="checkbox" id="res-terms" name="terms" required>
-                        <label for="res-terms" data-res-key="res_terms">I agree to the privacy policy and terms</label>
-                    </div>
+                    <form id="reservation-form" class="reservation-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="res-name" data-res-key="res_name">Full Name</label>
+                                <input type="text" id="res-name" name="name" required placeholder="Your name" data-res-placeholder="res_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="res-email" data-res-key="res_email">Email</label>
+                                <input type="email" id="res-email" name="email" required placeholder="your@email.com" data-res-placeholder="res_email">
+                            </div>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary reservation-submit" data-res-key="res_submit">Confirm Reservation</button>
-                </form>
+                        <div class="form-group">
+                            <label for="res-phone" data-res-key="res_phone">Phone Number</label>
+                            <input type="tel" id="res-phone" name="phone" required placeholder="+385 98 849 4444" data-res-placeholder="res_phone">
+                        </div>
 
-                <div id="reservation-success" class="reservation-success" style="display: none;">
+                        <div class="form-group">
+                            <label for="res-notes" data-res-key="res_notes">Special Requests (optional)</label>
+                            <textarea id="res-notes" name="notes" placeholder="Any special requests or dietary requirements?" rows="3" data-res-placeholder="res_notes"></textarea>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="res-terms" name="terms" required>
+                            <label for="res-terms" data-res-key="res_terms">I agree to the privacy policy and terms</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary reservation-submit" data-res-key="res_submit">Confirm Reservation</button>
+                    </form>
+                </div>
+
+                <!-- SUCCESS -->
+                <div id="reservation-success" class="reservation-step" style="display: none;">
                     <div class="success-icon"></div>
                     <h3 data-res-key="res_success_title">Reservation Confirmed!</h3>
                     <p data-res-key="res_success_message">Thank you for your reservation. We've sent a confirmation to your email and WhatsApp.</p>
