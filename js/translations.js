@@ -57,7 +57,7 @@ window.translations = {
         direction_text: "Lanterna Croatica je pod potpuno novim vlasnikom. Kulinarski doživljaj koji ćete doživjeti je proizvod potpuno nove vizije — ukorijenjen ne u inkrementalnosti, već u namjernom preoblikovanju onoga što može biti uzvišena jadranska kuhinja. Online platforme nose recenzije iz drugoga vremena, pod drugim rukama. Pozivamo vas da stupite unutra i otkrijete novu priču koja se ovdje piše.",
 
         // Atmosphere
-        atmosphere_quote: "Čim uđete, osjećate to. Ovo nije pokušaj biti bilo što drugo osim onoga što jeste: iskrena, lijepa prostorija gdje se darovi Jadrana čuvaju. Svaki detalj govori o poštovanju prema zanatu.",
+        atmosphere_quote: "Čim dođete, vidite da ovo nije pokušaj biti bilo što drugo osim onoga što stvarno je: iskren tradicionalni prostor gdje se darovi Jadrana čuvaju. Svaki detalj govori o poštovanju prema zanatu.",
         atmosphere_footer: "Otvarajući gost",
         feature_catch: "Dnevni svježi ulovi",
         feature_recipes: "Tradicionalni recepti",
