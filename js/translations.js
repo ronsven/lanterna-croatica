@@ -1,7 +1,7 @@
 window.translations = {
     hr: {
         // Topbar
-        topbar: "Lanterna Croatica. Novi vlasnik. Svježa vizija za jadransku kuhinju.",
+        topbar: "Lanterna Croatika. Novi vlasnik. Svježa vizija za jadransku kuhinju.",
 
         // Navigation
         nav_story: "Priča",
@@ -22,14 +22,14 @@ window.translations = {
 
         // Ownership
         pill_badge: "Novo poglavlje",
-        ownership_h2: "Lanterna Croatica",
-        ownership_text: "Lanterna Croatica je pod potpuno novim vlasnikom i označava važnu prekretnicu za ovu voljenu lokaciju na otoku Rabu. Čuvamo baštinu onoga što je bilo dok krčimo novi put ukorijenjen u suvremenu viziju i duboki respekt prema hrvatskom kulinarskom nasljeđu.",
+        ownership_h2: "Lanterna Croatika",
+        ownership_text: "Lanterna Croatika je pod potpuno novim vlasnikom i označava važnu prekretnicu za ovu voljenu lokaciju na otoku Rabu. Čuvamo baštinu onoga što je bilo dok krčimo novi put ukorijenjen u suvremenu viziju i duboki respekt prema hrvatskom kulinarskom nasljeđu.",
         callout_title: "Napomena o online recenzijama:",
         callout_text: "Recenzije na TripAdvisoru i sličnim platformama odražavaju iskustva pod prethodnom upravom. Toplo vas pozivamo da nas posjetite i stvorite vlastiti dojam o Lanterna Croatici.",
 
         // Story
         story_h2: "Lokacija prožeta jadranskom dušom",
-        story_p1: "Lopar je privlačio putnike i domaće ljude tijekom stoljeća. Smješten na otoku Rabu u Jadranu, ovaj očaravajući stari grad pulsira duhom hrvatske morske baštine. Ovdje, gdje se more susreće s kamenjem i tradicija prihvaća inovaciju, rađa se Lanterna Croatica.",
+        story_p1: "Lopar je privlačio putnike i domaće ljude tijekom stoljeća. Smješten na otoku Rabu u Jadranu, ovaj očaravajući stari grad pulsira duhom hrvatske morske baštine. Ovdje, gdje se more susreće s kamenjem i tradicija prihvaća inovaciju, rađa se Lanterna Croatika.",
         story_p2: "Naša kuhinja čuva tri generacije hrvatskog kulinarskog znanja. Svježi ulovi iz Jadrana susreću se s dokazanim receptima. Svako jelo je razgovor između mora i zemlje, između sjećanja i nove vizije.",
         stat_1: "Novo poglavlje",
         stat_2: "Dana u tjednu",
@@ -55,7 +55,7 @@ window.translations = {
         direction_eyebrow: "Filozofija",
         direction_h2: "Nije renovacija. ",
         direction_h2_gold: "Reinvencija.",
-        direction_text: "Lanterna Croatica je pod potpuno novim vlasnikom. Kulinarski doživljaj koji ćete doživjeti je proizvod potpuno nove vizije — ukorijenjen ne u inkrementalnosti, već u namjernom preoblikovanju onoga što može biti uzvišena jadranska kuhinja. Online platforme nose recenzije iz drugoga vremena, pod drugim rukama. Pozivamo vas da stupite unutra i otkrijete novu priču koja se ovdje piše.",
+        direction_text: "Lanterna Croatika je pod potpuno novim vlasnikom. Kulinarski doživljaj koji ćete doživjeti je proizvod potpuno nove vizije — ukorijenjen ne u inkrementalnosti, već u namjernom preoblikovanju onoga što može biti uzvišena jadranska kuhinja. Online platforme nose recenzije iz drugoga vremena, pod drugim rukama. Pozivamo vas da stupite unutra i otkrijete novu priču koja se ovdje piše.",
 
         // Atmosphere
         atmosphere_quote: "Čim dođete, vidite da ovo nije pokušaj biti bilo što drugo osim onoga što stvarno je: iskren tradicionalni prostor gdje se darovi Jadrana čuvaju. Svaki detalj govori o poštovanju prema zanatu.",
@@ -78,7 +78,7 @@ window.translations = {
         footer_link_menu: "Meni",
         footer_link_contact: "Kontakt",
         footer_link_privacy: "Privatnost",
-        footer_copyright: "Lanterna Croatica. Otok Rab. Sva prava zadržana.",
+        footer_copyright: "Lanterna Croatika. Otok Rab. Sva prava zadržana.",
 
         // Reservation
         res_title: "Rezervirajte stol",
@@ -107,7 +107,7 @@ window.translations = {
         res_close: "Zatvori",
     },
     de: {
-        topbar: "Lanterna Croatica. Unter neuer Leitung. Ein frischer Blick auf die adriatische Küche.",
+        topbar: "Lanterna Croatika. Unter neuer Leitung. Ein frischer Blick auf die adriatische Küche.",
         nav_story: "Geschichte",
         nav_menu: "Speisekarte",
         nav_direction: "Philosophie",
@@ -122,12 +122,12 @@ window.translations = {
         hero_reserve: "Tisch reservieren",
         hero_explore: "Speisekarte erkunden",
         pill_badge: "Ein neues Kapitel",
-        ownership_h2: "Lanterna Croatica",
-        ownership_text: "Lanterna Croatica steht unter völlig neuer Leitung und markiert einen bedeutenden Wendepunkt für diesen geliebten Ort auf Rab. Wir würdigen das Erbe der Vergangenheit, während wir einen neuen Weg einschlagen – verwurzelt in zeitgenössischer Vision und tiefem Respekt vor der kroatischen kulinarischen Tradition.",
+        ownership_h2: "Lanterna Croatika",
+        ownership_text: "Lanterna Croatika steht unter völlig neuer Leitung und markiert einen bedeutenden Wendepunkt für diesen geliebten Ort auf Rab. Wir würdigen das Erbe der Vergangenheit, während wir einen neuen Weg einschlagen – verwurzelt in zeitgenössischer Vision und tiefem Respekt vor der kroatischen kulinarischen Tradition.",
         callout_title: "Hinweis zu Online-Bewertungen:",
-        callout_text: "Bewertungen auf TripAdvisor und ähnlichen Plattformen stammen aus der vorherigen Ära und Verwaltung. Wir laden Sie herzlich ein, uns zu besuchen und sich selbst ein Bild von der Lanterna Croatica zu machen.",
+        callout_text: "Bewertungen auf TripAdvisor und ähnlichen Plattformen stammen aus der vorherigen Ära und Verwaltung. Wir laden Sie herzlich ein, uns zu besuchen und sich selbst ein Bild von der Lanterna Croatika zu machen.",
         story_h2: "Ein Ort durchdrungen von adriatischer Seele",
-        story_p1: "Lopar zieht seit Jahrhunderten Reisende und Einheimische an. Auf der Insel Rab gelegen, pulsiert diese bezaubernde Altstadt vom Geist des kroatischen Seeerbes. Hier, wo das Meer auf Stein trifft und Tradition auf Innovation trifft, wurde Lanterna Croatica geboren.",
+        story_p1: "Lopar zieht seit Jahrhunderten Reisende und Einheimische an. Auf der Insel Rab gelegen, pulsiert diese bezaubernde Altstadt vom Geist des kroatischen Seeerbes. Hier, wo das Meer auf Stein trifft und Tradition auf Innovation trifft, wurde Lanterna Croatika geboren.",
         story_p2: "Unsere Küche ehrt drei Generationen kroatischer kulinarischer Weisheit. Tägliche Adriafänge begegnen bewährten Techniken. Jedes Gericht ist ein Dialog zwischen Meer und Land, zwischen Erinnerung und frischer Vision.",
         stat_1: "Neues Kapitel",
         stat_2: "Tage pro Woche",
@@ -149,7 +149,7 @@ window.translations = {
         direction_eyebrow: "Philosophie",
         direction_h2: "Keine Renovierung. ",
         direction_h2_gold: "Eine Neuerfindung.",
-        direction_text: "Lanterna Croatica steht unter völlig neuer Leitung. Das kulinarische Erlebnis, das Sie erwartet, ist das Resultat einer völlig neuen Vision – nicht verwurzelt in Inkrementalismus, sondern in einer bewussten Neuerfindung dessen, was gehobene adriatische Küche sein kann. Online-Plattformen tragen Bewertungen aus einer anderen Zeit und unter anderen Händen. Wir laden Sie ein, einzutreten und die neue Geschichte zu entdecken, die hier geschrieben wird.",
+        direction_text: "Lanterna Croatika steht unter völlig neuer Leitung. Das kulinarische Erlebnis, das Sie erwartet, ist das Resultat einer völlig neuen Vision – nicht verwurzelt in Inkrementalismus, sondern in einer bewussten Neuerfindung dessen, was gehobene adriatische Küche sein kann. Online-Plattformen tragen Bewertungen aus einer anderen Zeit und unter anderen Händen. Wir laden Sie ein, einzutreten und die neue Geschichte zu entdecken, die hier geschrieben wird.",
         atmosphere_quote: "Wenn Sie ankommen, sehen Sie es sofort. Dies ist kein Versuch, etwas anderes zu sein als das, was es wirklich ist: ein ehrlicher, traditioneller Raum, in dem die Gaben der Adria bewahrt werden. Jedes Detail spricht von Respekt vor dem Handwerk.",
         feature_catch: "Täglich frischer Fang",
         feature_recipes: "Traditionelle Rezepte",
@@ -166,7 +166,7 @@ window.translations = {
         footer_link_menu: "Speisekarte",
         footer_link_contact: "Kontakt",
         footer_link_privacy: "Datenschutz",
-        footer_copyright: "Lanterna Croatica. Insel Rab. Alle Rechte vorbehalten.",
+        footer_copyright: "Lanterna Croatika. Insel Rab. Alle Rechte vorbehalten.",
 
         // Reservation
         res_title: "Tisch reservieren",
@@ -195,7 +195,7 @@ window.translations = {
         res_close: "Schließen",
     },
     hu: {
-        topbar: "Lanterna Croatica. Új vezetés alatt. Friss szemlélet az adriai gasztronómiára.",
+        topbar: "Lanterna Croatika. Új vezetés alatt. Friss szemlélet az adriai gasztronómiára.",
         nav_story: "Történet",
         nav_menu: "Étlap",
         nav_direction: "Filozófia",
@@ -210,12 +210,12 @@ window.translations = {
         hero_reserve: "Asztal foglalás",
         hero_explore: "Az étlap felfedezése",
         pill_badge: "Új fejezet",
-        ownership_h2: "Lanterna Croatica",
-        ownership_text: "A Lanterna Croatica teljesen új vezetés alatt működik, és merész és jelentős fordulatot jelent erre a kedvelt Rab-szigeti helynek. Tiszteletben tartjuk a múlt örökségét, miközben új utat nyitunk – amely kortárs szemléletben és mély tiszteletben gyökerezik a horvát kulináris hagyomány iránt.",
+        ownership_h2: "Lanterna Croatika",
+        ownership_text: "A Lanterna Croatika teljesen új vezetés alatt működik, és merész és jelentős fordulatot jelent erre a kedvelt Rab-szigeti helynek. Tiszteletben tartjuk a múlt örökségét, miközben új utat nyitunk – amely kortárs szemléletben és mély tiszteletben gyökerezik a horvát kulináris hagyomány iránt.",
         callout_title: "Megjegyzés az online értékelésekről:",
         callout_text: "A TripAdvisor és hasonló platformokon megjelenő értékelések az előző vezetés alatt szerzett tapasztalatokat tükrözik. Szeretettel meghívjuk Önt, hogy keresse fel a helyet, és alakítson ki saját véleményt a Lanterna Croaticáról.",
         story_h2: "Adriai szellemmel átitatott hely",
-        story_p1: "Lopar évszázadok óta vonzza az utazókat és helyieket. Az Adriai-tengerben fekvő Rab szigetén ez a lenyűgöző óváros a horvát tengerészeti örökség szellemével lüktet. Itt, ahol a tenger találkozik a kővel és a hagyomány befogadja az újítást, születik meg a Lanterna Croatica.",
+        story_p1: "Lopar évszázadok óta vonzza az utazókat és helyieket. Az Adriai-tengerben fekvő Rab szigetén ez a lenyűgöző óváros a horvát tengerészeti örökség szellemével lüktet. Itt, ahol a tenger találkozik a kővel és a hagyomány befogadja az újítást, születik meg a Lanterna Croatika.",
         story_p2: "Konyhánk tiszteli három generáció horvát gasztronómiai bölcsességét. Az Adriai friss halászati termékek találkoznak az időtálló technikákkal. Minden étel a tenger és a föld közötti párbeszéd, az emlékezet és az új látomás között.",
         stat_1: "Új fejezet",
         stat_2: "Nap hetente",
@@ -237,7 +237,7 @@ window.translations = {
         direction_eyebrow: "Filozófia",
         direction_h2: "Nem felújítás. ",
         direction_h2_gold: "Újraalkotás.",
-        direction_text: "A Lanterna Croatica teljesen új vezetés alatt működik. Az étkezési élmény, amellyel szembe találja majd magát, egy teljesen új látomás terméke – nem az inkrementalizmában, hanem az adriai finomkonyha szándékos újraalkotásában gyökerezik. Az online platformok más korból, más kéz alatt szerzett értékeléseket hordoznak. Meghívjuk Önt, hogy lépjen be és fedezze fel az itt íródó új történetet.",
+        direction_text: "A Lanterna Croatika teljesen új vezetés alatt működik. Az étkezési élmény, amellyel szembe találja majd magát, egy teljesen új látomás terméke – nem az inkrementalizmában, hanem az adriai finomkonyha szándékos újraalkotásában gyökerezik. Az online platformok más korból, más kéz alatt szerzett értékeléseket hordoznak. Meghívjuk Önt, hogy lépjen be és fedezze fel az itt íródó új történetet.",
         atmosphere_quote: "Amikor megérkezik, rögtön látja. Ez nem próbálkozás lenni valami másnak, mint amit valóban: őszinte hagyományos hely, ahol az Adriai ajándékait megőrzik. Minden részlet a kézműves munkára irányuló tiszteletről szól.",
         feature_catch: "Napi friss halászat",
         feature_recipes: "Hagyományos receptek",
@@ -254,7 +254,7 @@ window.translations = {
         footer_link_menu: "Étlap",
         footer_link_contact: "Kapcsolat",
         footer_link_privacy: "Adatvédelem",
-        footer_copyright: "Lanterna Croatica. Rab sziget. Minden jog fenntartva.",
+        footer_copyright: "Lanterna Croatika. Rab sziget. Minden jog fenntartva.",
 
         // Reservation
         res_title: "Asztal foglalása",
@@ -283,7 +283,7 @@ window.translations = {
         res_close: "Bezárás",
     },
     it: {
-        topbar: "Lanterna Croatica. Nuova gestione. Una fresca visione della cucina adriatica.",
+        topbar: "Lanterna Croatika. Nuova gestione. Una fresca visione della cucina adriatica.",
         nav_story: "La storia",
         nav_menu: "Menu",
         nav_direction: "Filosofia",
@@ -298,12 +298,12 @@ window.translations = {
         hero_reserve: "Prenota un tavolo",
         hero_explore: "Scopri il menu",
         pill_badge: "Un nuovo capitolo",
-        ownership_h2: "Lanterna Croatica",
-        ownership_text: "Lanterna Croatica è sotto nuova gestione e rappresenta una svolta audace e significativa per questo amato luogo sull'isola di Rab. Onoriamo l'eredità di quanto è stato mentre tracciamo una strada nuova, radicata nella visione contemporanea e nel profondo rispetto della tradizione culinaria croata.",
+        ownership_h2: "Lanterna Croatika",
+        ownership_text: "Lanterna Croatika è sotto nuova gestione e rappresenta una svolta audace e significativa per questo amato luogo sull'isola di Rab. Onoriamo l'eredità di quanto è stato mentre tracciamo una strada nuova, radicata nella visione contemporanea e nel profondo rispetto della tradizione culinaria croata.",
         callout_title: "Nota sulle recensioni online:",
-        callout_text: "Le recensioni su TripAdvisor e piattaforme simili riflettono esperienze della gestione precedente. Vi invitiamo calorosamente a visitarci e a formarvi una propria impressione della Lanterna Croatica.",
+        callout_text: "Le recensioni su TripAdvisor e piattaforme simili riflettono esperienze della gestione precedente. Vi invitiamo calorosamente a visitarci e a formarvi una propria impressione della Lanterna Croatika.",
         story_h2: "Un luogo intriso di anima adriatica",
-        story_p1: "Lopar attira da secoli viaggiatori e abitanti locali. Situato sull'isola di Rab nell'Adriatico, questo affascinante centro storico pulsa dello spirito dell'eredità marittima croata. È qui, dove il mare incontra la pietra e la tradizione accoglie l'innovazione, che nasce Lanterna Croatica.",
+        story_p1: "Lopar attira da secoli viaggiatori e abitanti locali. Situato sull'isola di Rab nell'Adriatico, questo affascinante centro storico pulsa dello spirito dell'eredità marittima croata. È qui, dove il mare incontra la pietra e la tradizione accoglie l'innovazione, che nasce Lanterna Croatika.",
         story_p2: "La nostra cucina onora tre generazioni di saggezza culinaria croata. I pescati freschi dell'Adriatico incontrano tecniche collaudate nel tempo. Ogni piatto è un dialogo tra il mare e la terra, tra memoria e visione nuova.",
         stat_1: "Nuovo capitolo",
         stat_2: "Giorni a settimana",
@@ -325,7 +325,7 @@ window.translations = {
         direction_eyebrow: "Filosofia",
         direction_h2: "Non una ristrutturazione. ",
         direction_h2_gold: "Una reinvenzione.",
-        direction_text: "Lanterna Croatica è sotto nuova gestione. L'esperienza culinaria che vi troverete davanti è il frutto di una visione completamente nuova, radicata non nell'incrementalismo, ma in una consapevole reimaginazione di ciò che la cucina adriatica elevata può essere. Le piattaforme online portano con sé recensioni di un'era diversa, sotto mani diverse. Vi invitiamo a varcare la porta e scoprire la nuova storia che qui si scrive.",
+        direction_text: "Lanterna Croatika è sotto nuova gestione. L'esperienza culinaria che vi troverete davanti è il frutto di una visione completamente nuova, radicata non nell'incrementalismo, ma in una consapevole reimaginazione di ciò che la cucina adriatica elevata può essere. Le piattaforme online portano con sé recensioni di un'era diversa, sotto mani diverse. Vi invitiamo a varcare la porta e scoprire la nuova storia che qui si scrive.",
         atmosphere_quote: "Quando arrivate, vedete subito che questo non è un tentativo di essere qualcosa di diverso da quello che veramente è: uno spazio sincero e tradizionale dove i doni dell'Adriatico sono preservati. Ogni dettaglio parla di rispetto per l'artigianato.",
         feature_catch: "Pescati freschi quotidiani",
         feature_recipes: "Ricette tradizionali",
@@ -342,7 +342,7 @@ window.translations = {
         footer_link_menu: "Menu",
         footer_link_contact: "Contatti",
         footer_link_privacy: "Privacy",
-        footer_copyright: "Lanterna Croatica. Isola di Rab. Tutti i diritti riservati.",
+        footer_copyright: "Lanterna Croatika. Isola di Rab. Tutti i diritti riservati.",
 
         // Reservation
         res_title: "Prenota un tavolo",
@@ -371,7 +371,7 @@ window.translations = {
         res_close: "Chiudi",
     },
     en: {
-        topbar: "Lanterna Croatica. Under New Ownership. A fresh vision for Adriatic dining.",
+        topbar: "Lanterna Croatika. Under New Ownership. A fresh vision for Adriatic dining.",
         nav_story: "Story",
         nav_menu: "Menu",
         nav_direction: "Philosophy",
@@ -386,12 +386,12 @@ window.translations = {
         hero_reserve: "Reserve a Table",
         hero_explore: "Explore Menu",
         pill_badge: "A New Chapter",
-        ownership_h2: "Lanterna Croatica",
-        ownership_text: "Under entirely new ownership, Lanterna Croatica marks a bold turning point for this beloved Rab Island location. We honor the legacy of what came before while charting a fresh course rooted in contemporary vision and deep respect for Croatian culinary tradition.",
+        ownership_h2: "Lanterna Croatika",
+        ownership_text: "Under entirely new ownership, Lanterna Croatika marks a bold turning point for this beloved Rab Island location. We honor the legacy of what came before while charting a fresh course rooted in contemporary vision and deep respect for Croatian culinary tradition.",
         callout_title: "A Note on Online Reviews:",
-        callout_text: "Reviews and ratings on TripAdvisor and similar platforms reflect experiences under previous ownership and management. We warmly encourage you to visit and form your own impression of Lanterna Croatica.",
+        callout_text: "Reviews and ratings on TripAdvisor and similar platforms reflect experiences under previous ownership and management. We warmly encourage you to visit and form your own impression of Lanterna Croatika.",
         story_h2: "A Location Steeped in Adriatic Soul",
-        story_p1: "Lopar has drawn travelers and locals alike for centuries. Perched on Rab Island in the Adriatic, this enchanting old town pulses with the spirit of Croatia's maritime heritage. It is here, where the sea meets stone and tradition embraces innovation, that Lanterna Croatica has come to life.",
+        story_p1: "Lopar has drawn travelers and locals alike for centuries. Perched on Rab Island in the Adriatic, this enchanting old town pulses with the spirit of Croatia's maritime heritage. It is here, where the sea meets stone and tradition embraces innovation, that Lanterna Croatika has come to life.",
         story_p2: "Our kitchen honors three generations of Croatian culinary wisdom. Daily catches from the Adriatic meet time-honored techniques. Every dish is a conversation between the sea and the land, between memory and fresh vision.",
         stat_1: "New Chapter",
         stat_2: "Days a Week",
@@ -413,7 +413,7 @@ window.translations = {
         direction_eyebrow: "Philosophy",
         direction_h2: "Not a Renovation. ",
         direction_h2_gold: "A Reinvention.",
-        direction_text: "Lanterna Croatica is under entirely new ownership. The dining experience you will encounter is the product of a completely fresh vision—rooted not in incrementalism, but in a deliberate reimagining of what elevated Adriatic cuisine can be. Online platforms carry reviews from a different era, under different hands. We invite you to step inside and discover the new story being written here.",
+        direction_text: "Lanterna Croatika is under entirely new ownership. The dining experience you will encounter is the product of a completely fresh vision—rooted not in incrementalism, but in a deliberate reimagining of what elevated Adriatic cuisine can be. Online platforms carry reviews from a different era, under different hands. We invite you to step inside and discover the new story being written here.",
         atmosphere_quote: "When you arrive, you see it immediately. This is not an attempt to be anything other than what it truly is: an honest, traditional space where the Adriatic's gifts are cherished. Every detail speaks to respect for the craft.",
         feature_catch: "Daily Fresh Catch",
         feature_recipes: "Traditional Recipes",
@@ -430,7 +430,7 @@ window.translations = {
         footer_link_menu: "Menu",
         footer_link_contact: "Contact",
         footer_link_privacy: "Privacy",
-        footer_copyright: "Lanterna Croatica. Lopar, Rab Island. All rights reserved.",
+        footer_copyright: "Lanterna Croatika. Lopar, Rab Island. All rights reserved.",
 
         // Reservation
         res_title: "Reserve a Table",

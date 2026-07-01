@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lanterna Croatica. Fine Adriatic Dining.</title>
-    <meta name="description" content="Lanterna Croatica: contemporary Adriatic cuisine on Rab Island. Under new ownership. Fresh vision, timeless tradition.">
+    <title>Lanterna Croatika. Fine Adriatic Dining.</title>
+    <meta name="description" content="Lanterna Croatika: contemporary Adriatic cuisine on Rab Island. Under new ownership. Fresh vision, timeless tradition.">
+    <link rel="icon" href="favicon.jpg" type="image/jpeg">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -15,9 +16,10 @@
     <!-- INTRO OVERLAY: Cinematic name reveal -->
     <div id="intro-overlay" class="intro-overlay">
         <div class="intro-container">
+            <img src="intro-image.png" alt="Intro decoration" class="intro-image">
             <h1 class="intro-heading">
                 <span class="intro-word intro-word-lanterna">LANTERNA</span>
-                <span class="intro-word intro-word-croatica">CROATICA</span>
+                <span class="intro-word intro-word-croatica">CROATIKA</span>
             </h1>
             <div class="intro-progress"></div>
         </div>
@@ -27,7 +29,7 @@
     <!-- TOPBAR: Ownership announcement -->
     <div class="topbar">
         <div class="topbar-content">
-            Lanterna Croatica. Under New Ownership. A fresh vision for Adriatic dining.
+            Lanterna Croatika. Under New Ownership. A fresh vision for Adriatic dining.
         </div>
     </div>
 
@@ -35,7 +37,7 @@
     <nav id="navbar" class="navbar">
         <div class="navbar-container">
             <div class="nav-logo">
-                LANTERNA <span class="nav-logo-red">CROATICA</span>
+                <img src="favicon.jpg" alt="Lanterna Croatika Logo" class="nav-logo-img">
             </div>
 
             <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
@@ -96,15 +98,15 @@
     <section id="ownership" class="ownership" data-reveal>
         <div class="section-container">
             <div class="pill-badge">A New Chapter</div>
-            <h2 class="section-heading">Lanterna Croatica</h2>
+            <h2 class="section-heading">Lanterna Croatika</h2>
             <p class="section-subtext">
-                Under entirely new ownership, Lanterna Croatica marks a bold turning point for this beloved Rab Island location. We honor the legacy of what came before while charting a fresh course rooted in contemporary vision and deep respect for Croatian culinary tradition.
+                Under entirely new ownership, Lanterna Croatika marks a bold turning point for this beloved Rab Island location. We honor the legacy of what came before while charting a fresh course rooted in contemporary vision and deep respect for Croatian culinary tradition.
             </p>
 
             <div class="info-callout">
                 <div class="callout-icon">ℹ</div>
                 <div class="callout-content">
-                    <strong>A Note on Online Reviews:</strong> Reviews and ratings on TripAdvisor and similar platforms reflect experiences under previous ownership and management. We warmly encourage you to visit and form your own impression of Lanterna Croatica.
+                    <strong>A Note on Online Reviews:</strong> Reviews and ratings on TripAdvisor and similar platforms reflect experiences under previous ownership and management. We warmly encourage you to visit and form your own impression of Lanterna Croatika.
                 </div>
             </div>
         </div>
@@ -117,7 +119,7 @@
                 <div class="story-text">
                     <h2 class="section-heading">A Location Steeped in Adriatic Soul</h2>
                     <p>
-                        Lopar has drawn travelers and locals alike for centuries. Perched on Rab Island in the Adriatic, this enchanting old town pulses with the spirit of Croatia's maritime heritage. It is here, where the sea meets stone and tradition embraces innovation, that Lanterna Croatica has come to life.
+                        Lopar has drawn travelers and locals alike for centuries. Perched on Rab Island in the Adriatic, this enchanting old town pulses with the spirit of Croatia's maritime heritage. It is here, where the sea meets stone and tradition embraces innovation, that Lanterna Croatika has come to life.
                     </p>
                     <p>
                         Our kitchen honors three generations of Croatian culinary wisdom. Daily catches from the Adriatic meet time-honored techniques. Every dish is a conversation between the sea and the land, between memory and fresh vision.
@@ -167,7 +169,7 @@
             <div class="direction-eyebrow">Philosophy</div>
             <h2 class="section-heading direction-heading">Not a Renovation. <span class="direction-gold">A Reinvention.</span></h2>
             <p class="direction-text">
-                Lanterna Croatica is under entirely new ownership. The dining experience you will encounter is the product of a completely fresh vision—rooted not in incrementalism, but in a deliberate reimagining of what elevated Adriatic cuisine can be. Online platforms carry reviews from a different era, under different hands. We invite you to step inside and discover the new story being written here.
+                Lanterna Croatika is under entirely new ownership. The dining experience you will encounter is the product of a completely fresh vision—rooted not in incrementalism, but in a deliberate reimagining of what elevated Adriatic cuisine can be. Online platforms carry reviews from a different era, under different hands. We invite you to step inside and discover the new story being written here.
             </p>
         </div>
     </section>
@@ -242,7 +244,7 @@
     <footer id="footer" class="footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="footer-logo">LANTERNA <span class="footer-logo-red">CROATICA</span></div>
+                <div class="footer-logo">Lanterna Croatika</div>
                 <p class="footer-subtitle">Formerly Bistro Lanterna</p>
             </div>
 
@@ -254,7 +256,7 @@
         </div>
 
         <div class="footer-copyright">
-            Lanterna Croatica. Lopar, Rab Island. All rights reserved.
+            Lanterna Croatika. Lopar, Rab Island. All rights reserved.
         </div>
     </footer>
 
@@ -346,6 +348,11 @@
                     </div>
 
                     <form id="reservation-form" class="reservation-form">
+                        <!-- Hidden fields for date/time/guests -->
+                        <input type="hidden" id="res-date" name="date" required>
+                        <input type="hidden" id="res-guests" name="guests" value="2">
+                        <input type="hidden" id="res-time" name="time">
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="res-name" data-res-key="res_name">Full Name</label>
@@ -379,8 +386,8 @@
                 <!-- SUCCESS -->
                 <div id="reservation-success" class="reservation-step" style="display: none;">
                     <div class="success-icon"></div>
-                    <h3 data-res-key="res_success_title">Reservation Confirmed!</h3>
-                    <p data-res-key="res_success_message">Thank you for your reservation. We've sent a confirmation to your email and WhatsApp.</p>
+                    <h3 data-res-key="res_success_title">Reservation Submitted!</h3>
+                    <p data-res-key="res_success_message">Thank you for your reservation. We'll review it and send you a confirmation via WhatsApp and email shortly.</p>
                     <p class="success-details" id="success-details"></p>
                     <button class="btn btn-primary" onclick="closeReservationModal()" data-res-key="res_close">Close</button>
                 </div>

@@ -1,4 +1,4 @@
-// ============================================
+﻿// ============================================
 // LANTERNA CROATICA — MAIN JS
 // ============================================
 
@@ -326,6 +326,14 @@ function setupStepNavigation() {
         // Update summary
         summary.textContent = `${formattedDate} • ${guests} Guests • ${time}`;
 
+        // Sync date/time/guests to Step 2 form hidden inputs
+        const formDateInput = document.querySelector('#reservation-form #res-date');
+        const formTimeInput = document.querySelector('#reservation-form #res-time');
+        const formGuestsInput = document.querySelector('#reservation-form #res-guests');
+        if (formDateInput) formDateInput.value = date;
+        if (formTimeInput) formTimeInput.value = time;
+        if (formGuestsInput) formGuestsInput.value = guests;
+
         // Switch to step 2
         step1.classList.remove('active');
         step2.style.display = 'block';
@@ -428,13 +436,14 @@ async function handleReservationSubmit() {
     console.log('Submitting reservation:', reservationData);
 
     try {
-        // Send to Zapier webhook
-        console.log('Fetching to Zapier...');
-        const response = await fetch('https://hooks.zapier.com/hooks/catch/27896563/432xtgq/', {
+        const response = await fetch('http://localhost:3001/reservation', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(reservationData)
         });
-        console.log('Fetch response:', response);
+        console.log('API response:', response);
 
         showReservationSuccess(reservationData);
     } catch (error) {
@@ -492,11 +501,17 @@ function setupIntroAnimation() {
 
     if (!prefersReducedMotion) {
         introTl
+            .to('.intro-image', {
+                clipPath: 'inset(0 0% 0 0)',
+                opacity: 1,
+                duration: 1.8,
+                ease: 'power2.out'
+            })
             .to('.intro-word-lanterna', {
                 clipPath: 'inset(0 0% 0 0)',
                 duration: 1.8,
                 ease: 'power2.out'
-            })
+            }, 0.2)
             .to('.intro-word-croatica', {
                 clipPath: 'inset(0 0% 0 0)',
                 duration: 1.4,
@@ -1016,94 +1031,107 @@ const menuData = {
         ]
     },
     hu: {
-        eyebrow: 'Traditional Menu',
-        title: 'Menu',
+        eyebrow: 'Étlap',
+        title: 'Étlap',
         categories: [
             {
-                name: 'Cold appetizers',
+                name: 'Hideg előételek',
                 items: [
-                    { name: 'Carpaccio (fish, beef)', description: '' },
-                    { name: 'Dalmatian prosciutto', description: '' },
-                    { name: 'Sheep cheese', description: '' },
-                    { name: 'Octopus salad', description: '' }
+                    { name: 'Carpaccio (hal, marhahús)', description: '' },
+                    { name: 'Dalmát sonka', description: '' },
+                    { name: 'Juhtejből készült sajt', description: '' },
+                    { name: 'Polip saláta', description: '' }
                 ]
             },
             {
-                name: 'Hot appetizers',
+                name: 'Meleg előételek',
                 items: [
-                    { name: 'Pasta Bolognese', description: '' },
-                    { name: 'Seafood Pasta', description: '' },
-                    { name: 'Pasta Carbonara', description: '' }
+                    { name: 'Bolognai tészta', description: '' },
+                    { name: 'Tenger gyümölcsei tészta', description: '' },
+                    { name: 'Carbonara tészta', description: '' }
                 ]
             },
             {
-                name: 'Meat dishes',
+                name: 'Húsételek',
                 items: [
-                    { name: 'Steak (pork, veal)', description: '' },
-                    { name: 'Fillet (pork, beef, chicken)', description: '' },
-                    { name: 'Veal from the bread oven (sliced veal shank)', description: '' },
-                    { name: 'Suckling from the bread oven', description: '' }
+                    { name: 'Steak (sertés-, borjúhús)', description: '' },
+                    { name: 'Bélszín (sertés-, marha-, csirkehús)', description: '' },
+                    { name: 'Sült borjú (szeletelt borjúcsülök)', description: '' },
+                    { name: 'Szopós malac', description: '' }
                 ]
             },
             {
-                name: 'Fish, crabs, shellfish',
+                name: 'Levesek',
                 items: [
-                    { name: 'Squid - fried', description: '' },
-                    { name: 'Squid - grilled', description: '' },
-                    { name: 'Sea bass in a crust (from the bread oven)', description: '' },
-                    { name: 'Clams on the bazar - 1 kg', description: '' },
-                    { name: 'Small fish - mix', description: '' },
-                    { name: 'Scallops (grilled)', description: '' },
-                    { name: 'Grilled shrimp - 1kg', description: '' },
-                    { name: 'Tuna steak', description: '' }
+                    { name: 'Napi leves', description: '' },
+                    { name: 'Napi ajánlat', description: '' }
                 ]
             },
             {
-                name: 'Soups',
+                name: 'Halak, rákok, puhatestűek',
                 items: [
-                    { name: 'Daily soup', description: '' },
-                    { name: 'Daily offer of ready meals', description: '' }
+                    { name: 'Sült kalamári', description: '' },
+                    { name: 'Grillezett kalamári', description: '' },
+                    { name: 'Panírozott tengeri sügér (sült)', description: '' },
+                    { name: 'Kagyló (1 kg)', description: '' },
+                    { name: 'Vegyes apró halak', description: '' },
+                    { name: 'Grillezett fésűkagyló', description: '' },
+                    { name: 'Grillezett garnélarák (1 kg)', description: '' },
+                    { name: 'Tonhalszelet', description: '' }
                 ]
             },
             {
-                name: 'Side dishes',
+                name: 'Kiegészítők',
                 items: [
-                    { name: 'Fried potatoes', description: '' },
-                    { name: 'Boiled salted potatoes', description: '' },
-                    { name: 'Vegetables (grilled)', description: '' },
-                    { name: 'Swiss chard with potatoes', description: '' },
-                    { name: 'Baked potatoes', description: '' },
-                    { name: 'Cheese croquettes', description: '' }
+                    { name: 'Hasábburgonya', description: '' },
+                    { name: 'Sózott burgonya', description: '' },
+                    { name: 'Grillezett zöldségek', description: '' },
+                    { name: 'Mángold burgonyával', description: '' },
+                    { name: 'Sült burgonya', description: '' },
+                    { name: 'Sajtos krokettek', description: '' }
                 ]
             },
             {
-                name: 'Pizzas',
+                name: 'Élelmiszer-adalékanyagok',
                 items: [
-                    { name: 'Lanterna (tomato, cheese, ham, prosciutto, mushrooms, cream, paprika)', description: '' },
-                    { name: 'Margherita (tomato, cheese)', description: '' },
-                    { name: 'Funghi (tomato, cheese, mushrooms)', description: '' },
-                    { name: 'Semplice - simple (tomato, cheese, ham)', description: '' },
-                    { name: 'Piccante (tomato, cheese, ham, chilli peppers)', description: '' },
-                    { name: 'Vegetariana (tomato, cheese, vegetables, corn, mushrooms)', description: '' },
-                    { name: 'Al tonno - with tuna (tomato, cheese, tuna, onion)', description: '' },
-                    { name: 'Slavonska (Slavonian) (tomato, cheese, ham, salami, kulen, bacon, chilli peppers)', description: '' }
+                    { name: 'Paradicsomszósz', description: '' },
+                    { name: 'Majonéz', description: '' },
+                    { name: 'Remuládmártás', description: '' },
+                    { name: 'Ajvár', description: '' },
+                    { name: 'Mustár', description: '' },
+                    { name: 'Tejszín', description: '' },
+                    { name: 'Parmezán sajt', description: '' },
+                    { name: 'Pepperóni, olajbogyó, kukorica, gomba', description: '' }
                 ]
             },
             {
-                name: 'Salads',
+                name: 'Pizzák',
                 items: [
-                    { name: 'Season salad', description: '' },
-                    { name: 'Salad "Lanterna"', description: '' }
+                    { name: 'Lanterna (Paradicsom, sajt, főtt sonka, prosciutto, gomba, tejszín, paprika)', description: '' },
+                    { name: 'Margherita (Paradicsom, sajt)', description: '' },
+                    { name: 'Gombával (Paradicsom, sajt, gomba)', description: '' },
+                    { name: 'Egyszerű (Paradicsom, sajt, főtt sonka)', description: '' },
+                    { name: 'Csípős (Paradicsom, sajt, főtt sonka, chili paprika)', description: '' },
+                    { name: 'Vegetáriánus (Paradicsom, sajt, zöldségek, kukorica, gomba)', description: '' },
+                    { name: 'Tonhallal (Paradicsom, sajt, tonhal, hagyma)', description: '' },
+                    { name: 'Slava (Paradicsom, sajt, főtt sonka, szalámi, kulen, bacon, chili paprika)', description: '' }
                 ]
             },
             {
-                name: 'Deserts',
+                name: 'Saláták',
+                items: [
+                    { name: 'Salátaöntet', description: '' },
+                    { name: 'Lámpássaláta', description: '' }
+                ]
+            },
+            {
+                name: 'Desszertek',
                 items: [
                     { name: 'Tiramisu', description: '' },
-                    { name: 'Chocolate Surprise', description: '' },
-                    { name: 'Pancakes with Chocolate/Jam', description: '' },
-                    { name: 'Pancakes with Ice Cream', description: '' },
-                    { name: 'Ice Cream (portion)', description: '' }
+                    { name: 'Csokis meglepetés', description: '' },
+                    { name: 'Palacsinta csokoládéval/lekvárral', description: '' },
+                    { name: 'Palacsinta fagylalttal', description: '' },
+                    { name: 'Fagylalt (adag)', description: '' }
                 ]
             }
         ]
@@ -1442,25 +1470,25 @@ const drinksData = {
         ]
     },
     hu: {
-        eyebrow: 'Beverages',
-        title: 'Drinks',
+        eyebrow: 'Italok',
+        title: 'Italok',
         categories: [
             {
-                name: 'Non-alcoholic drinks',
+                name: 'Alkoholmentes italok',
                 items: [
-                    { name: 'Juice - 0.20 l (strawberry, blackcurrant, apricot, pear)', description: '' },
-                    { name: 'Cedevita - 0.20 l', description: '' },
-                    { name: 'Iced tea - 0.20 l', description: '' },
-                    { name: 'Coca Cola; Fanta; Sprite, Schweppes - 0.25 l bottle', description: '' },
-                    { name: 'Toco juice', description: '' },
-                    { name: 'Hidra - 0.5 l bottle', description: '' },
-                    { name: 'Mineral water - bottle', description: '' },
-                    { name: 'Mineral water - 1 l bottle', description: '' },
-                    { name: 'Still water - bottle', description: '' }
+                    { name: 'Gyümölcslé – 0,20 l (Eper, Fekete ribizli, Sárgabarack, Körte)', description: '' },
+                    { name: 'Cedevita – 0,20 l', description: '' },
+                    { name: 'Jeges tea - 0,20 l', description: '' },
+                    { name: 'Coca-Cola, Fanta, Sprite, Schweppes – 0,25 l-es üveg', description: '' },
+                    { name: 'Toco Juice', description: '' },
+                    { name: 'Hidra - 0,5 l-es üveg', description: '' },
+                    { name: 'Ásványvíz - üveg', description: '' },
+                    { name: 'Ásványvíz - 1 l-es üveg', description: '' },
+                    { name: 'Szénsavmentes víz – üveg', description: '' }
                 ]
             },
             {
-                name: 'Beers',
+                name: 'Sör',
                 items: [
                     { name: 'Karlovačko', description: '' },
                     { name: 'Budwieser', description: '' },
@@ -1468,18 +1496,18 @@ const drinksData = {
                 ]
             },
             {
-                name: 'Wine',
+                name: 'Bor',
                 items: [
-                    { name: 'Table wine - 0.10 l', description: '' },
-                    { name: 'Table wine 0.20 l', description: '' },
-                    { name: 'Table wine - 0.25 l', description: '' },
-                    { name: 'Table wine - 0.50 l', description: '' },
-                    { name: 'Table wine - 1 l', description: '' },
-                    { name: 'White wine (table) - 1 l', description: '' }
+                    { name: 'Asztali bor – 0,10 l', description: '' },
+                    { name: 'Asztali bor – 0,20 l', description: '' },
+                    { name: 'Asztali bor – 0,25 l', description: '' },
+                    { name: 'Asztali bor – 0,50 l', description: '' },
+                    { name: 'Asztali bor – 1 l', description: '' },
+                    { name: 'Fehérbor (asztali bor) - 1 l', description: '' }
                 ]
             },
             {
-                name: 'Liqueurs - 0.03 l',
+                name: 'Likőrök - 0,03 l',
                 items: [
                     { name: 'Pelinkovac', description: '' },
                     { name: 'Amaro', description: '' },
@@ -1490,14 +1518,18 @@ const drinksData = {
                 ]
             },
             {
-                name: 'Spirits - 0.03 l',
+                name: 'Rövid italok - 0,03 l',
                 items: [
                     { name: 'Stock', description: '' },
-                    { name: 'Vodka', description: '' },
+                    { name: 'Wodka', description: '' },
                     { name: 'Jack Daniels', description: '' },
-                    { name: 'Baccardi rum', description: '' },
-                    { name: 'Gin (imported)', description: '' },
-                    { name: 'Rakhia - 0,03 l', description: '' },
+                    { name: 'Bacardi Rum', description: '' },
+                    { name: 'Gin (importato)', description: '' }
+                ]
+            },
+            {
+                name: 'Rakija - 0,03 l',
+                items: [
                     { name: 'Lozovača', description: '' },
                     { name: 'Travarica', description: '' },
                     { name: 'Šljivovica', description: '' },
@@ -1505,15 +1537,14 @@ const drinksData = {
                 ]
             },
             {
-                name: 'Hot drinks',
+                name: 'Meleg italok',
                 items: [
                     { name: 'Espresso', description: '' },
                     { name: 'Macchiato', description: '' },
-                    { name: 'Capuccino', description: '' },
-                    { name: 'White coffee', description: '' },
-                    { name: 'Coffee with cream', description: '' },
-                    { name: 'Milk', description: '' },
-                    { name: 'Tea', description: '' }
+                    { name: 'Cappuccino', description: '' },
+                    { name: 'Fehér kávé', description: '' },
+                    { name: 'Kávé tejszínhabbal', description: '' },
+                    { name: 'Tej', description: '' }
                 ]
             }
         ]
@@ -1667,6 +1698,9 @@ function updateMenuToggleButtonText(lang) {
     } else if (lang === 'it') {
         if (foodBtn) foodBtn.textContent = 'Piatti';
         if (drinksBtn) drinksBtn.textContent = 'Bevande';
+    } else if (lang === 'hu') {
+        if (foodBtn) foodBtn.textContent = 'Étlap';
+        if (drinksBtn) drinksBtn.textContent = 'Italok';
     } else {
         if (foodBtn) foodBtn.textContent = 'Food';
         if (drinksBtn) drinksBtn.textContent = 'Beverages';
