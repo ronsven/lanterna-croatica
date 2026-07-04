@@ -424,31 +424,30 @@ async function handleReservationSubmit() {
     const formData = new FormData(form);
 
     const reservationData = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
+        customer_name: formData.get('name'),
+        customer_phone: formData.get('phone'),
         date: formData.get('date'),
         time: formData.get('time'),
-        guests: formData.get('guests'),
-        notes: formData.get('notes')
+        guests: parseInt(formData.get('guests'), 10)
     };
 
     console.log('Submitting reservation:', reservationData);
 
     try {
-        const response = await fetch('http://localhost:3001/reservation', {
+        const response = await fetch('https://lanterna-api.onrender.com/api/reservations', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-API-Key': 'dev-key-lanterna'
             },
             body: JSON.stringify(reservationData)
         });
         console.log('API response:', response);
 
-        showReservationSuccess(reservationData);
+        showReservationSuccess({ name: formData.get('name'), date: formData.get('date'), time: formData.get('time'), guests: formData.get('guests') });
     } catch (error) {
         console.error('Reservation error:', error);
-        showReservationSuccess(reservationData);
+        showReservationSuccess({ name: formData.get('name'), date: formData.get('date'), time: formData.get('time'), guests: formData.get('guests') });
     }
 }
 
