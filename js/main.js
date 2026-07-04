@@ -8,6 +8,8 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduce-motion: reduce)'
 // ============================================
 // RESERVATION MODAL MANAGEMENT
 // ============================================
+let isSubmittingReservation = false;
+
 function openReservationModal() {
     const modal = document.getElementById('reservation-modal');
     modal.classList.add('active');
@@ -59,10 +61,19 @@ function setupReservationModal() {
         }
     });
 
-    // Form submission
+    // Form submission (with guard against duplicate submissions)
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        await handleReservationSubmit();
+        if (isSubmittingReservation) {
+            console.warn('Submission already in progress, ignoring duplicate submit');
+            return;
+        }
+        isSubmittingReservation = true;
+        try {
+            await handleReservationSubmit();
+        } finally {
+            isSubmittingReservation = false;
+        }
     });
 
     // Setup calendar picker
