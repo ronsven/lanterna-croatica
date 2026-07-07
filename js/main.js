@@ -430,13 +430,27 @@ function initializeCustomDropdowns() {
     });
 }
 
+function normalizePhoneNumber(phone) {
+    if (!phone) return phone;
+    phone = phone.trim();
+    // If starts with 0, replace with +385 (Croatian country code)
+    if (phone.startsWith('0')) {
+        return '+385' + phone.slice(1);
+    }
+    // If doesn't start with +, assume Croatian and add +385
+    if (!phone.startsWith('+')) {
+        return '+385' + phone;
+    }
+    return phone;
+}
+
 async function handleReservationSubmit() {
     const form = document.getElementById('reservation-form');
     const formData = new FormData(form);
 
     const reservationData = {
         customer_name: formData.get('name'),
-        customer_phone: formData.get('phone'),
+        customer_phone: normalizePhoneNumber(formData.get('phone')),
         date: formData.get('date'),
         time: formData.get('time'),
         guests: parseInt(formData.get('guests'), 10)
