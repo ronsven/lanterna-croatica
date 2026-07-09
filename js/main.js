@@ -1769,6 +1769,7 @@ function renderMenu(lang, menuType = 'food') {
                     nameEl.textContent = subItem.name;
 
                     infoDiv.appendChild(nameEl);
+                    subItemDiv.appendChild(infoDiv);
 
                     if (subItem.price) {
                         const priceEl = document.createElement('div');
@@ -1777,7 +1778,6 @@ function renderMenu(lang, menuType = 'food') {
                         subItemDiv.appendChild(priceEl);
                     }
 
-                    subItemDiv.appendChild(infoDiv);
                     subItemsDiv.appendChild(subItemDiv);
                 });
 
