@@ -1336,72 +1336,72 @@ const drinksData = {
             {
                 name: 'Non-alcoholic drinks',
                 items: [
-                    { name: 'Juice - 0.20 l (strawberry, blackcurrant, apricot, pear)', description: '' },
-                    { name: 'Cedevita - 0.20 l', description: '' },
-                    { name: 'Iced tea - 0.20 l', description: '' },
-                    { name: 'Coca Cola; Fanta; Sprite, Schweppes - 0.25 l bottle', description: '' },
-                    { name: 'Toco juice', description: '' },
-                    { name: 'Hidra - 0.5 l bottle', description: '' },
-                    { name: 'Mineral water - bottle', description: '' },
-                    { name: 'Mineral water - 1 l bottle', description: '' },
-                    { name: 'Still water - bottle', description: '' }
+                    { name: 'Juice - 0.20 l (strawberry, blackcurrant, apricot, pear)', description: '', price: '3.50' },
+                    { name: 'Cedevita - 0.20 l', description: '', price: '3.20' },
+                    { name: 'Iced tea - 0.20 l', description: '', price: '3.60' },
+                    { name: 'Coca Cola; Fanta; Sprite, Schweppes - 0.25 l bottle', description: '', price: '3.60' },
+                    { name: 'Toco juice', description: '', price: '3.60' },
+                    { name: 'Hidra - 0.5 l bottle', description: '', price: '4.30' },
+                    { name: 'Mineral water - bottle', description: '', price: '4' },
+                    { name: 'Mineral water - 1 l bottle', description: '', price: '4' },
+                    { name: 'Still water - bottle', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Beers',
                 items: [
-                    { name: 'Karlovačko', description: '' },
-                    { name: 'Budwieser', description: '' },
-                    { name: 'Heineken', description: '' }
+                    { name: 'Karlovačko', description: '', price: '3.80' },
+                    { name: 'Budwieser', description: '', price: '4' },
+                    { name: 'Heineken', description: '', price: '4' }
                 ]
             },
             {
                 name: 'Wine',
                 items: [
-                    { name: 'Table wine - 0.10 l', description: '' },
-                    { name: 'Table wine 0.20 l', description: '' },
-                    { name: 'Table wine - 0.25 l', description: '' },
-                    { name: 'Table wine - 0.50 l', description: '' },
-                    { name: 'Table wine - 1 l', description: '' },
-                    { name: 'White wine (table) - 1 l', description: '' }
+                    { name: 'Table wine - 0.10 l', description: '', price: '2' },
+                    { name: 'Table wine 0.20 l', description: '', price: '3.50' },
+                    { name: 'Table wine - 0.25 l', description: '', price: '4' },
+                    { name: 'Table wine - 0.50 l', description: '', price: '7' },
+                    { name: 'Table wine - 1 l', description: '', price: '13' },
+                    { name: 'White wine (table) - 1 l', description: '', price: '13' }
                 ]
             },
             {
                 name: 'Liqueurs - 0.03 l',
                 items: [
-                    { name: 'Pelinkovac', description: '' },
-                    { name: 'Amaro', description: '' },
-                    { name: 'Jägermeister', description: '' },
-                    { name: 'Baileys', description: '' },
-                    { name: 'Teranino', description: '' },
-                    { name: 'Aperol sprite', description: '' }
+                    { name: 'Pelinkovac', description: '', price: '3' },
+                    { name: 'Amaro', description: '', price: '3' },
+                    { name: 'Jägermeister', description: '', price: '3' },
+                    { name: 'Baileys', description: '', price: '3' },
+                    { name: 'Teranino', description: '', price: '3' },
+                    { name: 'Aperol sprite', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Spirits - 0.03 l',
                 items: [
-                    { name: 'Stock', description: '' },
-                    { name: 'Vodka', description: '' },
-                    { name: 'Jack Daniels', description: '' },
-                    { name: 'Baccardi rum', description: '' },
-                    { name: 'Gin (imported)', description: '' },
-                    { name: 'Rakhia - 0,03 l', description: '' },
-                    { name: 'Lozovača', description: '' },
-                    { name: 'Travarica', description: '' },
-                    { name: 'Šljivovica', description: '' },
-                    { name: 'Medica', description: '' }
+                    { name: 'Stock', description: '', price: '3' },
+                    { name: 'Vodka', description: '', price: '3' },
+                    { name: 'Jack Daniels', description: '', price: '3' },
+                    { name: 'Baccardi rum', description: '', price: '3' },
+                    { name: 'Gin (imported)', description: '', price: '3' },
+                    { name: 'Rakhia - 0,03 l', description: '', price: '3' },
+                    { name: 'Lozovača', description: '', price: '3' },
+                    { name: 'Travarica', description: '', price: '3' },
+                    { name: 'Šljivovica', description: '', price: '3' },
+                    { name: 'Medica', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Hot drinks',
                 items: [
-                    { name: 'Espresso', description: '' },
-                    { name: 'Macchiato', description: '' },
-                    { name: 'Capuccino', description: '' },
-                    { name: 'White coffee', description: '' },
-                    { name: 'Coffee with cream', description: '' },
-                    { name: 'Milk', description: '' },
-                    { name: 'Tea', description: '' }
+                    { name: 'Espresso', description: '', price: '1.70' },
+                    { name: 'Macchiato', description: '', price: '1.80' },
+                    { name: 'Capuccino', description: '', price: '2.40' },
+                    { name: 'White coffee', description: '', price: '2.60' },
+                    { name: 'Coffee with cream', description: '', price: '3' },
+                    { name: 'Milk', description: '', price: '1.20' },
+                    { name: 'Tea', description: '', price: '2.40' }
                 ]
             }
         ]
@@ -1413,71 +1413,71 @@ const drinksData = {
             {
                 name: 'Bezalkoholna pića',
                 items: [
-                    { name: 'Sok - 0,20 l (jagoda, crni ribiz, marelica, kruška)', description: '' },
-                    { name: 'Cedevita - 0,20 l', description: '' },
-                    { name: 'Ledeni čaj - 0,20 l', description: '' },
-                    { name: 'Coca Cola; Fanta; Sprite, Schweppes - boca 0,25 l', description: '' },
-                    { name: 'Toco', description: '' },
-                    { name: 'Hidra - boca 0,5 l', description: '' },
-                    { name: 'Mineralna voda - boca', description: '' },
-                    { name: 'Mineralna voda - boca 1 l', description: '' },
-                    { name: 'Negazirana voda - boca', description: '' }
+                    { name: 'Sok - 0,20 l (jagoda, crni ribiz, marelica, kruška)', description: '', price: '3.50' },
+                    { name: 'Cedevita - 0,20 l', description: '', price: '3.20' },
+                    { name: 'Ledeni čaj - 0,20 l', description: '', price: '3.60' },
+                    { name: 'Coca Cola; Fanta; Sprite, Schweppes - boca 0,25 l', description: '', price: '3.60' },
+                    { name: 'Toco', description: '', price: '3.60' },
+                    { name: 'Hidra - boca 0,5 l', description: '', price: '4.30' },
+                    { name: 'Mineralna voda - boca', description: '', price: '4' },
+                    { name: 'Mineralna voda - boca 1 l', description: '', price: '4' },
+                    { name: 'Negazirana voda - boca', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Pivo',
                 items: [
-                    { name: 'Karlovačko', description: '' },
-                    { name: 'Budwieser', description: '' },
-                    { name: 'Heineken', description: '' }
+                    { name: 'Karlovačko', description: '', price: '3.80' },
+                    { name: 'Budwieser', description: '', price: '4' },
+                    { name: 'Heineken', description: '', price: '4' }
                 ]
             },
             {
                 name: 'Vino',
                 items: [
-                    { name: 'Stolno vino - 0,10 l', description: '' },
-                    { name: 'Stolno vino 0,20 l', description: '' },
-                    { name: 'Stolno vino - 0,25 l', description: '' },
-                    { name: 'Stolno vino - 0,50 l', description: '' },
-                    { name: 'Stolno vino - 1 l', description: '' },
-                    { name: 'Bijelo vino (stolno) - 1 l', description: '' }
+                    { name: 'Stolno vino - 0,10 l', description: '', price: '2' },
+                    { name: 'Stolno vino 0,20 l', description: '', price: '3.50' },
+                    { name: 'Stolno vino - 0,25 l', description: '', price: '4' },
+                    { name: 'Stolno vino - 0,50 l', description: '', price: '7' },
+                    { name: 'Stolno vino - 1 l', description: '', price: '13' },
+                    { name: 'Bijelo vino (stolno) - 1 l', description: '', price: '13' }
                 ]
             },
             {
                 name: 'Likeri - 0,03 l',
                 items: [
-                    { name: 'Pelinkovac', description: '' },
-                    { name: 'Amaro', description: '' },
-                    { name: 'Jägermeister', description: '' },
-                    { name: 'Baileys', description: '' },
-                    { name: 'Teranino', description: '' },
-                    { name: 'Aperol sprite', description: '' }
+                    { name: 'Pelinkovac', description: '', price: '3' },
+                    { name: 'Amaro', description: '', price: '3' },
+                    { name: 'Jägermeister', description: '', price: '3' },
+                    { name: 'Baileys', description: '', price: '3' },
+                    { name: 'Teranino', description: '', price: '3' },
+                    { name: 'Aperol sprite', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Žestoka pića - 0,03 l',
                 items: [
-                    { name: 'Stock', description: '' },
-                    { name: 'Vodka', description: '' },
-                    { name: 'Jack Daniels', description: '' },
-                    { name: 'Baccardi rum', description: '' },
-                    { name: 'Gin (uvozni)', description: '' },
-                    { name: 'Lozovača', description: '' },
-                    { name: 'Travarica', description: '' },
-                    { name: 'Šljivovica', description: '' },
-                    { name: 'Medica', description: '' }
+                    { name: 'Stock', description: '', price: '3' },
+                    { name: 'Vodka', description: '', price: '3' },
+                    { name: 'Jack Daniels', description: '', price: '3' },
+                    { name: 'Baccardi rum', description: '', price: '3' },
+                    { name: 'Gin (uvozni)', description: '', price: '3' },
+                    { name: 'Lozovača', description: '', price: '3' },
+                    { name: 'Travarica', description: '', price: '3' },
+                    { name: 'Šljivovica', description: '', price: '3' },
+                    { name: 'Medica', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Topli napitci',
                 items: [
-                    { name: 'Espresso', description: '' },
-                    { name: 'Macchiato', description: '' },
-                    { name: 'Capuccino', description: '' },
-                    { name: 'Bijela kava', description: '' },
-                    { name: 'Kava sa šlagom', description: '' },
-                    { name: 'Mlijeko', description: '' },
-                    { name: 'Čaj', description: '' }
+                    { name: 'Espresso', description: '', price: '1.70' },
+                    { name: 'Macchiato', description: '', price: '1.80' },
+                    { name: 'Capuccino', description: '', price: '2.40' },
+                    { name: 'Bijela kava', description: '', price: '2.60' },
+                    { name: 'Kava sa šlagom', description: '', price: '3' },
+                    { name: 'Mlijeko', description: '', price: '1.20' },
+                    { name: 'Čaj', description: '', price: '2.40' }
                 ]
             }
         ]
@@ -1489,71 +1489,71 @@ const drinksData = {
             {
                 name: 'Alkoholfreie Getränke',
                 items: [
-                    { name: 'Saft – 0,20 l (Erdbeere, Schwarze Johannisbeere, Aprikose, Birne)', description: '' },
-                    { name: 'Cedevita – 0,20 l', description: '' },
-                    { name: 'Eistee – 0,20 l', description: '' },
-                    { name: 'Coca-Cola, Fanta, Sprite, Schweppes – 0,25-l-Flasche', description: '' },
-                    { name: 'Toco-Saft', description: '' },
-                    { name: 'Hidra – 0,5-l-Flasche', description: '' },
-                    { name: 'Mineralwasser – Flasche', description: '' },
-                    { name: 'Mineralwasser – 1-l-Flasche', description: '' },
-                    { name: 'Stilles Wasser – Flasche', description: '' }
+                    { name: 'Saft – 0,20 l (Erdbeere, Schwarze Johannisbeere, Aprikose, Birne)', description: '', price: '3.50' },
+                    { name: 'Cedevita – 0,20 l', description: '', price: '3.20' },
+                    { name: 'Eistee – 0,20 l', description: '', price: '3.60' },
+                    { name: 'Coca-Cola, Fanta, Sprite, Schweppes – 0,25-l-Flasche', description: '', price: '3.60' },
+                    { name: 'Toco-Saft', description: '', price: '3.60' },
+                    { name: 'Hidra – 0,5-l-Flasche', description: '', price: '4.30' },
+                    { name: 'Mineralwasser – Flasche', description: '', price: '4' },
+                    { name: 'Mineralwasser – 1-l-Flasche', description: '', price: '4' },
+                    { name: 'Stilles Wasser – Flasche', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Biere',
                 items: [
-                    { name: 'Karlovačko', description: '' },
-                    { name: 'Budwieser', description: '' },
-                    { name: 'Heineken', description: '' }
+                    { name: 'Karlovačko', description: '', price: '3.80' },
+                    { name: 'Budwieser', description: '', price: '4' },
+                    { name: 'Heineken', description: '', price: '4' }
                 ]
             },
             {
                 name: 'Wein',
                 items: [
-                    { name: 'Tafelwein – 0,10 l', description: '' },
-                    { name: 'Tafelwein – 0,20 l', description: '' },
-                    { name: 'Tafelwein – 0,25 l', description: '' },
-                    { name: 'Tafelwein – 0,50 l', description: '' },
-                    { name: 'Tafelwein – 1 l', description: '' },
-                    { name: 'Weißwein (Tafelwein) – 1 l', description: '' }
+                    { name: 'Tafelwein – 0,10 l', description: '', price: '2' },
+                    { name: 'Tafelwein – 0,20 l', description: '', price: '3.50' },
+                    { name: 'Tafelwein – 0,25 l', description: '', price: '4' },
+                    { name: 'Tafelwein – 0,50 l', description: '', price: '7' },
+                    { name: 'Tafelwein – 1 l', description: '', price: '13' },
+                    { name: 'Weißwein (Tafelwein) – 1 l', description: '', price: '13' }
                 ]
             },
             {
                 name: 'Liköre - 0,03 l',
                 items: [
-                    { name: 'Pelinkovac', description: '' },
-                    { name: 'Amaro', description: '' },
-                    { name: 'Jägermeister', description: '' },
-                    { name: 'Baileys', description: '' },
-                    { name: 'Teranino', description: '' },
-                    { name: 'Aperol sprite', description: '' }
+                    { name: 'Pelinkovac', description: '', price: '3' },
+                    { name: 'Amaro', description: '', price: '3' },
+                    { name: 'Jägermeister', description: '', price: '3' },
+                    { name: 'Baileys', description: '', price: '3' },
+                    { name: 'Teranino', description: '', price: '3' },
+                    { name: 'Aperol sprite', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Spirituosen - 0,03 l',
                 items: [
-                    { name: 'Stock', description: '' },
-                    { name: 'Wodka', description: '' },
-                    { name: 'Jack Daniels', description: '' },
-                    { name: 'Baccardi Rum', description: '' },
-                    { name: 'Gin (importiert)', description: '' },
-                    { name: 'Lozovača', description: '' },
-                    { name: 'Travarica', description: '' },
-                    { name: 'Šljivovica', description: '' },
-                    { name: 'Medica', description: '' }
+                    { name: 'Stock', description: '', price: '3' },
+                    { name: 'Wodka', description: '', price: '3' },
+                    { name: 'Jack Daniels', description: '', price: '3' },
+                    { name: 'Baccardi Rum', description: '', price: '3' },
+                    { name: 'Gin (importiert)', description: '', price: '3' },
+                    { name: 'Lozovača', description: '', price: '3' },
+                    { name: 'Travarica', description: '', price: '3' },
+                    { name: 'Šljivovica', description: '', price: '3' },
+                    { name: 'Medica', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Heiße Getränke',
                 items: [
-                    { name: 'Espresso', description: '' },
-                    { name: 'Macchiato', description: '' },
-                    { name: 'Capuccino', description: '' },
-                    { name: 'Weiß kaffee', description: '' },
-                    { name: 'Kaffee mit Schlag', description: '' },
-                    { name: 'Milch', description: '' },
-                    { name: 'Tee', description: '' }
+                    { name: 'Espresso', description: '', price: '1.70' },
+                    { name: 'Macchiato', description: '', price: '1.80' },
+                    { name: 'Capuccino', description: '', price: '2.40' },
+                    { name: 'Weiß kaffee', description: '', price: '2.60' },
+                    { name: 'Kaffee mit Schlag', description: '', price: '3' },
+                    { name: 'Milch', description: '', price: '1.20' },
+                    { name: 'Tee', description: '', price: '2.40' }
                 ]
             }
         ]
@@ -1565,75 +1565,75 @@ const drinksData = {
             {
                 name: 'Alkoholmentes italok',
                 items: [
-                    { name: 'Gyümölcslé – 0,20 l (Eper, Fekete ribizli, Sárgabarack, Körte)', description: '' },
-                    { name: 'Cedevita – 0,20 l', description: '' },
-                    { name: 'Jeges tea - 0,20 l', description: '' },
-                    { name: 'Coca-Cola, Fanta, Sprite, Schweppes – 0,25 l-es üveg', description: '' },
-                    { name: 'Toco Juice', description: '' },
-                    { name: 'Hidra - 0,5 l-es üveg', description: '' },
-                    { name: 'Ásványvíz - üveg', description: '' },
-                    { name: 'Ásványvíz - 1 l-es üveg', description: '' },
-                    { name: 'Szénsavmentes víz – üveg', description: '' }
+                    { name: 'Gyümölcslé – 0,20 l (Eper, Fekete ribizli, Sárgabarack, Körte)', description: '', price: '3.50' },
+                    { name: 'Cedevita – 0,20 l', description: '', price: '3.20' },
+                    { name: 'Jeges tea - 0,20 l', description: '', price: '3.60' },
+                    { name: 'Coca-Cola, Fanta, Sprite, Schweppes – 0,25 l-es üveg', description: '', price: '3.60' },
+                    { name: 'Toco Juice', description: '', price: '3.60' },
+                    { name: 'Hidra - 0,5 l-es üveg', description: '', price: '4.30' },
+                    { name: 'Ásványvíz - üveg', description: '', price: '4' },
+                    { name: 'Ásványvíz - 1 l-es üveg', description: '', price: '4' },
+                    { name: 'Szénsavmentes víz – üveg', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Sör',
                 items: [
-                    { name: 'Karlovačko', description: '' },
-                    { name: 'Budwieser', description: '' },
-                    { name: 'Heineken', description: '' }
+                    { name: 'Karlovačko', description: '', price: '3.80' },
+                    { name: 'Budwieser', description: '', price: '4' },
+                    { name: 'Heineken', description: '', price: '4' }
                 ]
             },
             {
                 name: 'Bor',
                 items: [
-                    { name: 'Asztali bor – 0,10 l', description: '' },
-                    { name: 'Asztali bor – 0,20 l', description: '' },
-                    { name: 'Asztali bor – 0,25 l', description: '' },
-                    { name: 'Asztali bor – 0,50 l', description: '' },
-                    { name: 'Asztali bor – 1 l', description: '' },
-                    { name: 'Fehérbor (asztali bor) - 1 l', description: '' }
+                    { name: 'Asztali bor – 0,10 l', description: '', price: '2' },
+                    { name: 'Asztali bor – 0,20 l', description: '', price: '3.50' },
+                    { name: 'Asztali bor – 0,25 l', description: '', price: '4' },
+                    { name: 'Asztali bor – 0,50 l', description: '', price: '7' },
+                    { name: 'Asztali bor – 1 l', description: '', price: '13' },
+                    { name: 'Fehérbor (asztali bor) - 1 l', description: '', price: '13' }
                 ]
             },
             {
                 name: 'Likőrök - 0,03 l',
                 items: [
-                    { name: 'Pelinkovac', description: '' },
-                    { name: 'Amaro', description: '' },
-                    { name: 'Jägermeister', description: '' },
-                    { name: 'Baileys', description: '' },
-                    { name: 'Teranino', description: '' },
-                    { name: 'Aperol sprite', description: '' }
+                    { name: 'Pelinkovac', description: '', price: '3' },
+                    { name: 'Amaro', description: '', price: '3' },
+                    { name: 'Jägermeister', description: '', price: '3' },
+                    { name: 'Baileys', description: '', price: '3' },
+                    { name: 'Teranino', description: '', price: '3' },
+                    { name: 'Aperol sprite', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Rövid italok - 0,03 l',
                 items: [
-                    { name: 'Stock', description: '' },
-                    { name: 'Wodka', description: '' },
-                    { name: 'Jack Daniels', description: '' },
-                    { name: 'Bacardi Rum', description: '' },
-                    { name: 'Gin (importato)', description: '' }
+                    { name: 'Stock', description: '', price: '3' },
+                    { name: 'Wodka', description: '', price: '3' },
+                    { name: 'Jack Daniels', description: '', price: '3' },
+                    { name: 'Bacardi Rum', description: '', price: '3' },
+                    { name: 'Gin (importato)', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Rakija - 0,03 l',
                 items: [
-                    { name: 'Lozovača', description: '' },
-                    { name: 'Travarica', description: '' },
-                    { name: 'Šljivovica', description: '' },
-                    { name: 'Medica', description: '' }
+                    { name: 'Lozovača', description: '', price: '3' },
+                    { name: 'Travarica', description: '', price: '3' },
+                    { name: 'Šljivovica', description: '', price: '3' },
+                    { name: 'Medica', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Meleg italok',
                 items: [
-                    { name: 'Espresso', description: '' },
-                    { name: 'Macchiato', description: '' },
-                    { name: 'Cappuccino', description: '' },
-                    { name: 'Fehér kávé', description: '' },
-                    { name: 'Kávé tejszínhabbal', description: '' },
-                    { name: 'Tej', description: '' }
+                    { name: 'Espresso', description: '', price: '1.70' },
+                    { name: 'Macchiato', description: '', price: '1.80' },
+                    { name: 'Cappuccino', description: '', price: '2.40' },
+                    { name: 'Fehér kávé', description: '', price: '2.60' },
+                    { name: 'Kávé tejszínhabbal', description: '', price: '3' },
+                    { name: 'Tej', description: '', price: '1.20' }
                 ]
             }
         ]
@@ -1645,72 +1645,72 @@ const drinksData = {
             {
                 name: 'Bevande analcoliche',
                 items: [
-                    { name: 'Succo di frutta – 0,20 l (Fragola, Ribes nero, Albicocca, Pera)', description: '' },
-                    { name: 'Cedevita – 0,20 l', description: '' },
-                    { name: 'Tè freddo – 0,20 l', description: '' },
-                    { name: 'Coca-Cola, Fanta, Sprite, Schweppes – bottiglia da 0,25 l', description: '' },
-                    { name: 'Succo Toco', description: '' },
-                    { name: 'Hidra – bottiglia da 0,5 l', description: '' },
-                    { name: 'Acqua minerale – bottiglia', description: '' },
-                    { name: 'Acqua minerale – bottiglia da 1 l', description: '' },
-                    { name: 'Acqua naturale – bottiglia', description: '' }
+                    { name: 'Succo di frutta – 0,20 l (Fragola, Ribes nero, Albicocca, Pera)', description: '', price: '3.50' },
+                    { name: 'Cedevita – 0,20 l', description: '', price: '3.20' },
+                    { name: 'Tè freddo – 0,20 l', description: '', price: '3.60' },
+                    { name: 'Coca-Cola, Fanta, Sprite, Schweppes – bottiglia da 0,25 l', description: '', price: '3.60' },
+                    { name: 'Succo Toco', description: '', price: '3.60' },
+                    { name: 'Hidra – bottiglia da 0,5 l', description: '', price: '4.30' },
+                    { name: 'Acqua minerale – bottiglia', description: '', price: '4' },
+                    { name: 'Acqua minerale – bottiglia da 1 l', description: '', price: '4' },
+                    { name: 'Acqua naturale – bottiglia', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Birre',
                 items: [
-                    { name: 'Karlovačko', description: '' },
-                    { name: 'Budwieser', description: '' },
-                    { name: 'Heineken', description: '' }
+                    { name: 'Karlovačko', description: '', price: '3.80' },
+                    { name: 'Budwieser', description: '', price: '4' },
+                    { name: 'Heineken', description: '', price: '4' }
                 ]
             },
             {
                 name: 'Vino',
                 items: [
-                    { name: 'Vino da tavola – 0,10 l', description: '' },
-                    { name: 'Vino da tavola – 0,20 l', description: '' },
-                    { name: 'Vino da tavola – 0,25 l', description: '' },
-                    { name: 'Vino da tavola – 0,50 l', description: '' },
-                    { name: 'Vino da tavola – 1 l', description: '' },
-                    { name: 'Vino bianco (vino da tavola) – 1 l', description: '' }
+                    { name: 'Vino da tavola – 0,10 l', description: '', price: '2' },
+                    { name: 'Vino da tavola – 0,20 l', description: '', price: '3.50' },
+                    { name: 'Vino da tavola – 0,25 l', description: '', price: '4' },
+                    { name: 'Vino da tavola – 0,50 l', description: '', price: '7' },
+                    { name: 'Vino da tavola – 1 l', description: '', price: '13' },
+                    { name: 'Vino bianco (vino da tavola) – 1 l', description: '', price: '13' }
                 ]
             },
             {
                 name: 'Liquori - 0,03 l',
                 items: [
-                    { name: 'Pelinkovac', description: '' },
-                    { name: 'Amaro', description: '' },
-                    { name: 'Jägermeister', description: '' },
-                    { name: 'Baileys', description: '' },
-                    { name: 'Teranino', description: '' },
-                    { name: 'Aperol sprite', description: '' }
+                    { name: 'Pelinkovac', description: '', price: '3' },
+                    { name: 'Amaro', description: '', price: '3' },
+                    { name: 'Jägermeister', description: '', price: '3' },
+                    { name: 'Baileys', description: '', price: '3' },
+                    { name: 'Teranino', description: '', price: '3' },
+                    { name: 'Aperol sprite', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Alcolici - 0,03 l',
                 items: [
-                    { name: 'Stock', description: '' },
-                    { name: 'Wodka', description: '' },
-                    { name: 'Jack Daniels', description: '' },
-                    { name: 'Baccardi Rum', description: '' },
-                    { name: 'Gin (importato)', description: '' },
-                    { name: 'Rakhia - 0,03 l', description: '' },
-                    { name: 'Lozovača', description: '' },
-                    { name: 'Travarica', description: '' },
-                    { name: 'Šljivovica', description: '' },
-                    { name: 'Medica', description: '' }
+                    { name: 'Stock', description: '', price: '3' },
+                    { name: 'Wodka', description: '', price: '3' },
+                    { name: 'Jack Daniels', description: '', price: '3' },
+                    { name: 'Baccardi Rum', description: '', price: '3' },
+                    { name: 'Gin (importato)', description: '', price: '3' },
+                    { name: 'Rakhia - 0,03 l', description: '', price: '3' },
+                    { name: 'Lozovača', description: '', price: '3' },
+                    { name: 'Travarica', description: '', price: '3' },
+                    { name: 'Šljivovica', description: '', price: '3' },
+                    { name: 'Medica', description: '', price: '3' }
                 ]
             },
             {
                 name: 'Bevande calde',
                 items: [
-                    { name: 'Espresso', description: '' },
-                    { name: 'Macchiato', description: '' },
-                    { name: 'Capuccino', description: '' },
-                    { name: 'Caffè bianco', description: '' },
-                    { name: 'Caffè con panna montata', description: '' },
-                    { name: 'Latte', description: '' },
-                    { name: 'Tè', description: '' }
+                    { name: 'Espresso', description: '', price: '1.70' },
+                    { name: 'Macchiato', description: '', price: '1.80' },
+                    { name: 'Capuccino', description: '', price: '2.40' },
+                    { name: 'Caffè bianco', description: '', price: '2.60' },
+                    { name: 'Caffè con panna montata', description: '', price: '3' },
+                    { name: 'Latte', description: '', price: '1.20' },
+                    { name: 'Tè', description: '', price: '2.40' }
                 ]
             }
         ]
