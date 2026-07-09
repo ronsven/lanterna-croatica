@@ -689,58 +689,58 @@ const menuData = {
             {
                 name: 'Cold appetizers',
                 items: [
-                    { name: 'Carpaccio (fish, beef)', description: '' },
-                    { name: 'Dalmatian prosciutto', description: '' },
-                    { name: 'Sheep cheese', description: '' },
-                    { name: 'Octopus salad', description: '' }
+                    { name: 'Carpaccio (fish, beef)', price: 15 },
+                    { name: 'Dalmatian prosciutto', price: 15 },
+                    { name: 'Sheep cheese', price: 15 },
+                    { name: 'Octopus salad', price: 16 }
                 ]
             },
             {
                 name: 'Hot appetizers',
                 items: [
-                    { name: 'Pasta Bolognese', description: '' },
-                    { name: 'Seafood Pasta', description: '' },
-                    { name: 'Pasta Carbonara', description: '' }
+                    { name: 'Pasta Bolognese', price: 10 },
+                    { name: 'Seafood Pasta', price: 18 },
+                    { name: 'Pasta Carbonara', price: 15 }
                 ]
             },
             {
                 name: 'Meat dishes',
                 items: [
-                    { name: 'Steak (pork, veal)', description: '' },
-                    { name: 'Fillet (pork, beef, chicken)', description: '' },
-                    { name: 'Veal from the bread oven (sliced veal shank)', description: '' },
-                    { name: 'Suckling from the bread oven', description: '' }
+                    { name: 'Steak (pork, veal)', price: 15 },
+                    { name: 'Fillet (pork, beef, chicken)', price: 12 },
+                    { name: 'Veal from the bread oven (sliced veal shank)', price: 25 },
+                    { name: 'Suckling from the bread oven', price: 24 }
                 ]
             },
             {
                 name: 'Fish, crabs, shellfish',
                 items: [
-                    { name: 'Squid - fried', description: '' },
-                    { name: 'Squid - grilled', description: '' },
-                    { name: 'Sea bass in a crust (from the bread oven)', description: '' },
-                    { name: 'Clams on the bazar - 1 kg', description: '' },
-                    { name: 'Small fish - mix', description: '' },
-                    { name: 'Scallops (grilled)', description: '' },
-                    { name: 'Grilled shrimp - 1kg', description: '' },
-                    { name: 'Tuna steak', description: '' }
+                    { name: 'Squid - fried', price: 16 },
+                    { name: 'Squid - grilled', price: 16 },
+                    { name: 'Sea bass in a crust (from the bread oven)', price: 25 },
+                    { name: 'Clams on the bazar - 1 kg', price: 30 },
+                    { name: 'Small fish - mix', price: 10 },
+                    { name: 'Scallops (grilled)', price: 10 },
+                    { name: 'Grilled shrimp - 1kg', price: 85 },
+                    { name: 'Tuna steak', price: 18 }
                 ]
             },
             {
                 name: 'Soups',
                 items: [
-                    { name: 'Daily soup', description: '' },
+                    { name: 'Daily soup', price: 4 },
                     { name: 'Daily offer of ready meals', description: '' }
                 ]
             },
             {
                 name: 'Side dishes',
                 items: [
-                    { name: 'Fried potatoes', description: '' },
-                    { name: 'Boiled salted potatoes', description: '' },
-                    { name: 'Vegetables (grilled)', description: '' },
-                    { name: 'Swiss chard with potatoes', description: '' },
-                    { name: 'Baked potatoes', description: '' },
-                    { name: 'Cheese croquettes', description: '' }
+                    { name: 'Fried potatoes', price: 4 },
+                    { name: 'Boiled salted potatoes', price: 4 },
+                    { name: 'Vegetables (grilled)', price: 5 },
+                    { name: 'Swiss chard with potatoes', price: 5 },
+                    { name: 'Baked potatoes', price: 4 },
+                    { name: 'Cheese croquettes', price: 4 }
                 ]
             },
             {
@@ -759,33 +759,33 @@ const menuData = {
             {
                 name: 'Salads',
                 items: [
-                    { name: 'Season salad', description: '' },
-                    { name: 'Salad "Lanterna"', description: '' }
+                    { name: 'Season salad', price: 4 },
+                    { name: 'Salad "Lanterna"', price: 10 }
                 ]
             },
             {
                 name: 'Meal Accompaniments',
                 items: [
                     { name: 'Sauces', isCategory: true, items: [
-                        { name: 'Tomato sauce', description: '' },
-                        { name: 'Mayonnaise', description: '' },
-                        { name: 'Tartar sauce', description: '' },
-                        { name: 'Ajvar', description: '' },
-                        { name: 'Mustard', description: '' },
-                        { name: 'Cream', description: '' },
-                        { name: 'Parmesan', description: '' },
-                        { name: 'Peppers, olives, corn, mushrooms', description: '' }
+                        { name: 'Tomato sauce', price: 4 },
+                        { name: 'Mayonnaise', price: 4 },
+                        { name: 'Tartar sauce', price: 4 },
+                        { name: 'Ajvar', price: 4 },
+                        { name: 'Mustard', price: 4 },
+                        { name: 'Cream', price: 4 },
+                        { name: 'Parmesan', price: 5 },
+                        { name: 'Peppers, olives, corn, mushrooms', price: 5 }
                     ]}
                 ]
             },
             {
                 name: 'Deserts',
                 items: [
-                    { name: 'Tiramisu', description: '' },
-                    { name: 'Chocolate Surprise', description: '' },
-                    { name: 'Pancakes with Chocolate/Jam', description: '' },
-                    { name: 'Pancakes with Ice Cream', description: '' },
-                    { name: 'Ice Cream (portion)', description: '' }
+                    { name: 'Tiramisu', price: 8 },
+                    { name: 'Chocolate Surprise', price: 9 },
+                    { name: 'Pancakes with Chocolate/Jam', price: 6 },
+                    { name: 'Pancakes with Ice Cream', price: 7 },
+                    { name: 'Ice Cream (portion)', price: 6 }
                 ]
             }
         ]
@@ -908,58 +908,58 @@ const menuData = {
             {
                 name: 'Kalte Vorspeisen',
                 items: [
-                    { name: 'Carpaccio (Fisch, Rind)', description: '' },
-                    { name: 'Dalmatiner-Schinken', description: '' },
-                    { name: 'Schafskäse', description: '' },
-                    { name: 'Oktopussalat', description: '' }
+                    { name: 'Carpaccio (Fisch, Rind)', price: 15 },
+                    { name: 'Dalmatiner-Schinken', price: 15 },
+                    { name: 'Schafskäse', price: 15 },
+                    { name: 'Oktopussalat', price: 16 }
                 ]
             },
             {
                 name: 'Warme Vorspeisen',
                 items: [
-                    { name: 'Pasta Bolognese', description: '' },
-                    { name: 'Pasta mit Meeresfrüchten', description: '' },
-                    { name: 'Pasta Carbonara', description: '' }
+                    { name: 'Pasta Bolognese', price: 10 },
+                    { name: 'Pasta mit Meeresfrüchten', price: 18 },
+                    { name: 'Pasta Carbonara', price: 15 }
                 ]
             },
             {
                 name: 'Fleischgerichte',
                 items: [
-                    { name: 'Steak (Schwein, Kalb)', description: '' },
-                    { name: 'Filet (Schwein, Rind, Huhn)', description: '' },
-                    { name: 'Kalbsbraten (Kalbshaxe in Scheiben)', description: '' },
-                    { name: 'Spanferkel', description: '' }
+                    { name: 'Steak (Schwein, Kalb)', price: 15 },
+                    { name: 'Filet (Schwein, Rind, Huhn)', price: 12 },
+                    { name: 'Kalbsbraten (Kalbshaxe in Scheiben)', price: 25 },
+                    { name: 'Spanferkel', price: 24 }
                 ]
             },
             {
                 name: 'Fische, Krebse, Weichtiere',
                 items: [
-                    { name: 'Frittierte Calamari', description: '' },
-                    { name: 'Gegrillte Calamari', description: '' },
-                    { name: 'Panierter Wolfsbarsch (gebacken)', description: '' },
-                    { name: 'Venusmuscheln (1 kg)', description: '' },
-                    { name: 'Gemischte kleine Fische', description: '' },
-                    { name: 'Gegrillte Jakobsmuscheln', description: '' },
-                    { name: 'Gegrillte Garnelen (1 kg)', description: '' },
-                    { name: 'Thunfischsteak', description: '' }
+                    { name: 'Frittierte Calamari', price: 16 },
+                    { name: 'Gegrillte Calamari', price: 16 },
+                    { name: 'Panierter Wolfsbarsch (gebacken)', price: 25 },
+                    { name: 'Venusmuscheln (1 kg)', price: 30 },
+                    { name: 'Gemischte kleine Fische', price: 10 },
+                    { name: 'Gegrillte Jakobsmuscheln', price: 10 },
+                    { name: 'Gegrillte Garnelen (1 kg)', price: 85 },
+                    { name: 'Thunfischsteak', price: 18 }
                 ]
             },
             {
                 name: 'Suppen',
                 items: [
-                    { name: 'Tägliche Suppe', description: '' },
+                    { name: 'Tägliche Suppe', price: 4 },
                     { name: 'Auswahl an Fertiggerichten, die täglich wechselt', description: '' }
                 ]
             },
             {
                 name: 'Beilagen',
                 items: [
-                    { name: 'Bratkartoffeln', description: '' },
-                    { name: 'Gesalzene Kartoffeln', description: '' },
-                    { name: 'Gegrilltes Gemüse', description: '' },
-                    { name: 'Mangold mit Kartoffeln', description: '' },
-                    { name: 'Ofenkartoffeln', description: '' },
-                    { name: 'Käsekroketten', description: '' }
+                    { name: 'Bratkartoffeln', price: 4 },
+                    { name: 'Gesalzene Kartoffeln', price: 4 },
+                    { name: 'Gegrilltes Gemüse', price: 5 },
+                    { name: 'Mangold mit Kartoffeln', price: 5 },
+                    { name: 'Ofenkartoffeln', price: 4 },
+                    { name: 'Käsekroketten', price: 4 }
                 ]
             },
             {
@@ -978,33 +978,33 @@ const menuData = {
             {
                 name: 'Salate',
                 items: [
-                    { name: 'Salat würzen', description: '' },
-                    { name: 'Salat „Laterne"', description: '' }
+                    { name: 'Salat würzen', price: 4 },
+                    { name: 'Salat „Laterne"', price: 10 }
                 ]
             },
             {
                 name: 'Speisenzusätze',
                 items: [
                     { name: 'Saucen', isCategory: true, items: [
-                        { name: 'Tomatensauce', description: '' },
-                        { name: 'Mayonnaise', description: '' },
-                        { name: 'Remouladensauce', description: '' },
-                        { name: 'Ajvar', description: '' },
-                        { name: 'Senf', description: '' },
-                        { name: 'Sahne', description: '' },
-                        { name: 'Parmesan', description: '' },
-                        { name: 'Paprika, Oliven, Mais, Pilze', description: '' }
+                        { name: 'Tomatensauce', price: 4 },
+                        { name: 'Mayonnaise', price: 4 },
+                        { name: 'Remouladensauce', price: 4 },
+                        { name: 'Ajvar', price: 4 },
+                        { name: 'Senf', price: 4 },
+                        { name: 'Sahne', price: 4 },
+                        { name: 'Parmesan', price: 5 },
+                        { name: 'Paprika, Oliven, Mais, Pilze', price: 5 }
                     ]}
                 ]
             },
             {
                 name: 'Desserts',
                 items: [
-                    { name: 'Tiramisu', description: '' },
-                    { name: 'Schokoladenüberraschung', description: '' },
-                    { name: 'Pfannkuchen mit Schokolade/Marmelade', description: '' },
-                    { name: 'Pfannkuchen mit Eiscreme', description: '' },
-                    { name: 'Eiscreme (Portion)', description: '' }
+                    { name: 'Tiramisu', price: 8 },
+                    { name: 'Schokoladenüberraschung', price: 9 },
+                    { name: 'Pfannkuchen mit Schokolade/Marmelade', price: 6 },
+                    { name: 'Pfannkuchen mit Eiscreme', price: 7 },
+                    { name: 'Eiscreme (Portion)', price: 6 }
                 ]
             }
         ]
@@ -1109,72 +1109,72 @@ const menuData = {
             {
                 name: 'Hideg előételek',
                 items: [
-                    { name: 'Carpaccio (hal, marhahús)', description: '' },
-                    { name: 'Dalmát sonka', description: '' },
-                    { name: 'Juhtejből készült sajt', description: '' },
-                    { name: 'Polip saláta', description: '' }
+                    { name: 'Carpaccio (hal, marhahús)', price: 15 },
+                    { name: 'Dalmát sonka', price: 15 },
+                    { name: 'Juhtejből készült sajt', price: 15 },
+                    { name: 'Polip saláta', price: 16 }
                 ]
             },
             {
                 name: 'Meleg előételek',
                 items: [
-                    { name: 'Bolognai tészta', description: '' },
-                    { name: 'Tenger gyümölcsei tészta', description: '' },
-                    { name: 'Carbonara tészta', description: '' }
+                    { name: 'Bolognai tészta', price: 10 },
+                    { name: 'Tenger gyümölcsei tészta', price: 18 },
+                    { name: 'Carbonara tészta', price: 15 }
                 ]
             },
             {
                 name: 'Húsételek',
                 items: [
-                    { name: 'Steak (sertés-, borjúhús)', description: '' },
-                    { name: 'Bélszín (sertés-, marha-, csirkehús)', description: '' },
-                    { name: 'Sült borjú (szeletelt borjúcsülök)', description: '' },
-                    { name: 'Szopós malac', description: '' }
+                    { name: 'Steak (sertés-, borjúhús)', price: 15 },
+                    { name: 'Bélszín (sertés-, marha-, csirkehús)', price: 12 },
+                    { name: 'Sült borjú (szeletelt borjúcsülök)', price: 25 },
+                    { name: 'Szopós malac', price: 24 }
                 ]
             },
             {
                 name: 'Levesek',
                 items: [
-                    { name: 'Napi leves', description: '' },
+                    { name: 'Napi leves', price: 4 },
                     { name: 'Napi ajánlat', description: '' }
                 ]
             },
             {
                 name: 'Halak, rákok, puhatestűek',
                 items: [
-                    { name: 'Sült kalamári', description: '' },
-                    { name: 'Grillezett kalamári', description: '' },
-                    { name: 'Panírozott tengeri sügér (sült)', description: '' },
-                    { name: 'Kagyló (1 kg)', description: '' },
-                    { name: 'Vegyes apró halak', description: '' },
-                    { name: 'Grillezett fésűkagyló', description: '' },
-                    { name: 'Grillezett garnélarák (1 kg)', description: '' },
-                    { name: 'Tonhalszelet', description: '' }
+                    { name: 'Sült kalamári', price: 16 },
+                    { name: 'Grillezett kalamári', price: 16 },
+                    { name: 'Panírozott tengeri sügér (sült)', price: 25 },
+                    { name: 'Kagyló (1 kg)', price: 30 },
+                    { name: 'Vegyes apró halak', price: 10 },
+                    { name: 'Grillezett fésűkagyló', price: 10 },
+                    { name: 'Grillezett garnélarák (1 kg)', price: 85 },
+                    { name: 'Tonhalszelet', price: 18 }
                 ]
             },
             {
                 name: 'Kiegészítők',
                 items: [
-                    { name: 'Hasábburgonya', description: '' },
-                    { name: 'Sózott burgonya', description: '' },
-                    { name: 'Grillezett zöldségek', description: '' },
-                    { name: 'Mángold burgonyával', description: '' },
-                    { name: 'Sült burgonya', description: '' },
-                    { name: 'Sajtos krokettek', description: '' }
+                    { name: 'Hasábburgonya', price: 4 },
+                    { name: 'Sózott burgonya', price: 4 },
+                    { name: 'Grillezett zöldségek', price: 5 },
+                    { name: 'Mángold burgonyával', price: 5 },
+                    { name: 'Sült burgonya', price: 4 },
+                    { name: 'Sajtos krokettek', price: 4 }
                 ]
             },
             {
                 name: 'Élelmiszer-kiegészítések',
                 items: [
                     { name: 'Szószok', isCategory: true, items: [
-                        { name: 'Paradicsomszósz', description: '' },
-                        { name: 'Majonéz', description: '' },
-                        { name: 'Remuládmártás', description: '' },
-                        { name: 'Ajvár', description: '' },
-                        { name: 'Mustár', description: '' },
-                        { name: 'Tejszín', description: '' },
-                        { name: 'Parmezán sajt', description: '' },
-                        { name: 'Pepperóni, olajbogyó, kukorica, gomba', description: '' }
+                        { name: 'Paradicsomszósz', price: 4 },
+                        { name: 'Majonéz', price: 4 },
+                        { name: 'Remuládmártás', price: 4 },
+                        { name: 'Ajvár', price: 4 },
+                        { name: 'Mustár', price: 4 },
+                        { name: 'Tejszín', price: 4 },
+                        { name: 'Parmezán sajt', price: 5 },
+                        { name: 'Pepperóni, olajbogyó, kukorica, gomba', price: 5 }
                     ]}
                 ]
             },
@@ -1194,18 +1194,18 @@ const menuData = {
             {
                 name: 'Saláták',
                 items: [
-                    { name: 'Salátaöntet', description: '' },
-                    { name: 'Lámpássaláta', description: '' }
+                    { name: 'Salátaöntet', price: 4 },
+                    { name: 'Lámpássaláta', price: 10 }
                 ]
             },
             {
                 name: 'Desszertek',
                 items: [
-                    { name: 'Tiramisu', description: '' },
-                    { name: 'Csokis meglepetés', description: '' },
-                    { name: 'Palacsinta csokoládéval/lekvárral', description: '' },
-                    { name: 'Palacsinta fagylalttal', description: '' },
-                    { name: 'Fagylalt (adag)', description: '' }
+                    { name: 'Tiramisu', price: 8 },
+                    { name: 'Csokis meglepetés', price: 9 },
+                    { name: 'Palacsinta csokoládéval/lekvárral', price: 6 },
+                    { name: 'Palacsinta fagylalttal', price: 7 },
+                    { name: 'Fagylalt (adag)', price: 6 }
                 ]
             }
         ]
@@ -1217,58 +1217,58 @@ const menuData = {
             {
                 name: 'Antipasti freddi',
                 items: [
-                    { name: 'Carpaccio (pesce, manzo)', description: '' },
-                    { name: 'Prosciutto dalmata', description: '' },
-                    { name: 'Formaggio di pecora', description: '' },
-                    { name: 'Insalata di polpo', description: '' }
+                    { name: 'Carpaccio (pesce, manzo)', price: 15 },
+                    { name: 'Prosciutto dalmata', price: 15 },
+                    { name: 'Formaggio di pecora', price: 15 },
+                    { name: 'Insalata di polpo', price: 16 }
                 ]
             },
             {
                 name: 'Antipasti caldi',
                 items: [
-                    { name: 'Pasta alla bolognese', description: '' },
-                    { name: 'Pasta ai frutti di mare', description: '' },
-                    { name: 'Pasta alla carbonara', description: '' }
+                    { name: 'Pasta alla bolognese', price: 10 },
+                    { name: 'Pasta ai frutti di mare', price: 18 },
+                    { name: 'Pasta alla carbonara', price: 15 }
                 ]
             },
             {
                 name: 'Piatti di carne',
                 items: [
-                    { name: 'Bistecca (di maiale, vitello)', description: '' },
-                    { name: 'Filetto (di maiale, manzo, pollo)', description: '' },
-                    { name: 'Arrosto di vitello (stinco di vitello a fette)', description: '' },
-                    { name: 'Maialino da latte', description: '' }
+                    { name: 'Bistecca (di maiale, vitello)', price: 15 },
+                    { name: 'Filetto (di maiale, manzo, pollo)', price: 12 },
+                    { name: 'Arrosto di vitello (stinco di vitello a fette)', price: 25 },
+                    { name: 'Maialino da latte', price: 24 }
                 ]
             },
             {
                 name: 'Pesci, granchi, molluschi',
                 items: [
-                    { name: 'Calamari fritti', description: '' },
-                    { name: 'Calamari alla griglia', description: '' },
-                    { name: 'Branzino impanato (cotto al forno)', description: '' },
-                    { name: 'Vongole (1 kg)', description: '' },
-                    { name: 'Mix di piccoli pesci', description: '' },
-                    { name: 'Capesante alla griglia', description: '' },
-                    { name: 'Gamberi alla griglia (1 kg)', description: '' },
-                    { name: 'Trancio di tonno', description: '' }
+                    { name: 'Calamari fritti', price: 16 },
+                    { name: 'Calamari alla griglia', price: 16 },
+                    { name: 'Branzino impanato (cotto al forno)', price: 25 },
+                    { name: 'Vongole (1 kg)', price: 30 },
+                    { name: 'Mix di piccoli pesci', price: 10 },
+                    { name: 'Capesante alla griglia', price: 10 },
+                    { name: 'Gamberi alla griglia (1 kg)', price: 85 },
+                    { name: 'Trancio di tonno', price: 18 }
                 ]
             },
             {
                 name: 'Zuppe',
                 items: [
-                    { name: 'Zuppa quotidiana', description: '' },
+                    { name: 'Zuppa quotidiana', price: 4 },
                     { name: 'Selezione di piatti pronti che cambia ogni giorno', description: '' }
                 ]
             },
             {
                 name: 'Supplementi',
                 items: [
-                    { name: 'Patate fritte', description: '' },
-                    { name: 'Patate salate', description: '' },
-                    { name: 'Verdure grigliate', description: '' },
-                    { name: 'Bietole con patate', description: '' },
-                    { name: 'Patate al forno', description: '' },
-                    { name: 'Crocchette di formaggio', description: '' },
+                    { name: 'Patate fritte', price: 4 },
+                    { name: 'Patate salate', price: 4 },
+                    { name: 'Verdure grigliate', price: 5 },
+                    { name: 'Bietole con patate', price: 5 },
+                    { name: 'Patate al forno', price: 4 },
+                    { name: 'Crocchette di formaggio', price: 4 },
                     { name: 'Salsa di pomodoro', description: '' },
                     { name: 'Maionese', description: '' },
                     { name: 'Salsa remoulade', description: '' },
@@ -1295,33 +1295,33 @@ const menuData = {
             {
                 name: 'Insalate',
                 items: [
-                    { name: 'Condire un\'insalata', description: '' },
-                    { name: 'Insalata "Lanterna"', description: '' }
+                    { name: 'Condire un\'insalata', price: 4 },
+                    { name: 'Insalata "Lanterna"', price: 10 }
                 ]
             },
             {
                 name: 'Accompagnamenti',
                 items: [
                     { name: 'Salse', isCategory: true, items: [
-                        { name: 'Salsa di pomodoro', description: '' },
-                        { name: 'Maionese', description: '' },
-                        { name: 'Salsa remoulade', description: '' },
-                        { name: 'Ajvar', description: '' },
-                        { name: 'Senape', description: '' },
-                        { name: 'Panna da cucina', description: '' },
-                        { name: 'Parmigiano Reggiano', description: '' },
-                        { name: 'Peperoni, olive, mais, funghi', description: '' }
+                        { name: 'Salsa di pomodoro', price: 4 },
+                        { name: 'Maionese', price: 4 },
+                        { name: 'Salsa remoulade', price: 4 },
+                        { name: 'Ajvar', price: 4 },
+                        { name: 'Senape', price: 4 },
+                        { name: 'Panna da cucina', price: 4 },
+                        { name: 'Parmigiano Reggiano', price: 5 },
+                        { name: 'Peperoni, olive, mais, funghi', price: 5 }
                     ]}
                 ]
             },
             {
                 name: 'Dolci',
                 items: [
-                    { name: 'Tiramisù', description: '' },
-                    { name: 'Sorpresa al cioccolato', description: '' },
-                    { name: 'Pancake con cioccolato/marmellata', description: '' },
-                    { name: 'Pancake con gelato', description: '' },
-                    { name: 'Gelato (porzione)', description: '' }
+                    { name: 'Tiramisù', price: 8 },
+                    { name: 'Sorpresa al cioccolato', price: 9 },
+                    { name: 'Pancake con cioccolato/marmellata', price: 6 },
+                    { name: 'Pancake con gelato', price: 7 },
+                    { name: 'Gelato (porzione)', price: 6 }
                 ]
             }
         ]
