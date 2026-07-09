@@ -816,6 +816,29 @@ section[id="visit"] {
     text-align: right;
 }
 
+.menu-subcategory {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    padding: 1rem 0;
+    border-left: 2px solid var(--blue);
+    padding-left: 1.5rem;
+}
+
+.menu-subcategory-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+.menu-subitems {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
 /* Vintage divider accent */
 .menu-category:not(:last-child)::after {
     content: '';

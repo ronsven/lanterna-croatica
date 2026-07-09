@@ -782,58 +782,61 @@ const menuData = {
             {
                 name: 'Hladna predjela',
                 items: [
-                    { name: 'Carpaccio (riba, govedina)', description: '' },
-                    { name: 'Dalmatinski pršut', description: '' },
-                    { name: 'Ovčji sir', description: '' },
-                    { name: 'Salata od hobotnice', description: '' }
+                    { name: 'Carpaccio (riba, govedina)', price: 15 },
+                    { name: 'Dalmatinski pršut', price: 15 },
+                    { name: 'Ovčji sir', price: 15 },
+                    { name: 'Salata od hobotnice', price: 16 }
                 ]
             },
             {
                 name: 'Topla predjela',
                 items: [
-                    { name: 'Pašta Bolognese', description: '' },
-                    { name: 'Tjestenina s plodovima mora', description: '' },
-                    { name: 'Pašta Carbonara', description: '' }
+                    { name: 'Pašta Bolognese', price: 10 },
+                    { name: 'Tjestenina s plodovima mora', price: 18 },
+                    { name: 'Pašta Carbonara', price: 15 }
                 ]
             },
             {
                 name: 'Jela od mesa',
                 items: [
-                    { name: 'Odrezak (svinjski, teleći)', description: '' },
-                    { name: 'File (svinjski, juneći, pileći)', description: '' },
-                    { name: 'Teletina iz krušne peći (rezana teleća koljenica)', description: '' },
-                    { name: 'Odojak iz krušne peći', description: '' }
+                    { name: 'Odrezak (svinjski, teleći)', price: 15 },
+                    { name: 'File (svinjski, juneći, pileći)', price: 12 },
+                    { name: 'Teletina iz krušne peći (rezana teleća koljenica)', price: 25 },
+                    { name: 'Odojak iz krušne peći', price: 24 }
                 ]
             },
             {
                 name: 'Ribe, rakovi, školjke',
                 items: [
-                    { name: 'Lignje - pržene', description: '' },
-                    { name: 'Lignje - na žaru', description: '' },
-                    { name: 'Brancin u škartocu (iz krušne peći)', description: '' },
-                    { name: 'Školjke na buzaru - 1 kg', description: '' },
-                    { name: 'Sitna riba - mix', description: '' },
-                    { name: 'Jakobove kapice (žar)', description: '' },
-                    { name: 'Škampi na žaru - 1kg', description: '' },
-                    { name: 'Tuna steak', description: '' }
+                    { name: 'Lignje - pržene', price: 16 },
+                    { name: 'Lignje - na žaru', price: 16 },
+                    { name: 'Brancin u škartocu (iz krušne peći)', price: 25 },
+                    { name: 'Školjke na buzaru - 1 kg', price: 30 },
+                    { name: 'Sitna riba - mix', price: 10 },
+                    { name: 'Jakobove kapice (žar)', price: 10 },
+                    { name: 'Škampi na žaru - 1kg', price: 85 },
+                    { name: 'Tuna steak', price: 10 }
                 ]
             },
             {
                 name: 'Juhe',
                 items: [
-                    { name: 'Dnevna juha', description: '' },
-                    { name: 'Dnevna ponuda gotovih jela', description: '' }
+                    { name: 'Dnevna juha', price: 4 }
                 ]
+            },
+            {
+                name: 'Dnevna ponuda gotovih jela',
+                items: []
             },
             {
                 name: 'Prilozi',
                 items: [
-                    { name: 'Prženi krumpir', description: '' },
-                    { name: 'Kuhani slani krumpir', description: '' },
-                    { name: 'Povrće (žar)', description: '' },
-                    { name: 'Blitva s krumpirom', description: '' },
-                    { name: 'Pekarski krumpir', description: '' },
-                    { name: 'Kroketi od sira', description: '' }
+                    { name: 'Prženi krumpir', price: 4 },
+                    { name: 'Kuhani slani krumpir', price: 4 },
+                    { name: 'Povrće (žar)', price: 5 },
+                    { name: 'Blitva s krumpirom', price: 5 },
+                    { name: 'Pekarski krumpir', price: 4 },
+                    { name: 'Kroketi od sira', price: 4 }
                 ]
             },
             {
@@ -852,18 +855,33 @@ const menuData = {
             {
                 name: 'Salate',
                 items: [
-                    { name: 'Sezonska salata', description: '' },
-                    { name: 'Salata Lanterna', description: '' }
+                    { name: 'Sezonska salata', price: 4 },
+                    { name: 'Salata Lanterna', price: 10 }
                 ]
             },
             {
                 name: 'Slastice',
                 items: [
-                    { name: 'Tiramisu', description: '' },
-                    { name: 'Čokoladno iznenađenje', description: '' },
-                    { name: 'Palačinke s čokoladom / marmeladom', description: '' },
-                    { name: 'Palačinke sa sladoledom', description: '' },
-                    { name: 'Sladoled (porcija)', description: '' }
+                    { name: 'Tiramisu', price: 8 },
+                    { name: 'Čokoladno iznenađenje', price: 9 },
+                    { name: 'Palačinke s čokoladom / marmeladom', price: 6 },
+                    { name: 'Palačinke sa sladoledom', price: 7 },
+                    { name: 'Sladoled (porcija)', price: 6 }
+                ]
+            },
+            {
+                name: 'Dodatci jelima',
+                items: [
+                    { name: 'Umaci', isCategory: true, items: [
+                        { name: 'umak od rajčice', price: 4 },
+                        { name: 'majoneza', price: 4 },
+                        { name: 'tartar umak', price: 4 },
+                        { name: 'ajvar', price: 4 },
+                        { name: 'senf', price: 4 },
+                        { name: 'vrhnje', price: 4 },
+                        { name: 'Parmezan', price: 5 },
+                        { name: 'Feferoni, masline, kukuruz, gljive', price: 5 }
+                    ]}
                 ]
             }
         ]
@@ -1679,25 +1697,73 @@ function renderMenu(lang, menuType = 'food') {
         itemsDiv.className = 'menu-items';
 
         category.items.forEach((item) => {
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'menu-item';
+            // Handle nested categories (like Umaci under Dodatci)
+            if (item.isCategory && item.items) {
+                const subCategoryDiv = document.createElement('div');
+                subCategoryDiv.className = 'menu-subcategory';
 
-            const infoDiv = document.createElement('div');
-            infoDiv.className = 'menu-item-info';
+                const subTitle = document.createElement('h4');
+                subTitle.className = 'menu-subcategory-title';
+                subTitle.textContent = item.name;
+                subCategoryDiv.appendChild(subTitle);
 
-            const nameEl = document.createElement('div');
-            nameEl.className = 'menu-item-name';
-            nameEl.textContent = item.name;
+                const subItemsDiv = document.createElement('div');
+                subItemsDiv.className = 'menu-subitems';
 
-            const descEl = document.createElement('div');
-            descEl.className = 'menu-item-description';
-            descEl.textContent = item.description;
+                item.items.forEach((subItem) => {
+                    const subItemDiv = document.createElement('div');
+                    subItemDiv.className = 'menu-item';
 
-            infoDiv.appendChild(nameEl);
-            infoDiv.appendChild(descEl);
-            itemDiv.appendChild(infoDiv);
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'menu-item-info';
 
-            itemsDiv.appendChild(itemDiv);
+                    const nameEl = document.createElement('div');
+                    nameEl.className = 'menu-item-name';
+                    nameEl.textContent = subItem.name;
+
+                    infoDiv.appendChild(nameEl);
+
+                    if (subItem.price) {
+                        const priceEl = document.createElement('div');
+                        priceEl.className = 'menu-item-price';
+                        priceEl.textContent = '€' + subItem.price;
+                        subItemDiv.appendChild(priceEl);
+                    }
+
+                    subItemDiv.appendChild(infoDiv);
+                    subItemsDiv.appendChild(subItemDiv);
+                });
+
+                subCategoryDiv.appendChild(subItemsDiv);
+                itemsDiv.appendChild(subCategoryDiv);
+            } else {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'menu-item';
+
+                const infoDiv = document.createElement('div');
+                infoDiv.className = 'menu-item-info';
+
+                const nameEl = document.createElement('div');
+                nameEl.className = 'menu-item-name';
+                nameEl.textContent = item.name;
+
+                const descEl = document.createElement('div');
+                descEl.className = 'menu-item-description';
+                descEl.textContent = item.description || '';
+
+                infoDiv.appendChild(nameEl);
+                infoDiv.appendChild(descEl);
+                itemDiv.appendChild(infoDiv);
+
+                if (item.price) {
+                    const priceEl = document.createElement('div');
+                    priceEl.className = 'menu-item-price';
+                    priceEl.textContent = '€' + item.price;
+                    itemDiv.appendChild(priceEl);
+                }
+
+                itemsDiv.appendChild(itemDiv);
+            }
         });
 
         categoryDiv.appendChild(categoryTitle);
