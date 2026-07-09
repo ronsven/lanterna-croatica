@@ -71,7 +71,7 @@ window.translations = {
         contact_mobile: "Mobilni",
         contact_landline: "Fiksni",
         contact_hours: "Radno vrijeme",
-        contact_hours_text: "Svakodnevno<br>11:00 – 23:45",
+        contact_hours_text: "Svakodnevno<br>12:00 – 23:00",
         visit_map: "Otvori na Mapama",
 
         // Footer
