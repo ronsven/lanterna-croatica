@@ -764,6 +764,21 @@ const menuData = {
                 ]
             },
             {
+                name: 'Meal Accompaniments',
+                items: [
+                    { name: 'Sauces', isCategory: true, items: [
+                        { name: 'Tomato sauce', description: '' },
+                        { name: 'Mayonnaise', description: '' },
+                        { name: 'Tartar sauce', description: '' },
+                        { name: 'Ajvar', description: '' },
+                        { name: 'Mustard', description: '' },
+                        { name: 'Cream', description: '' },
+                        { name: 'Parmesan', description: '' },
+                        { name: 'Peppers, olives, corn, mushrooms', description: '' }
+                    ]}
+                ]
+            },
+            {
                 name: 'Deserts',
                 items: [
                     { name: 'Tiramisu', description: '' },
@@ -815,7 +830,7 @@ const menuData = {
                     { name: 'Sitna riba - mix', price: 10 },
                     { name: 'Jakobove kapice (žar)', price: 10 },
                     { name: 'Škampi na žaru - 1kg', price: 85 },
-                    { name: 'Tuna steak', price: 10 }
+                    { name: 'Tuna steak', price: 18 }
                 ]
             },
             {
@@ -965,6 +980,21 @@ const menuData = {
                 items: [
                     { name: 'Salat würzen', description: '' },
                     { name: 'Salat „Laterne"', description: '' }
+                ]
+            },
+            {
+                name: 'Speisenzusätze',
+                items: [
+                    { name: 'Saucen', isCategory: true, items: [
+                        { name: 'Tomatensauce', description: '' },
+                        { name: 'Mayonnaise', description: '' },
+                        { name: 'Remouladensauce', description: '' },
+                        { name: 'Ajvar', description: '' },
+                        { name: 'Senf', description: '' },
+                        { name: 'Sahne', description: '' },
+                        { name: 'Parmesan', description: '' },
+                        { name: 'Paprika, Oliven, Mais, Pilze', description: '' }
+                    ]}
                 ]
             },
             {
@@ -1134,16 +1164,18 @@ const menuData = {
                 ]
             },
             {
-                name: 'Élelmiszer-adalékanyagok',
+                name: 'Élelmiszer-kiegészítések',
                 items: [
-                    { name: 'Paradicsomszósz', description: '' },
-                    { name: 'Majonéz', description: '' },
-                    { name: 'Remuládmártás', description: '' },
-                    { name: 'Ajvár', description: '' },
-                    { name: 'Mustár', description: '' },
-                    { name: 'Tejszín', description: '' },
-                    { name: 'Parmezán sajt', description: '' },
-                    { name: 'Pepperóni, olajbogyó, kukorica, gomba', description: '' }
+                    { name: 'Szószok', isCategory: true, items: [
+                        { name: 'Paradicsomszósz', description: '' },
+                        { name: 'Majonéz', description: '' },
+                        { name: 'Remuládmártás', description: '' },
+                        { name: 'Ajvár', description: '' },
+                        { name: 'Mustár', description: '' },
+                        { name: 'Tejszín', description: '' },
+                        { name: 'Parmezán sajt', description: '' },
+                        { name: 'Pepperóni, olajbogyó, kukorica, gomba', description: '' }
+                    ]}
                 ]
             },
             {
@@ -1265,6 +1297,21 @@ const menuData = {
                 items: [
                     { name: 'Condire un\'insalata', description: '' },
                     { name: 'Insalata "Lanterna"', description: '' }
+                ]
+            },
+            {
+                name: 'Accompagnamenti',
+                items: [
+                    { name: 'Salse', isCategory: true, items: [
+                        { name: 'Salsa di pomodoro', description: '' },
+                        { name: 'Maionese', description: '' },
+                        { name: 'Salsa remoulade', description: '' },
+                        { name: 'Ajvar', description: '' },
+                        { name: 'Senape', description: '' },
+                        { name: 'Panna da cucina', description: '' },
+                        { name: 'Parmigiano Reggiano', description: '' },
+                        { name: 'Peperoni, olive, mais, funghi', description: '' }
+                    ]}
                 ]
             },
             {
